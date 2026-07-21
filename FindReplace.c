@@ -2,28 +2,24 @@
 #include <stdlib.h>
 
 #if defined(_WIN32) || defined(_WIN64)
-	#define OSsep = "\\";
+	#define OSsep  "\\"
 #else
-	#define OSsep = "/";
+	#define OSsep  "/"
 
 int main(int argc, char *argv[])
 {
-	char PathUnchecked[200] = {0};
+	char PathUnchecked[200] = {0}; //Revise if size is sufficient
 	snprinf(PathUnchecked,sizeof(PathUnchecked),argv[1]);
-	char ReadPath[200] = {0};
+	
 	for(int i =0; i <= sizeof(PathUnchecked) - 1; i++)
 	{
 		if(PathUnchecked[i] == "\\" || PathUnchecked[i] == "/")
 		{
-			ReadPath[i] = OSsep;
-		}
-		else
-		{
-			ReadPath[i] = PathUnchecked[i];
+			PathUnchecked[i] = OSsep;
 		}
 	}
 	
-	FILE *XMLFile = fopen(snprinf("%s",ReadPath),"r");
+	FILE *XMLFile = fopen(snprinf("%s",PathUnchecked),"r");
 	if(XMLFile == NULL)
 	{
 		goto defer;
