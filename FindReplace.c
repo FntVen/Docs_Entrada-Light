@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		}
 	}
 	
-	FILE *XMLFile = fopen("ReadPath","r");
+	FILE *XMLFile = fopen(snprinf("%s",ReadPath),"r");
 	if(XMLFile == NULL)
 	{
 		goto defer;
