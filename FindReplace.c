@@ -34,7 +34,6 @@ bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ord
 	return Result;
 }
 
-
 int main(int argc, char *argv[])
 {
 	char PathUnchecked[200] = {0}; //Revise if size is sufficient
@@ -68,6 +67,11 @@ int main(int argc, char *argv[])
 			//Replace Logic
 			printf("Line %d",line);// Just for testing
 			return 0; // Just for testing
+		}
+		if(line == 2147483646)
+		{
+			printf("Never Recognized");
+			break;
 		}
 	}
 	
