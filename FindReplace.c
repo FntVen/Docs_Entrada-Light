@@ -9,8 +9,15 @@
 	#define OSsep  '/'
 #endif
 
+#define Debugging true
 
-bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)//If ordered is set to true then "String1" is the reference and "String2" is the compared one 
+typedef struct
+{
+    bool Result;
+    char String[100];
+}R_ReadBuffer;
+
+bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)//If ordered is set to true then "String1" is the reference and "String2" is the compared one
 {
 	if(Ordered == true)
 	{
@@ -34,6 +41,11 @@ bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ord
 	return Result;
 }
 
+R_ReadBuffer ReadCompare()
+{
+
+}
+
 int main(int argc, char *argv[])
 {
 	char PathUnchecked[200] = {0}; //Revise if size is sufficient
@@ -42,7 +54,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	snprintf(PathUnchecked,sizeof(PathUnchecked),argv[1]);
-	
+
 	for(int i =0; i <= sizeof(PathUnchecked) - 1; i++)
 	{
 		if(PathUnchecked[i] == '\\' || PathUnchecked[i] == '/')
@@ -50,36 +62,46 @@ int main(int argc, char *argv[])
 			PathUnchecked[i] = OSsep;
 		}
 	}
-	
+
 	FILE *XMLFile = fopen(PathUnchecked,"r");
 	if(XMLFile == NULL)
 	{
-		goto defer;		
+		goto defer;
 	}
-	char ReadBuf[1] = {0};
-	int line = 0;
-	char Asterisk[1] = "*";
+	char ReadBuf[2] = {0};
+	int CharacterPos = 0; // For debugging
+	int ReadCharacters = 0; //How many characters read post FoundFlag
+	char Asterisk[2] = {0};// 1 Based
+	snprintf(Asterisk,sizeof(Asterisk),"*");
+	bool FoundFlag = false;
+	char ReadReplace[100] = {0};
 	while(fgets(ReadBuf,sizeof(ReadBuf),XMLFile))
 	{
-		line++;
-		if(_StringComp(ReadBuf, Asterisk,0,false))
+		CharacterPos++;
+		if(_StringComp(ReadBuf, Asterisk,0,false) && FoundFlag == false)
 		{
-			//Replace Logic
-			printf("Line %d",line);// Just for testing
-			return 0; // Just for testing
+			FoundFlag = true;
+			printf("Line %d",CharacterPos);// Just for testing
 		}
-		if(line == 2147483646)
+		if(CharacterPos == 2147483646 && Debugging)
 		{
 			printf("Never Recognized");
-			break;
+			goto defer;
+		}
+		if(FoundFlag)
+		{
+		    ReadReplace[ReadCharacters] = ReadBuf[0];
+			R_ReadBuffer Answer = ReadCompare();
+		    ReadCharacters++;
 		}
 	}
-	
-	
+
+
+
 	defer:
 		fclose(XMLFile);
 		return 1;
-}	
+}
 
 int ReadWriteTst()
 {
@@ -97,4 +119,3 @@ int ReadWriteTst()
 	fclose(TextFinal);
 	return 0;
 }
-
