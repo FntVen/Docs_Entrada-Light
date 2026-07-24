@@ -41,9 +41,49 @@ bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ord
 	return Result;
 }
 
-R_ReadBuffer ReadCompare()
+R_ReadBuffer ReadCompare(const char *ToReplace)
 {
-
+	//possible strings to replace
+	char NClient[8] = "NClient";
+	char Client[7] = "Client";
+	char CInstalação[12] = "CInstalação";
+	char QModulos[9] = "QModulos";
+	char MModulos[9] = "MModulos";
+	char PModulos[9] = "PModulos";
+	char IFabricantes[13] = "IFabricantes";
+	char IModelo[8] = "IModelo";
+	char PInversores[12] = "PInversores";
+	char CData[11] = "CData";
+	char TodayData[11] = "TodayData";
+	char Inst_Sub[9] = "Inst_Sub";
+	char Inst_Aero[10] = "Inst_Aero";
+	char Inst_Classe[12] = "Inst_Classe";
+	char CCabo[6] = "CCabo";
+	char CDisjuntor[11] = "CDisjuntor";
+	char CTerra[7] = "CTerra";
+	char CKWh[5] = "CKWh"; 
+	char CEst[5] = "CEst";
+	char PKit[5] = "PKit";
+	char AArranjos[10] = "AArranjos";
+	char CPF_CNPJ[9] = "CPF_CNPJ";
+	char CCep[5] = "CCep";
+	char CEndereço[10] = "CEndereço";
+	char CBairro[8] = "CBairro";
+	char CNumero[8] = "CNumero";
+	char CCidade[8] = "CCidade";
+	char CEstado[8] = "CEstado";
+	char CEmail[7] = "CEmail";
+	char CTel[5] = "CTel";
+	
+	//Check
+	R_ReadBuffer Answer;
+	Answer.Result = false;
+	Answer.String = "";
+	
+	_StringComp(NClient, ToReplace,(int)sizeof(NClient) - 1,false);//Repeat for every variable
+	
+	
+	return Answer;
 }
 
 int main(int argc, char *argv[])
