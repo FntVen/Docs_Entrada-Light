@@ -17,6 +17,10 @@ typedef struct
     bool Result;
     char String[100];
 }R_ReadBuffer;
+typedef struct
+{
+
+}FileData
 
 bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)
 {
