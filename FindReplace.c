@@ -20,7 +20,7 @@ typedef struct
 typedef struct
 {
 
-}FileData
+}FileData;
 
 bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)
 {
