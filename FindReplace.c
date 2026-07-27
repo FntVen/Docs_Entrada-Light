@@ -19,8 +19,63 @@ typedef struct
 }R_ReadBuffer;
 typedef struct
 {
+	char NClient[256] = {0};//Nome do Cliente
+	char CClient[256] = {0};//Código da Concessionaria do Cliente
+	char CInstalação[256] = {0};//Código da Instalação da Concessionaria
+	char QModulos[256] = {0};//Quantidade de Módulos
+	char QInversores[256] = {0};//Quantidade de Inversores
+	char MModulos[256] = {0};//Marca dos Módulos
+	char MModelo[256] = {0};//Modelo dos Módulos
+	char IFabricantes[256] = {0};//Marca do Inversores
+	char IModelo[256] = {0};//Modelo dos Inversores
+	char PInversores[256] = {0};//Potência dos Inversores
+	char PModulos[256] = {0};//Potência dos Módulos
+	char CData[256] = {0};//Data de Instalação
+	char TodayData[256] = {0};//Data de Criação dos Documentos
+	char Inst_Sub[256] = {0};//Se a Instalação é Subterrânea (Se For Aerea Fazer "Inst_Sub" == "" no documento)
+	char Inst_Aero[256] = {0};//Se a Instalação é Aerea (Se For Subterrânea Fazer "Inst_Aero" == "" no documento)
+	char Inst_Classe[256] = {0};//Qual classe do cliente "Grupo A", "Grupo B" 
+	char CCabo[256] = {0};//Diametro do cabo
+	char CDisjuntor[256] = {0};//Amperagem do Disjuntor
+	char CTerra[256] = {0};//Diametro do cabo de Aterramento
+	char CKWh[256] = {0};//KWh da instalação
+	char CEst[256] = {0};//Estrutura da instalação (Ceramico, Fibrocimento etc)
+	char PKit[256] = {0};//Potência em Kwp de todo o Sistema
+	char AArranjos[256] = {0};// Area total dos arranjos
+	char CPF_CNPJ[256] = {0};//Cpf ou Cnpj do Cliente
+	char CEndereço[256] = {0};//Rua do Cliente
+	char CBairro[256] = {0};//Bairro do Cliente
+	char CCep[256] = {0};//Cep do Cliente
+	char CNumero[256] = {0};//Número do Endereço do Cliente
+	char CCidade[256] = {0};//Cidade do Cliente/Instalação
+	char CEstado[256] = {0};//Estado do Cliente/Instalação
+	char CEmail[256] = {0};//Email do Cliente
+	char CTel[256] = {0};//Telefone do Cliente
+}ClientData;
 
-}FileData;
+ClientData TestFillData()
+{
+	ClientData TestData;
+	snprintf(TestData.NClient,sizeof(NClient),"NomedoClienteTeste");
+	snprintf(TestData.CClient,sizeof(CClient),"CodigodoClienteTeste");
+	snprintf(TestData.CInstalação,sizeof(CInstalação),"CódigodeInstalaçãoTeste");
+	snprintf(TestData.QModulos,sizeof(QModulos),"QuantidadeTesteModulos");
+	snprintf(TestData.QInversores,sizeof(QInversores),"QuantidadeTesteInversores");
+	snprintf(TestData.PModulos,sizeof(PModulos),"PotênciaModuloTeste");
+	snprintf(TestData.PInversores,sizeof(PInversores),"PotênciaInversorTeste");
+	snprintf(TestData.IFabricantes,sizeof(IFabricantest),"FabricanteTesteInversor");
+	snprintf(TestData.IModelo,sizeof(IModelo),"ModeloTesteInversor");
+	snprintf(TestData.MModulos,sizeof(MModulos),"MarcaTesteModulos");
+	snprintf(TestData.MModelo,sizeof(MModelo),"ModeloTesteModulos");
+	snprintf(TestData.PInversores,sizeof(PInversores),"PotenciaTesteInversores");
+	snprintf(TestData.CData,sizeof(CData),"00/00/2030");
+	snprintf(TestData.TodayData,sizeof(TodayData),"To/Da/YY");
+	snprintf(TestData.Inst_Sub,sizeof(Inst_Sub),"X!");
+	snprintf(TestData.Inst_Aero,sizeof(Inst_Aero),"Y!");
+	snprintf(TestData.Inst_Classe,sizeof(Inst_Classe),"Classe-N/A");
+	snprintf(TestData.CCabo,sizeof(CCabo),"Tst-Cabo");
+	snprintf(TestData.CDisjuntor,sizeof(CDisjuntor),"AMPtst");
+}
 
 bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)
 {
@@ -53,7 +108,9 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	char CClient[7] = "CClient";
 	char CInstalação[14] = "CInstalação";
 	char QModulos[9] = "QModulos";
+	char QInversores[12] = "QInversores";
 	char MModulos[9] = "MModulos";
+	char MModelo[8] = "MModulos";
 	char PModulos[9] = "PModulos";
 	char IFabricantes[13] = "IFabricantes";
 	char IModelo[8] = "IModelo";
@@ -90,6 +147,20 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), NClient);
+		return Answer;
+	}
+	FoundFlag = _StringComp(QInversores, ToReplace,(int)sizeof(QInversores) - 1,false);
+	if(FoundFlag)
+	{
+	    Answer.Result = true;
+	    snprintf(Answer.String, sizeof(Answer.String), QInversores);
+		return Answer;
+	}
+	FoundFlag = _StringComp(MModelo, ToReplace,(int)sizeof(MModelo) - 1,false);
+	if(FoundFlag)
+	{
+	    Answer.Result = true;
+	    snprintf(Answer.String, sizeof(Answer.String), MModelo);
 		return Answer;
 	}
 	FoundFlag = _StringComp(CClient, ToReplace,(int)sizeof(CClient) - 1,false);
