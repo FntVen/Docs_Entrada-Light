@@ -19,62 +19,78 @@ typedef struct
 }R_ReadBuffer;
 typedef struct
 {
-	char NClient[256] = {0};//Nome do Cliente
-	char CClient[256] = {0};//Código da Concessionaria do Cliente
-	char CInstalação[256] = {0};//Código da Instalação da Concessionaria
-	char QModulos[256] = {0};//Quantidade de Módulos
-	char QInversores[256] = {0};//Quantidade de Inversores
-	char MModulos[256] = {0};//Marca dos Módulos
-	char MModelo[256] = {0};//Modelo dos Módulos
-	char IFabricantes[256] = {0};//Marca do Inversores
-	char IModelo[256] = {0};//Modelo dos Inversores
-	char PInversores[256] = {0};//Potência dos Inversores
-	char PModulos[256] = {0};//Potência dos Módulos
-	char CData[256] = {0};//Data de Instalação
-	char TodayData[256] = {0};//Data de Criação dos Documentos
-	char Inst_Sub[256] = {0};//Se a Instalação é Subterrânea (Se For Aerea Fazer "Inst_Sub" == "" no documento)
-	char Inst_Aero[256] = {0};//Se a Instalação é Aerea (Se For Subterrânea Fazer "Inst_Aero" == "" no documento)
-	char Inst_Classe[256] = {0};//Qual classe do cliente "Grupo A", "Grupo B" 
-	char CCabo[256] = {0};//Diametro do cabo
-	char CDisjuntor[256] = {0};//Amperagem do Disjuntor
-	char CTerra[256] = {0};//Diametro do cabo de Aterramento
-	char CKWh[256] = {0};//KWh da instalação
-	char CEst[256] = {0};//Estrutura da instalação (Ceramico, Fibrocimento etc)
-	char PKit[256] = {0};//Potência em Kwp de todo o Sistema
-	char AArranjos[256] = {0};// Area total dos arranjos
-	char CPF_CNPJ[256] = {0};//Cpf ou Cnpj do Cliente
-	char CEndereço[256] = {0};//Rua do Cliente
-	char CBairro[256] = {0};//Bairro do Cliente
-	char CCep[256] = {0};//Cep do Cliente
-	char CNumero[256] = {0};//Número do Endereço do Cliente
-	char CCidade[256] = {0};//Cidade do Cliente/Instalação
-	char CEstado[256] = {0};//Estado do Cliente/Instalação
-	char CEmail[256] = {0};//Email do Cliente
-	char CTel[256] = {0};//Telefone do Cliente
+	char NClient[256];//Nome do Cliente
+	char CClient[256];//Código da Concessionaria do Cliente
+	char CInstalação[256];//Código da Instalação da Concessionaria
+	char QModulos[256];//Quantidade de Módulos
+	char QInversores[256];//Quantidade de Inversores
+	char MModulos[256];//Marca dos Módulos
+	char MModelo[256];//Modelo dos Módulos
+	char IFabricantes[256];//Marca do Inversores
+	char IModelo[256];//Modelo dos Inversores
+	char PInversores[256];//Potência dos Inversores
+	char PModulos[256];//Potência dos Módulos
+	char CData[256];//Data de Instalação
+	char TodayData[256];//Data de Criação dos Documentos
+	char Inst_Sub[256];//Se a Instalação é Subterrânea (Se For Aerea Fazer "Inst_Sub" == "" no documento)
+	char Inst_Aero[256];//Se a Instalação é Aerea (Se For Subterrânea Fazer "Inst_Aero" == "" no documento)
+	char Inst_Classe[256];//Qual classe do cliente "Grupo A", "Grupo B"
+	char CCabo[256];//Diametro do cabo
+	char CDisjuntor[256];//Amperagem do Disjuntor
+	char CTerra[256];//Diametro do cabo de Aterramento
+	char CKWh[256];//KWh da instalação
+	char CEst[256];//Estrutura da instalação (Ceramico, Fibrocimento etc)
+	char PKit[256];//Potência em Kwp de todo o Sistema
+	char AArranjos[256];// Area total dos arranjos
+	char CPF_CNPJ[256];//Cpf ou Cnpj do Cliente
+	char CEndereço[256];//Rua do Cliente
+	char CBairro[256];//Bairro do Cliente
+	char CCep[256];//Cep do Cliente
+	char CNumero[256];//Número do Endereço do Cliente
+	char CCidade[256];//Cidade do Cliente/Instalação
+	char CEstado[256];//Estado do Cliente/Instalação
+	char CEmail[256];//Email do Cliente
+	char CTel[256];//Telefone do Cliente
 }ClientData;
 
 ClientData TestFillData()
 {
 	ClientData TestData;
-	snprintf(TestData.NClient,sizeof(NClient),"NomedoClienteTeste");
-	snprintf(TestData.CClient,sizeof(CClient),"CodigodoClienteTeste");
-	snprintf(TestData.CInstalação,sizeof(CInstalação),"CódigodeInstalaçãoTeste");
-	snprintf(TestData.QModulos,sizeof(QModulos),"QuantidadeTesteModulos");
-	snprintf(TestData.QInversores,sizeof(QInversores),"QuantidadeTesteInversores");
-	snprintf(TestData.PModulos,sizeof(PModulos),"PotênciaModuloTeste");
-	snprintf(TestData.PInversores,sizeof(PInversores),"PotênciaInversorTeste");
-	snprintf(TestData.IFabricantes,sizeof(IFabricantest),"FabricanteTesteInversor");
-	snprintf(TestData.IModelo,sizeof(IModelo),"ModeloTesteInversor");
-	snprintf(TestData.MModulos,sizeof(MModulos),"MarcaTesteModulos");
-	snprintf(TestData.MModelo,sizeof(MModelo),"ModeloTesteModulos");
-	snprintf(TestData.PInversores,sizeof(PInversores),"PotenciaTesteInversores");
-	snprintf(TestData.CData,sizeof(CData),"00/00/2030");
-	snprintf(TestData.TodayData,sizeof(TodayData),"To/Da/YY");
-	snprintf(TestData.Inst_Sub,sizeof(Inst_Sub),"X!");
-	snprintf(TestData.Inst_Aero,sizeof(Inst_Aero),"Y!");
-	snprintf(TestData.Inst_Classe,sizeof(Inst_Classe),"Classe-N/A");
-	snprintf(TestData.CCabo,sizeof(CCabo),"Tst-Cabo");
-	snprintf(TestData.CDisjuntor,sizeof(CDisjuntor),"AMPtst");
+	snprintf(TestData.NClient,sizeof(TestData.NClient),"NomedoClienteTeste");
+	snprintf(TestData.CClient,sizeof(TestData.CClient),"CodigodoClienteTeste");
+	snprintf(TestData.CInstalação,sizeof(TestData.CInstalação),"CódigodeInstalaçãoTeste");
+	snprintf(TestData.QModulos,sizeof(TestData.QModulos),"QuantidadeTesteModulos");
+	snprintf(TestData.QInversores,sizeof(TestData.QInversores),"QuantidadeTesteInversores");
+	snprintf(TestData.PModulos,sizeof(TestData.PModulos),"PotênciaModuloTeste");
+	snprintf(TestData.PInversores,sizeof(TestData.PInversores),"PotênciaInversorTeste");
+	snprintf(TestData.IFabricantes,sizeof(TestData.IFabricantes),"FabricanteTesteInversor");
+	snprintf(TestData.IModelo,sizeof(TestData.IModelo),"ModeloTesteInversor");
+	snprintf(TestData.MModulos,sizeof(TestData.MModulos),"MarcaTesteModulos");
+	snprintf(TestData.MModelo,sizeof(TestData.MModelo),"ModeloTesteModulos");
+	snprintf(TestData.PInversores,sizeof(TestData.PInversores),"PotenciaTesteInversores");
+	snprintf(TestData.CData,sizeof(TestData.CData),"00/00/2030");
+	snprintf(TestData.TodayData,sizeof(TestData.TodayData),"To/Da/YY");
+	snprintf(TestData.Inst_Sub,sizeof(TestData.Inst_Sub),"X!");
+	snprintf(TestData.Inst_Aero,sizeof(TestData.Inst_Aero),"Y!");
+	snprintf(TestData.Inst_Classe,sizeof(TestData.Inst_Classe),"Classe-N/A");
+	snprintf(TestData.CCabo,sizeof(TestData.CCabo),"Tst-Cabo");
+	snprintf(TestData.CDisjuntor,sizeof(TestData.CDisjuntor),"AMPtst");
+	snprintf(TestData.CTerra,sizeof(TestData.CTerra),"Tst-Terra");
+	snprintf(TestData.CKWh,sizeof(TestData.CKWh),"Kwh-tst");
+	snprintf(TestData.CCabo,sizeof(TestData.CCabo),"Tst-Cabo");
+	snprintf(TestData.CEst,sizeof(TestData.CEst),"Estrutura-Teste");
+	snprintf(TestData.PKit,sizeof(TestData.PKit),"PotênciaKit-Teste");
+	snprintf(TestData.AArranjos,sizeof(TestData.AArranjos),"Area-Teste");
+	snprintf(TestData.CPF_CNPJ,sizeof(TestData.CPF_CNPJ),"000.000.000-00");
+	snprintf(TestData.CEndereço,sizeof(TestData.CEndereço),"Rua-Teste");
+	snprintf(TestData.CBairro,sizeof(TestData.CBairro),"Bairro-Teste");
+	snprintf(TestData.CNumero,sizeof(TestData.CNumero),"_420");
+	snprintf(TestData.CCidade,sizeof(TestData.CCidade),"Cidade-Teste");
+	snprintf(TestData.CEstado,sizeof(TestData.CEstado),"Estado-Teste");
+	snprintf(TestData.CCep,sizeof(TestData.CCep),"RealCepTotally-00");
+	snprintf(TestData.CEmail,sizeof(TestData.CEmail),"RealEmailForeal@realhandle.com");
+	snprintf(TestData.CTel,sizeof(TestData.CTel),"21994206969");
+	return TestData;
 }
 
 bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)
