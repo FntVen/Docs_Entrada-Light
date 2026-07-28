@@ -1,0 +1,6741 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:oel="http://schemas.microsoft.com/office/2019/extlst" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16sdtdh="http://schemas.microsoft.com/office/word/2020/wordml/sdtdatahash" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex w16sdtdh wp14">
+<w:body>
+<w:p w14:paraId="03E6C923" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRPr="00893E15" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman"/>
+<w:i/>
+<w:iCs/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="47BEF8B0" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="673"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman"/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="045761E4" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251659264" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="54598F65" wp14:editId="0ADEFE85">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>2192655</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="5" name="Image 5"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="5" name="Image 5"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">Memorial </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>Descritivo</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="27531529" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="395F9B9D" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="23E1A815" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="22FA0380" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6C64FF1E" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="799C15E2" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="74008632" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="5329192F" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="301"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="72"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6AB80500" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:line="237" w:lineRule="auto"/>
+<w:ind w:left="384" w:right="141"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="40"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Sistema</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>MicroGeração</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Energia</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve">Solar </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Fotovoltaica</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="30A4C48A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="201" w:line="237" w:lineRule="auto"/>
+<w:ind w:left="3215" w:hanging="2235"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="40"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Usina</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Solar</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>Fotovoltaica</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>conectado</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="40"/>
+</w:rPr>
+<w:t>à Rede Elétrica</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="3C14BF6B" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="40"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="03004B2F" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="40"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="3D50FF59" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="346"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="40"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6760D8CA" w14:textId="2558C1B8" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="1"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Rio</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">Janeiro, </w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>TodayData</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="0969BDF7" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:sectPr w:rsidR="00E66E54">
+<w:headerReference w:type="default" r:id="rId9"/>
+<w:footerReference w:type="default" r:id="rId10"/>
+<w:type w:val="continuous"/>
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:pgNumType w:start="1"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="38A95485" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="28"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="531C371A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="28"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="7C7AB08A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="209"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="28"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="09D3A502" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo1"/>
+<w:spacing w:before="1"/>
+<w:ind w:left="361" w:firstLine="0"/>
+<w:rPr>
+<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>SUMÁRIO</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="176DEF68" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:rFonts w:ascii="Calibri"/>
+<w:b/>
+<w:sz w:val="28"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6F862CAA" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="55"/>
+<w:rPr>
+<w:rFonts w:ascii="Calibri"/>
+<w:b/>
+<w:sz w:val="28"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="096C6554" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="639"/>
+</w:tabs>
+<w:ind w:left="639" w:hanging="276"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>OBJETIVO</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1E780CD4" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="7E90D52A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="154E9649" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="02E822E6" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="639"/>
+</w:tabs>
+<w:ind w:left="639" w:hanging="276"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>DESCRIÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>GERAL</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>DO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>CONSUMIDOR</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1E8F83C2" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="02BE77C8" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6005F704" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="1"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="5FE2399B" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="639"/>
+</w:tabs>
+<w:ind w:left="639" w:hanging="276"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>DESCRIÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>GERAL</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>DA</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>GERAÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>DISTRIBUÍDA</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="04C8E866" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="2A88328D" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="4608061E" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="3CDF7DE5" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="43"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:tbl>
+<w:tblPr>
+<w:tblW w:w="0" w:type="auto"/>
+<w:tblInd w:w="383" w:type="dxa"/>
+<w:tblLayout w:type="fixed"/>
+<w:tblCellMar>
+<w:left w:w="0" w:type="dxa"/>
+<w:right w:w="0" w:type="dxa"/>
+</w:tblCellMar>
+<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
+</w:tblPr>
+<w:tblGrid>
+<w:gridCol w:w="365"/>
+<w:gridCol w:w="7509"/>
+<w:gridCol w:w="334"/>
+</w:tblGrid>
+<w:tr w:rsidR="00E66E54" w14:paraId="22041476" w14:textId="77777777">
+<w:trPr>
+<w:trHeight w:val="548"/>
+</w:trPr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="365" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="64EDA197" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:before="0" w:line="268" w:lineRule="exact"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>3.1</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="7509" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="0B5D112C" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:before="0" w:line="268" w:lineRule="exact"/>
+<w:ind w:left="22" w:right="20"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wpg">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251660288" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="27D6EC37" wp14:editId="7B30C0C9">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="column">
+<wp:posOffset>490855</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>49530</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1306195"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="10" name="Group 10"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup">
+<wpg:wgp>
+<wpg:cNvGrpSpPr/>
+<wpg:grpSpPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593465" cy="1306195"/>
+<a:chOff x="0" y="0"/>
+<a:chExt cx="3593465" cy="1306195"/>
+</a:xfrm>
+</wpg:grpSpPr>
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="11" name="Image 11"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</wpg:wgp>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback xmlns:w16sdtfl="http://schemas.microsoft.com/office/word/2024/wordml/sdtformatlock" xmlns:w16du="http://schemas.microsoft.com/office/word/2023/wordml/word16du">
+<w:pict>
+<v:group w14:anchorId="20CE617D" id="Group 10" o:spid="_x0000_s1026" style="position:absolute;margin-left:38.65pt;margin-top:3.9pt;width:282.95pt;height:102.85pt;z-index:-251656192;mso-wrap-distance-left:0;mso-wrap-distance-right:0" coordsize="35934,13061" o:gfxdata="UEsDBBQABgAIAAAAIQCKFT+YDAEAABUCAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbJSRwU7DMAyG 70i8Q5QratPtgBBqu8M6joDQeIAocdtA40RxKNvbk3abBNNA4pjY3+/PSbna2YGNEMg4rPgiLzgD VE4b7Cr+un3I7jijKFHLwSFUfA/EV/X1VbndeyCWaKSK9zH6eyFI9WAl5c4DpkrrgpUxHUMnvFTv sgOxLIpboRxGwJjFKYPXZQOt/Bgi2+zS9cHkzUPH2frQOM2quLFTwFwQF5kAA50x0vvBKBnTdmJE fWaWHa3yRM491BtPN0mdX54wVX5KfR9w5J7ScwajgT3LEB+lTepCBxKwdI1T+d8Zk6SlzLWtUZA3 gTYzdXL6LVu7Twww/je8SdgLjKd0MX9q/QUAAP//AwBQSwMEFAAGAAgAAAAhADj9If/WAAAAlAEA AAsAAABfcmVscy8ucmVsc6SQwWrDMAyG74O9g9F9cZrDGKNOL6PQa+kewNiKYxpbRjLZ+vYzg8Ey ettRv9D3iX9/+EyLWpElUjaw63pQmB35mIOB98vx6QWUVJu9XSijgRsKHMbHh/0ZF1vbkcyxiGqU LAbmWsur1uJmTFY6KpjbZiJOtraRgy7WXW1APfT9s+bfDBg3THXyBvjkB1CXW2nmP+wUHZPQVDtH SdM0RXePqj195DOujWI5YDXgWb5DxrVrz4G+79390xvYljm6I9uEb+S2fhyoZT96vely/AIAAP// AwBQSwMEFAAGAAgAAAAhAHasfUEbAgAAzAQAAA4AAABkcnMvZTJvRG9jLnhtbJyU247aMBCG7yv1 HSzfL4Gl0G5E2Bu6aKWqRT08gHEmidX4oLEh8PYdO9lsC5W23QuMx4fxN//MZHV/0i07AnplTcFn kylnYKQtlakL/uP7w80HznwQphStNVDwM3h+v377ZtW5HG5tY9sSkJET4/POFbwJweVZ5mUDWviJ dWBos7KoRSAT66xE0ZF33Wa30+ky6yyWDq0E72l102/ydfJfVSDDl6ryEFhbcGILacQ07uOYrVci r1G4RskBQ7yCQgtl6NHR1UYEwQ6orlxpJdF6W4WJtDqzVaUkpBgomtn0Ipot2oNLsdR5V7tRJpL2 QqdXu5Wfj1t039wOSYnO1aRFsmIspwp1/CdKdkqSnUfJ4BSYpMX54m7+brngTNLebD5dzu4Wvaiy IeWv7snm4ws3s6eHsz9wnJI5/QYNaHalwcu1QrfCAYEPTvQ/+dACfx7cDaXLiaD2qlXhnEqPEhOh zHGn5A57g+TcIVMlaTHjzAhNJf+oRQ2MbFI4Xohn4g0ysysH+1a5B9W2Ufc4H1CpYi8y/pdo+2ra WHnQYELfHggtUVvjG+U8Z5iD3gPh4WNJgJJaMxCiQ2VCnzYfEIJs4vsVcXylDoqgIh83EvQzZwzB U/38X8Usx4pZvJ/P49Nj3kXu0IctWM3ihFiJgcQWuTh+8gPN05FBwx4gkREPLcbaoZZJbof2jj35 u51OPX+E1r8AAAD//wMAUEsDBAoAAAAAAAAAIQDSmGiz+xkAAPsZAAAVAAAAZHJzL21lZGlhL2lt YWdlMS5qcGVn/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoH BwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkU DQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAAR CAB5AU0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgED AwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRol JicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWW l5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3 +Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3 AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5 OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaan qKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIR 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 ">
+<v:shapetype id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+<v:stroke joinstyle="miter"/>
+<v:formulas>
+<v:f eqn="if lineDrawn pixelLineWidth 0"/>
+<v:f eqn="sum @0 1 0"/>
+<v:f eqn="sum 0 0 @1"/>
+<v:f eqn="prod @2 1 2"/>
+<v:f eqn="prod @3 21600 pixelWidth"/>
+<v:f eqn="prod @3 21600 pixelHeight"/>
+<v:f eqn="sum @0 0 1"/>
+<v:f eqn="prod @6 1 2"/>
+<v:f eqn="prod @7 21600 pixelWidth"/>
+<v:f eqn="sum @8 21600 0"/>
+<v:f eqn="prod @7 21600 pixelHeight"/>
+<v:f eqn="sum @10 21600 0"/>
+</v:formulas>
+<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+<o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype>
+<v:shape id="Image 11" o:spid="_x0000_s1027" type="#_x0000_t75" style="position:absolute;width:35934;height:13057;visibility:visible;mso-wrap-style:square" o:gfxdata="UEsDBBQABgAIAAAAIQDb4fbL7gAAAIUBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbHyQz07DMAyH 70i8Q+QralM4IITa7kDhCAiNB7ASt43WOlEcyvb2pNu4IODoPz9/n1xv9vOkForiPDdwXVagiI23 jocG3rdPxR0oScgWJ8/UwIEENu3lRb09BBKV0ywNjCmFe63FjDSjlD4Q50nv44wpl3HQAc0OB9I3 VXWrjedEnIq03oC27qjHjympx31un0wiTQLq4bS4shrAECZnMGVTvbD9QSnOhDInjzsyuiBXWQP0 r4R18jfgnHvJr4nOknrFmJ5xzhraRtHWf3Kkpfz/yGo5S+H73hkquyhdjr3R8m2lj09svwAAAP// AwBQSwMEFAAGAAgAAAAhAFr0LFu/AAAAFQEAAAsAAABfcmVscy8ucmVsc2zPwWrDMAwG4Ptg72B0 X5TuUMaI01uh19I+gLGVxCy2jGSy9e1nemrHjpL4P0nD4SetZiPRyNnCruvBUPYcYp4tXC/Htw8w Wl0ObuVMFm6kcBhfX4Yzra62kC6xqGlKVgtLreUTUf1CyWnHhXKbTCzJ1VbKjMX5LzcTvvf9HuXR gPHJNKdgQU5hB+ZyK23zHztFL6w81c5zQp6m6P9TMfB3PtPWFCczVQtB9N4U2rp2HOA44NMz4y8A AAD//wMAUEsDBBQABgAIAAAAIQDdsXeGwQAAANsAAAAPAAAAZHJzL2Rvd25yZXYueG1sRE9NawIx EL0L/Q9hCt40uz2IbI2igigIBdftobfpZtxd3ExCkur675tCwds83ucsVoPpxY186CwryKcZCOLa 6o4bBdV5N5mDCBFZY2+ZFDwowGr5Mlpgoe2dT3QrYyNSCIcCFbQxukLKULdkMEytI07cxXqDMUHf SO3xnsJNL9+ybCYNdpwaWnS0bam+lj9Gwfrj67t66GDd5rN35bU67vOtV2r8OqzfQUQa4lP87z7o ND+Hv1/SAXL5CwAA//8DAFBLAQItABQABgAIAAAAIQDb4fbL7gAAAIUBAAATAAAAAAAAAAAAAAAA AAAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAi0AFAAGAAgAAAAhAFr0LFu/AAAAFQEAAAsAAAAA AAAAAAAAAAAAHwEAAF9yZWxzLy5yZWxzUEsBAi0AFAAGAAgAAAAhAN2xd4bBAAAA2wAAAA8AAAAA AAAAAAAAAAAABwIAAGRycy9kb3ducmV2LnhtbFBLBQYAAAAAAwADALcAAAD1AgAAAAA= ">
+<v:imagedata r:id="rId11" o:title=""/>
+</v:shape>
+</v:group>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Módulos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>fotovoltaicos..........................................................................</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="334" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="0C688D5E" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:before="0" w:line="268" w:lineRule="exact"/>
+<w:ind w:left="0" w:right="40"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>05</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+<w:tr w:rsidR="00E66E54" w14:paraId="50310D25" w14:textId="77777777">
+<w:trPr>
+<w:trHeight w:val="827"/>
+</w:trPr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="365" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="1191A705" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>3.2</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="7509" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="1BC12E7B" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:ind w:left="19" w:right="20"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:w w:val="85"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Inversores</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="70"/>
+<w:w w:val="150"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:w w:val="85"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>...........................................................................................................</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="334" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="5D20D8FB" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:ind w:left="0" w:right="61"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>06</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+<w:tr w:rsidR="00E66E54" w14:paraId="19A6883B" w14:textId="77777777">
+<w:trPr>
+<w:trHeight w:val="827"/>
+</w:trPr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="365" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="04D216DE" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:before="271"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>3.3</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="7843" w:type="dxa"/>
+<w:gridSpan w:val="2"/>
+</w:tcPr>
+<w:p w14:paraId="0AC3EEA3" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:tabs>
+<w:tab w:val="right" w:leader="dot" w:pos="7773"/>
+</w:tabs>
+<w:spacing w:before="271"/>
+<w:ind w:left="18"/>
+<w:jc w:val="left"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Estruturas</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>metálicas</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:tab/>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>07</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+<w:tr w:rsidR="00E66E54" w14:paraId="5F542DFC" w14:textId="77777777">
+<w:trPr>
+<w:trHeight w:val="548"/>
+</w:trPr>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="365" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="24C50EEF" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:line="256" w:lineRule="exact"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>3.4</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="7509" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="36DAB5F3" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:line="256" w:lineRule="exact"/>
+<w:ind w:left="2" w:right="22"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Dispositivos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>proteção</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:w w:val="90"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>.................................................................................</w:t>
+</w:r>
+</w:p>
+</w:tc>
+<w:tc>
+<w:tcPr>
+<w:tcW w:w="334" w:type="dxa"/>
+</w:tcPr>
+<w:p w14:paraId="7F82FDEB" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="TableParagraph"/>
+<w:spacing w:line="256" w:lineRule="exact"/>
+<w:ind w:left="0" w:right="37"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>08</w:t>
+</w:r>
+</w:p>
+</w:tc>
+</w:tr>
+</w:tbl>
+<w:p w14:paraId="3B750213" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="12DD7177" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="48"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="54569E8C" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="1"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="561"/>
+<w:tab w:val="right" w:leader="dot" w:pos="8569"/>
+</w:tabs>
+<w:ind w:left="561" w:hanging="200"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Previsão</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Produção</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Energia</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:tab/>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>09</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1A0D432B" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:sectPr w:rsidR="00E66E54">
+<w:headerReference w:type="default" r:id="rId12"/>
+<w:footerReference w:type="default" r:id="rId13"/>
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="09D68817" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo1"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="671"/>
+</w:tabs>
+<w:spacing w:before="88"/>
+<w:ind w:left="671" w:hanging="310"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<w:t>OBJETIVO</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="062F8811" w14:textId="6FD220F3" w:rsidR="00E66E54" w:rsidRDefault="00000000" w:rsidP="00CE5B59">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="200" w:line="235" w:lineRule="auto"/>
+<w:ind w:left="361" w:right="68"/>
+<w:jc w:val="both"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>O</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>projeto</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Sistema</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Geração</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Energia</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Solar d</w:t>
+</w:r>
+<w:r w:rsidR="00DE6C8E">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>e</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">NCliente </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>reduzir custos com energia elétrica d</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>a residência</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> bem como reduzir a emissão de poluentes provindos do uso de energia elétrica provindas de fontes</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>poluentes,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>havendo</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>o</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>proprietário</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>uma</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>preocupação</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>com</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>o</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>futuro</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do planeta, e investindo em energia limpa e sustentável.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="6883A002" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000" w:rsidP="00CE5B59">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="198" w:line="235" w:lineRule="auto"/>
+<w:ind w:left="361"/>
+<w:jc w:val="both"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Projeto elaborado e executado pelo Eng. Eletricista Túlio Siqueira da Silva, Especialista em Fontes de Energia Renováveis com vasta experiência em projetos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>energia</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>solar</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>fotovoltaica</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>grande</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>e</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>pequeno</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>porte</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>atuante na empresa</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>TSS</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Engenharia,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>situada</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>(matriz)</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>na</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>cidade</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Campinas/SP,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>com filial na cidade do Rio de Janeiro/RJ.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1C9E5089" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="00844927" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="96"/>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="6DF7052D" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo1"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="673"/>
+</w:tabs>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DESCRIÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-9"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>GERAL</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>CONSUMIDOR</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="388E8F67" w14:textId="00FC72F0" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="203"/>
+<w:ind w:left="361"/>
+<w:rPr>
+<w:sz w:val="24"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Cliente:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>NCliente</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="502031C4" w14:textId="12F0DFB6" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="199"/>
+<w:ind w:left="361"/>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>CPF:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t>CPF_CNPJ</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="7E2213C0" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:widowControl/>
+<w:ind w:firstLineChars="200" w:firstLine="440"/>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="7C5CADFF" w14:textId="3DC2FC85" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:widowControl/>
+<w:ind w:firstLineChars="150" w:firstLine="330"/>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251661312" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="1860D1D0" wp14:editId="555DD687">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>233680</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="12" name="Image 12"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="12" name="Image 12"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Código</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>da</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>UC:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t>CCliente</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="0A8C1C95" w14:textId="3B492AD1" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="198"/>
+<w:ind w:left="361"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Endereço:</w:t>
+</w:r>
+<w:r w:rsidR="007E1340">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve">CEndereco, </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve">CBairro, </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve">CNumero , </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve">Ccidade, </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00A8430F">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t>CEstado</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="3C3126DE" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="201"/>
+<w:ind w:left="428"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Localização</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>da</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>instalação</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>cliente:</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="44ACE8F7" w14:textId="1767FEC0" w:rsidR="00E66E54" w:rsidRDefault="00DE6C8E" w:rsidP="00117094">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="172"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+<w:r w:rsidRPr="00DE6C8E">
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="0BA4C7EC" wp14:editId="0B974909">
+<wp:extent cx="4985800" cy="2364105"/>
+<wp:effectExtent l="0" t="0" r="5715" b="0"/>
+<wp:docPr id="259194538" name="Imagem 1"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="259194538" name="Imagem 1"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId14">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="4985800" cy="2364105"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="38722F29" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="98"/>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0F881329" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:line="408" w:lineRule="auto"/>
+<w:ind w:left="4276" w:right="2086" w:hanging="2168"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Vista</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Satélite</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>da</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>localização</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">Cliente </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+</w:rPr>
+<w:t>3</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="7253C882" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:spacing w:line="408" w:lineRule="auto"/>
+<w:sectPr w:rsidR="00E66E54">
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="13402169" w14:textId="2830356C" w:rsidR="00E66E54" w:rsidRDefault="00117094">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="3"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="508"/>
+</w:tabs>
+<w:spacing w:before="82"/>
+<w:ind w:left="508" w:hanging="145"/>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251669504" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="17C1C92B" wp14:editId="549B8780">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="column">
+<wp:posOffset>3898585</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>-251145</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="147953" cy="3034032"/>
+<wp:effectExtent l="42545" t="33655" r="28575" b="28575"/>
+<wp:wrapNone/>
+<wp:docPr id="39" name="Conector Angulado 39"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvCnPr/>
+<wps:spPr>
+<a:xfrm rot="16200000" flipV="1">
+<a:off x="0" y="0"/>
+<a:ext cx="147953" cy="3034032"/>
+</a:xfrm>
+<a:prstGeom prst="bentConnector3">
+<a:avLst>
+<a:gd name="adj1" fmla="val 49952"/>
+</a:avLst>
+</a:prstGeom>
+<a:ln>
+<a:tailEnd type="arrow"/>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="2">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="tx1"/>
+</a:fontRef>
+</wps:style>
+<wps:bodyPr/>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+<wp14:sizeRelH relativeFrom="margin">
+<wp14:pctWidth>0</wp14:pctWidth>
+</wp14:sizeRelH>
+<wp14:sizeRelV relativeFrom="margin">
+<wp14:pctHeight>0</wp14:pctHeight>
+</wp14:sizeRelV>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback>
+<w:pict>
+<v:shapetype w14:anchorId="42B2214E" id="_x0000_t34" coordsize="21600,21600" o:spt="34" o:oned="t" adj="10800" path="m,l@0,0@0,21600,21600,21600e" filled="f">
+<v:stroke joinstyle="miter"/>
+<v:formulas>
+<v:f eqn="val #0"/>
+</v:formulas>
+<v:path arrowok="t" fillok="f" o:connecttype="none"/>
+<v:handles>
+<v:h position="#0,center"/>
+</v:handles>
+<o:lock v:ext="edit" shapetype="t"/>
+</v:shapetype>
+<v:shape id="Conector Angulado 39" o:spid="_x0000_s1026" type="#_x0000_t34" style="position:absolute;margin-left:307pt;margin-top:-19.8pt;width:11.65pt;height:238.9pt;rotation:90;flip:y;z-index:251669504;visibility:visible;mso-wrap-style:square;mso-width-percent:0;mso-height-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text;mso-width-percent:0;mso-height-percent:0;mso-width-relative:margin;mso-height-relative:margin" o:gfxdata="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 cmV2LnhtbFBLBQYAAAAABAAEAPMAAABQBQAAAAA= " adj="10790" strokecolor="#4f81bd [3204]" strokeweight="2pt">
+<v:stroke endarrow="open"/>
+</v:shape>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Planta</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Localização</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Cliente:</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1E4E6821" w14:textId="2AA092A5" w:rsidR="00E66E54" w:rsidRDefault="00DE6C8E">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:tabs>
+<w:tab w:val="left" w:pos="508"/>
+</w:tabs>
+<w:spacing w:before="82"/>
+<w:ind w:left="363" w:firstLine="0"/>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251670528" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="3A63E42F" wp14:editId="78EB0817">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="margin">
+<wp:posOffset>5225415</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>1166495</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="1335405" cy="257175"/>
+<wp:effectExtent l="0" t="0" r="0" b="9525"/>
+<wp:wrapNone/>
+<wp:docPr id="45" name="Caixa de Texto 45"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvSpPr txBox="1"/>
+<wps:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="1335405" cy="257175"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+<a:solidFill>
+<a:schemeClr val="lt1"/>
+</a:solidFill>
+<a:ln w="6350">
+<a:noFill/>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="dk1"/>
+</a:fontRef>
+</wps:style>
+<wps:txbx>
+<w:txbxContent>
+<w:p w14:paraId="3FACC590" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Casa do Cliente</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</wps:txbx>
+<wps:bodyPr rot="0" spcFirstLastPara="0" vertOverflow="overflow" horzOverflow="overflow" vert="horz" wrap="square" lIns="91440" tIns="45720" rIns="91440" bIns="45720" numCol="1" spcCol="0" rtlCol="0" fromWordArt="0" anchor="t" anchorCtr="0" forceAA="0" compatLnSpc="1">
+<a:noAutofit/>
+</wps:bodyPr>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback>
+<w:pict>
+<v:shapetype w14:anchorId="3A63E42F" id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+<v:stroke joinstyle="miter"/>
+<v:path gradientshapeok="t" o:connecttype="rect"/>
+</v:shapetype>
+<v:shape id="Caixa de Texto 45" o:spid="_x0000_s1026" type="#_x0000_t202" style="position:absolute;left:0;text-align:left;margin-left:411.45pt;margin-top:91.85pt;width:105.15pt;height:20.25pt;z-index:251670528;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:margin;mso-position-vertical:absolute;mso-position-vertical-relative:text;v-text-anchor:top" o:gfxdata="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 ZXYueG1sUEsFBgAAAAAEAAQA8wAAAMEFAAAAAA== " fillcolor="white [3201]" stroked="f" strokeweight=".5pt">
+<v:textbox>
+<w:txbxContent>
+<w:p w14:paraId="3FACC590" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Casa do Cliente</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</v:textbox>
+<w10:wrap anchorx="margin"/>
+</v:shape>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r w:rsidRPr="00DE6C8E">
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="5D809739" wp14:editId="0FAF5873">
+<wp:extent cx="4985800" cy="2364105"/>
+<wp:effectExtent l="0" t="0" r="5715" b="0"/>
+<wp:docPr id="60361307" name="Imagem 1"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="60361307" name="Imagem 1"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId14">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="4985800" cy="2364105"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="40FD6932" w14:textId="24A46879" w:rsidR="00E66E54" w:rsidRDefault="00E66E54"/>
+<w:p w14:paraId="54B96746" w14:textId="746D2F11" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:ind w:right="3246"/>
+<w:jc w:val="right"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Planta</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> localização</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="67BBC68A" w14:textId="5C7E3BB0" w:rsidR="00E66E54" w:rsidRDefault="00117094">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="3"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="508"/>
+</w:tabs>
+<w:spacing w:before="195"/>
+<w:ind w:left="508" w:hanging="145"/>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251683840" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="66B8D129" wp14:editId="3428CE50">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="column">
+<wp:posOffset>3970337</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>184468</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="99695" cy="2653030"/>
+<wp:effectExtent l="94933" t="38417" r="33337" b="14288"/>
+<wp:wrapNone/>
+<wp:docPr id="13" name="Conector Angulado 39"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvCnPr/>
+<wps:spPr>
+<a:xfrm rot="16200000" flipV="1">
+<a:off x="0" y="0"/>
+<a:ext cx="99695" cy="2653030"/>
+</a:xfrm>
+<a:prstGeom prst="bentConnector3">
+<a:avLst>
+<a:gd name="adj1" fmla="val 49952"/>
+</a:avLst>
+</a:prstGeom>
+<a:ln>
+<a:tailEnd type="arrow"/>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="2">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="tx1"/>
+</a:fontRef>
+</wps:style>
+<wps:bodyPr/>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+<wp14:sizeRelH relativeFrom="margin">
+<wp14:pctWidth>0</wp14:pctWidth>
+</wp14:sizeRelH>
+<wp14:sizeRelV relativeFrom="margin">
+<wp14:pctHeight>0</wp14:pctHeight>
+</wp14:sizeRelV>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback>
+<w:pict>
+<v:shape w14:anchorId="4B7A4EBA" id="Conector Angulado 39" o:spid="_x0000_s1026" type="#_x0000_t34" style="position:absolute;margin-left:312.6pt;margin-top:14.55pt;width:7.85pt;height:208.9pt;rotation:90;flip:y;z-index:251683840;visibility:visible;mso-wrap-style:square;mso-width-percent:0;mso-height-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text;mso-width-percent:0;mso-height-percent:0;mso-width-relative:margin;mso-height-relative:margin" o:gfxdata="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 ZXYueG1sUEsFBgAAAAAEAAQA8wAAAE8FAAAAAA== " adj="10790" strokecolor="#4f81bd [3204]" strokeweight="2pt">
+<v:stroke endarrow="open"/>
+</v:shape>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251663360" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="36A2BC1D" wp14:editId="4D082930">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>755650</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="15" name="Image 15"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="15" name="Image 15"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Planta</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-9"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Situação</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>com</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>o</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>local</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>instalação</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>padrão</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>entrada;</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="29BC7B5E" w14:textId="7FE74290" w:rsidR="00E66E54" w:rsidRDefault="00DE6C8E">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:tabs>
+<w:tab w:val="left" w:pos="508"/>
+</w:tabs>
+<w:spacing w:before="195"/>
+<w:ind w:left="363" w:firstLine="0"/>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251681792" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="17EBB893" wp14:editId="6ECB7A61">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="margin">
+<wp:posOffset>4451350</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>1299845</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="1209675" cy="257175"/>
+<wp:effectExtent l="0" t="0" r="9525" b="9525"/>
+<wp:wrapNone/>
+<wp:docPr id="1832797684" name="Caixa de Texto 1832797684"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvSpPr txBox="1"/>
+<wps:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="1209675" cy="257175"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+<a:solidFill>
+<a:schemeClr val="lt1"/>
+</a:solidFill>
+<a:ln w="6350">
+<a:noFill/>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="dk1"/>
+</a:fontRef>
+</wps:style>
+<wps:txbx>
+<w:txbxContent>
+<w:p w14:paraId="08EB0492" w14:textId="77777777" w:rsidR="00DE6C8E" w:rsidRDefault="00DE6C8E" w:rsidP="00DE6C8E">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Casa do Cliente</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</wps:txbx>
+<wps:bodyPr rot="0" spcFirstLastPara="0" vertOverflow="overflow" horzOverflow="overflow" vert="horz" wrap="square" lIns="91440" tIns="45720" rIns="91440" bIns="45720" numCol="1" spcCol="0" rtlCol="0" fromWordArt="0" anchor="t" anchorCtr="0" forceAA="0" compatLnSpc="1">
+<a:noAutofit/>
+</wps:bodyPr>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+<wp14:sizeRelH relativeFrom="margin">
+<wp14:pctWidth>0</wp14:pctWidth>
+</wp14:sizeRelH>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback>
+<w:pict>
+<v:shape w14:anchorId="17EBB893" id="Caixa de Texto 1832797684" o:spid="_x0000_s1027" type="#_x0000_t202" style="position:absolute;left:0;text-align:left;margin-left:350.5pt;margin-top:102.35pt;width:95.25pt;height:20.25pt;z-index:251681792;visibility:visible;mso-wrap-style:square;mso-width-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:margin;mso-position-vertical:absolute;mso-position-vertical-relative:text;mso-width-percent:0;mso-width-relative:margin;v-text-anchor:top" o:gfxdata="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 " fillcolor="white [3201]" stroked="f" strokeweight=".5pt">
+<v:textbox>
+<w:txbxContent>
+<w:p w14:paraId="08EB0492" w14:textId="77777777" w:rsidR="00DE6C8E" w:rsidRDefault="00DE6C8E" w:rsidP="00DE6C8E">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Casa do Cliente</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</v:textbox>
+<w10:wrap anchorx="margin"/>
+</v:shape>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251671552" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="44A1BD5B" wp14:editId="65F19C00">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="column">
+<wp:posOffset>233045</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>123825</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="2070100" cy="1127760"/>
+<wp:effectExtent l="4445" t="5080" r="13335" b="10160"/>
+<wp:wrapNone/>
+<wp:docPr id="54" name="Caixa de Texto 54"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvSpPr txBox="1"/>
+<wps:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="2070100" cy="1127760"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+<a:solidFill>
+<a:schemeClr val="lt1"/>
+</a:solidFill>
+<a:ln w="6350">
+<a:solidFill>
+<a:prstClr val="black"/>
+</a:solidFill>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:schemeClr val="accent1"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="dk1"/>
+</a:fontRef>
+</wps:style>
+<wps:txbx>
+<w:txbxContent>
+<w:p w14:paraId="75E98431" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Entrada Aérea</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1A81336E" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Padrão de Entrada Trifásico</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="699EBE87" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0A002A65" w14:textId="6B46FA38" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Cabos:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Ccabo</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="FF0000"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>mm2</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="43672701" w14:textId="1CFA29F6" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Disjuntor:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve">CDisjuntor </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>A</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="675021AF" w14:textId="44288055" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Aterramento:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve">CTerra </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>mm2</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</wps:txbx>
+<wps:bodyPr rot="0" spcFirstLastPara="0" vertOverflow="overflow" horzOverflow="overflow" vert="horz" wrap="square" lIns="91440" tIns="45720" rIns="91440" bIns="45720" numCol="1" spcCol="0" rtlCol="0" fromWordArt="0" anchor="t" anchorCtr="0" forceAA="0" compatLnSpc="1">
+<a:noAutofit/>
+</wps:bodyPr>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback>
+<w:pict>
+<v:shape w14:anchorId="44A1BD5B" id="Caixa de Texto 54" o:spid="_x0000_s1028" type="#_x0000_t202" style="position:absolute;left:0;text-align:left;margin-left:18.35pt;margin-top:9.75pt;width:163pt;height:88.8pt;z-index:251671552;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text;v-text-anchor:top" o:gfxdata="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 " fillcolor="white [3201]" strokeweight=".5pt">
+<v:textbox>
+<w:txbxContent>
+<w:p w14:paraId="75E98431" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Entrada Aérea</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1A81336E" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Padrão de Entrada Trifásico</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="699EBE87" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0A002A65" w14:textId="6B46FA38" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Cabos:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Ccabo</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="FF0000"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>mm2</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="43672701" w14:textId="1CFA29F6" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Disjuntor:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve">CDisjuntor </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>A</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="675021AF" w14:textId="44288055" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Aterramento:</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="0D0D0D" w:themeColor="text1" w:themeTint="F2"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve">CTerra </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>mm2</w:t>
+</w:r>
+</w:p>
+</w:txbxContent>
+</v:textbox>
+</v:shape>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r w:rsidR="00A4729F">
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="20"/>
+</w:rPr>
+<mc:AlternateContent>
+<mc:Choice Requires="wps">
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="114300" distR="114300" simplePos="0" relativeHeight="251679744" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="79D29572" wp14:editId="23E829F8">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="column">
+<wp:posOffset>2774315</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>1449070</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="175895" cy="0"/>
+<wp:effectExtent l="0" t="12700" r="6985" b="17780"/>
+<wp:wrapNone/>
+<wp:docPr id="49" name="Conector Reto 49"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+<wps:wsp>
+<wps:cNvCnPr/>
+<wps:spPr>
+<a:xfrm>
+<a:off x="3362325" y="7600950"/>
+<a:ext cx="175895" cy="0"/>
+</a:xfrm>
+<a:prstGeom prst="line">
+<a:avLst/>
+</a:prstGeom>
+<a:ln>
+<a:solidFill>
+<a:schemeClr val="accent2"/>
+</a:solidFill>
+</a:ln>
+</wps:spPr>
+<wps:style>
+<a:lnRef idx="2">
+<a:schemeClr val="accent1"/>
+</a:lnRef>
+<a:fillRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:fillRef>
+<a:effectRef idx="0">
+<a:srgbClr val="FFFFFF"/>
+</a:effectRef>
+<a:fontRef idx="minor">
+<a:schemeClr val="tx1"/>
+</a:fontRef>
+</wps:style>
+<wps:bodyPr/>
+</wps:wsp>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</mc:Choice>
+<mc:Fallback xmlns:w16sdtfl="http://schemas.microsoft.com/office/word/2024/wordml/sdtformatlock" xmlns:w16du="http://schemas.microsoft.com/office/word/2023/wordml/word16du">
+<w:pict>
+<v:line w14:anchorId="273FD9A2" id="Conector Reto 49" o:spid="_x0000_s1026" style="position:absolute;z-index:251679744;visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:text;mso-position-vertical:absolute;mso-position-vertical-relative:text" from="218.45pt,114.1pt" to="232.3pt,114.1pt" o:gfxdata="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 " strokecolor="#c0504d [3205]" strokeweight="2pt"/>
+</w:pict>
+</mc:Fallback>
+</mc:AlternateContent>
+</w:r>
+<w:r w:rsidRPr="00DE6C8E">
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="2575D0EB" wp14:editId="1D41C9CB">
+<wp:extent cx="5543550" cy="2628571"/>
+<wp:effectExtent l="0" t="0" r="0" b="635"/>
+<wp:docPr id="1245639980" name="Imagem 1"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="1245639980" name="Imagem 1"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId14">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="5543550" cy="2628571"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="3ED599D1" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54"/>
+<w:p w14:paraId="237ACA82" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:sz w:val="17"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="38B7A010" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="273"/>
+<w:ind w:right="3241"/>
+<w:jc w:val="right"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Planta</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> Situação</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="7784608C" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="3"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="501"/>
+</w:tabs>
+<w:spacing w:before="199"/>
+<w:ind w:left="501" w:hanging="138"/>
+<w:rPr>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Características</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-11"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-11"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>atendimento:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Com.</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-11"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Trifásico</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>127/220v</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-9"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>–</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-9"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Residencial</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>B1</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="2C78D9CA" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="3347E8D5" w14:textId="60D01F09" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:ind w:left="384" w:right="141"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>-</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-11"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Disjuntor</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Entrada</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Trifásico</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t>C</w:t>
+</w:r>
+<w:r w:rsidR="002D2B46" w:rsidRPr="002D2B46">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-3"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Disjuntor</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t>A.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="68BC1409" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:ind w:left="384" w:right="141"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="114300" distR="114300" wp14:anchorId="34A11F28" wp14:editId="2435238A">
+<wp:extent cx="2117090" cy="2823210"/>
+<wp:effectExtent l="0" t="0" r="1270" b="11430"/>
+<wp:docPr id="37" name="Imagem 37" descr="WhatsApp Image 2024-11-13 at 10.07.30"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="37" name="Imagem 37" descr="WhatsApp Image 2024-11-13 at 10.07.30"/>
+<pic:cNvPicPr>
+<a:picLocks noChangeAspect="1"/>
+</pic:cNvPicPr>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId15"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="2117090" cy="2823210"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="12598340" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="4"/>
+<w:rPr>
+<w:sz w:val="18"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0F0CE9E5" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="169"/>
+<w:ind w:left="384" w:right="2"/>
+<w:jc w:val="center"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Disjuntor</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>Entrada</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="7D75C024" w14:textId="55CC2535" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="199"/>
+<w:ind w:left="384"/>
+<w:jc w:val="center"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Cliente</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Residencial</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>com</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Média</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Consumo</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-1"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>CKWh</w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-1"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>KWh/Mês</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="29592FFF" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:jc w:val="center"/>
+<w:sectPr w:rsidR="00E66E54">
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="5D931A7C" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo1"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="673"/>
+</w:tabs>
+<w:spacing w:before="88"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<w:t>DESCRIÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>GERAL</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DA</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>GERAÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>DISTRIBUÍDA</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="6F6BE082" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="202" w:line="237" w:lineRule="auto"/>
+<w:ind w:left="361" w:right="115" w:firstLine="448"/>
+<w:jc w:val="both"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Descrição geral da topologia proposta, inserindo informações técnicas como dados de placa de módulos fotovoltaicos, inversores, máquinas térmicas, geradores elétricos, turbinas e geradores eólicos, estruturas metálicas,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-15"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>torres,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>dispositivos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-15"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-14"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>proteção,</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>aterramento</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-14"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>e</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>outros</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>componentes que forem pertinentes. Abaixo seguem exemplos de subitens:</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1890D6C9" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="1"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="762"/>
+</w:tabs>
+<w:spacing w:before="201"/>
+<w:ind w:left="762" w:hanging="401"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Módulos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>fotovoltaicos</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="078CA4BB" w14:textId="13BC33B4" w:rsidR="00E66E54" w:rsidRDefault="00000000" w:rsidP="00103811">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="202" w:line="276" w:lineRule="auto"/>
+<w:ind w:left="102" w:right="68" w:firstLine="259"/>
+<w:jc w:val="both"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251664384" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="25A12F17" wp14:editId="3398438C">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>2112645</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="18" name="Image 18"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="18" name="Image 18"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Serão</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>fornecidos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="005226A7" w:rsidRPr="005226A7">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t>QMódulos</w:t>
+</w:r>
+<w:r w:rsidR="0011531E" w:rsidRPr="0011531E">
+<w:rPr>
+<w:color w:val="FF0000"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Módulos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>MODULO</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="FF0000"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504" w:rsidRPr="00400504">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+</w:rPr>
+<w:t>MModelo</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>.</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> Os módulos deverão já possuir cabos de corrente contínua e conectores MC4 com dimensões capazes de conectá-los em série. Nas conexões de cada módulo serão utilizadas abraçadeiras para que os cabos fiquem fixos na estrutura metálica de sustentação dos módulos.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="399846E4" w14:textId="22B938B8" w:rsidR="00E66E54" w:rsidRDefault="00DE6C8E" w:rsidP="00117094">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="8"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:sz w:val="6"/>
+</w:rPr>
+</w:pPr>
+<w:r w:rsidRPr="00DE6C8E">
+<w:rPr>
+<w:noProof/>
+<w:sz w:val="6"/>
+</w:rPr>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="36C1B300" wp14:editId="08157FF3">
+<wp:extent cx="4216425" cy="5721564"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:docPr id="849994881" name="Imagem 1"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="849994881" name="Imagem 1"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId16" cstate="print">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="4216425" cy="5721564"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="21E47212" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="125"/>
+<w:ind w:left="384" w:right="147"/>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman"/>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+<w:sz w:val="20"/>
+</w:rPr>
+<w:t>5</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="53F8DCD4" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:jc w:val="center"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman"/>
+<w:sz w:val="20"/>
+</w:rPr>
+<w:sectPr w:rsidR="00E66E54">
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0D3C8503" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="1"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="763"/>
+</w:tabs>
+<w:spacing w:before="89"/>
+<w:ind w:hanging="402"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251665408" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="6FBC8CC1" wp14:editId="2F70B55C">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="page">
+<wp:posOffset>4686300</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="25" name="Image 25"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="25" name="Image 25"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Inversores</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="65C78F51" w14:textId="04880A0E" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="199"/>
+<w:ind w:left="361" w:right="116" w:firstLine="448"/>
+<w:jc w:val="both"/>
+<w:rPr>
+<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Foram</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>selecionados</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="005226A7" w:rsidRPr="005226A7">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>QInversores</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Microi</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>nversor</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>es</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>IFabricantes</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="FF0000"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Modelo</w:t>
+</w:r>
+<w:r w:rsidR="00117094">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>IModelo</w:t>
+</w:r>
+<w:r w:rsidR="005226A7">
+<w:rPr>
+<w:color w:val="FF0000"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve">que atende todas as normas brasileiras. (Datasheets Completos anexos ao </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Processo)</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>;</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="33D1FE5A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="1"/>
+<w:rPr>
+<w:rFonts w:ascii="Calibri"/>
+<w:sz w:val="9"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:inline distT="0" distB="0" distL="114300" distR="114300" wp14:anchorId="11EA5DF8" wp14:editId="5B3E8231">
+<wp:extent cx="5105400" cy="6927875"/>
+<wp:effectExtent l="0" t="0" r="0" b="6350"/>
+<wp:docPr id="17" name="Imagem 1"/>
+<wp:cNvGraphicFramePr>
+<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+</wp:cNvGraphicFramePr>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="17" name="Imagem 1"/>
+<pic:cNvPicPr>
+<a:picLocks noChangeAspect="1"/>
+</pic:cNvPicPr>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId17" cstate="print">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="5105400" cy="6927875"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+<a:noFill/>
+<a:ln>
+<a:noFill/>
+</a:ln>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:inline>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="1A179A10" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:rPr>
+<w:rFonts w:ascii="Calibri"/>
+<w:sz w:val="9"/>
+</w:rPr>
+<w:sectPr w:rsidR="00E66E54">
+<w:headerReference w:type="default" r:id="rId18"/>
+<w:footerReference w:type="default" r:id="rId19"/>
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="1600" w:left="1600" w:header="0" w:footer="1416" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="167E29B6" w14:textId="71F67FB8" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="1"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="762"/>
+</w:tabs>
+<w:spacing w:before="89"/>
+<w:ind w:left="762" w:hanging="401"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:lastRenderedPageBreak/>
+<w:t>Estruturas</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>CEst</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="0112F30D" w14:textId="6DCB242B" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="199"/>
+<w:ind w:left="102" w:right="160" w:firstLine="201"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Serão instalados fixadores de Alumínio do tipo Gancho Ajustável que foi desenvolvido</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>especialmente</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>para</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00117094">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Laje</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="4F02FB96" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="407A765F" w14:textId="7A3AD140" w:rsidR="00E66E54" w:rsidRDefault="00117094">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="43"/>
+<w:rPr>
+<w:sz w:val="20"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251667456" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="60C4FDA9" wp14:editId="253772DE">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1828800</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>209550</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3656826" cy="1352386"/>
+<wp:effectExtent l="0" t="0" r="1270" b="635"/>
+<wp:wrapTopAndBottom/>
+<wp:docPr id="31" name="Image 31"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="31" name="Image 31"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId20" cstate="print">
+<a:extLst>
+<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+</a:ext>
+</a:extLst>
+</a:blip>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3656826" cy="1352386"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+<wp14:sizeRelV relativeFrom="margin">
+<wp14:pctHeight>0</wp14:pctHeight>
+</wp14:sizeRelV>
+</wp:anchor>
+</w:drawing>
+</w:r>
+</w:p>
+<w:p w14:paraId="351BE764" w14:textId="5831669F" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="127"/>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0A88A8BE" w14:textId="36A6A83E" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="1"/>
+<w:ind w:left="102"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:noProof/>
+</w:rPr>
+<w:drawing>
+<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251666432" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1" wp14:anchorId="54207367" wp14:editId="7BF806E4">
+<wp:simplePos x="0" y="0"/>
+<wp:positionH relativeFrom="page">
+<wp:posOffset>1977390</wp:posOffset>
+</wp:positionH>
+<wp:positionV relativeFrom="paragraph">
+<wp:posOffset>-22225</wp:posOffset>
+</wp:positionV>
+<wp:extent cx="3593465" cy="1305560"/>
+<wp:effectExtent l="0" t="0" r="0" b="0"/>
+<wp:wrapNone/>
+<wp:docPr id="32" name="Image 32"/>
+<wp:cNvGraphicFramePr/>
+<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<pic:nvPicPr>
+<pic:cNvPr id="32" name="Image 32"/>
+<pic:cNvPicPr/>
+</pic:nvPicPr>
+<pic:blipFill>
+<a:blip r:embed="rId8" cstate="print"/>
+<a:stretch>
+<a:fillRect/>
+</a:stretch>
+</pic:blipFill>
+<pic:spPr>
+<a:xfrm>
+<a:off x="0" y="0"/>
+<a:ext cx="3593466" cy="1305733"/>
+</a:xfrm>
+<a:prstGeom prst="rect">
+<a:avLst/>
+</a:prstGeom>
+</pic:spPr>
+</pic:pic>
+</a:graphicData>
+</a:graphic>
+</wp:anchor>
+</w:drawing>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Testes</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-1"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>resistência:</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="37BE4A74" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="4"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="247"/>
+</w:tabs>
+<w:spacing w:before="199"/>
+<w:ind w:left="247" w:hanging="145"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Pressão</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>paralela</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>à</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-14"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>superfície:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-12"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>1,8kN;</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1A3B1E48" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="4"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="247"/>
+</w:tabs>
+<w:ind w:left="247" w:hanging="145"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Pressão</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-16"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>perpendicular</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-16"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>à</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-17"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>superfície:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-15"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>3,54kN;</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="69057756" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="4"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="247"/>
+</w:tabs>
+<w:spacing w:before="2"/>
+<w:ind w:left="247" w:hanging="145"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Força</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>tração</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>perpendicular</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-15"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>à</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-12"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>superfície:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-13"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>2,2kN.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="11C00D84" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="0FD32A51" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="101"/>
+<w:rPr>
+<w:b/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="330B2318" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="PargrafodaLista"/>
+<w:numPr>
+<w:ilvl w:val="1"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="762"/>
+</w:tabs>
+<w:spacing w:before="1"/>
+<w:ind w:left="762" w:hanging="401"/>
+<w:rPr>
+<w:b/>
+<w:sz w:val="24"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>Dispositivos</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:b/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+<w:sz w:val="24"/>
+</w:rPr>
+<w:t>proteção;</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="4D4E1600" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="198"/>
+<w:ind w:left="102"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Para</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Proteção</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Sistema</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Corrente</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Contínua será</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DPS</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>tipo</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>II</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>disponibilizada</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">pelo </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>inversor.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="47AEE660" w14:textId="7CED2CD8" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="200" w:line="276" w:lineRule="auto"/>
+<w:ind w:left="102" w:right="68"/>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Para</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>a</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Proteção</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Sistema</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>de</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Corrente</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Alternada</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Fo</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>ram</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>dimensionado</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>s</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>dois</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-6"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Disjuntor</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>es</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">de </w:t>
+</w:r>
+<w:r w:rsidR="00103811">
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>32</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> A </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>Tri</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>polar Curva C, juntamente com um DPS 0</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:lang w:val="pt-BR"/>
+</w:rPr>
+<w:t>3</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> Polos 40KA/1,5KV.</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="1BC8CBB1" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:rPr>
+<w:sz w:val="22"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="013AFE7A" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00E66E54">
+<w:pPr>
+<w:pStyle w:val="Corpodetexto"/>
+<w:spacing w:before="214"/>
+<w:rPr>
+<w:sz w:val="22"/>
+</w:rPr>
+</w:pPr>
+</w:p>
+<w:p w14:paraId="4F413223" w14:textId="77777777" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:pStyle w:val="Ttulo1"/>
+<w:numPr>
+<w:ilvl w:val="0"/>
+<w:numId w:val="2"/>
+</w:numPr>
+<w:tabs>
+<w:tab w:val="left" w:pos="673"/>
+</w:tabs>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>PREVISÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-7"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DA</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-10"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>PRODUÇÃO</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>DE</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t>ENERGIA</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="0F20EB59" w14:textId="188E9E5F" w:rsidR="00360475" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="238" w:line="470" w:lineRule="auto"/>
+<w:ind w:left="102" w:right="3230"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Potência do Painel ou do Kit:</w:t>
+</w:r>
+<w:r w:rsidR="00015118">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00015118">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>PKit</w:t>
+</w:r>
+<w:r w:rsidR="0011531E">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">W </w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="132D3BD1" w14:textId="325E64F9" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="238" w:line="470" w:lineRule="auto"/>
+<w:ind w:left="102" w:right="3230"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Média</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Mensal</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-8"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Sistema:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="40"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00015118">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="40"/>
+</w:rPr>
+<w:t>CKWh</w:t>
+</w:r>
+<w:r w:rsidR="0011531E">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="40"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>KWh</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>/</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-4"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">mês </w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="495C6A5C" w14:textId="6A5482B7" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:spacing w:before="238" w:line="470" w:lineRule="auto"/>
+<w:ind w:left="102" w:right="3230"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve">Área necessária para Instalação: </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00015118">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+</w:rPr>
+<w:t>AArranjos</w:t>
+</w:r>
+<w:r w:rsidR="00360475">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>m²</w:t>
+</w:r>
+</w:p>
+<w:p w14:paraId="7969366B" w14:textId="472793A7" w:rsidR="00E66E54" w:rsidRDefault="00000000">
+<w:pPr>
+<w:ind w:left="102"/>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+</w:rPr>
+</w:pPr>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Potência</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Total</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>do</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-2"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+</w:rPr>
+<w:t>Sistema:</w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r w:rsidR="00400504">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t>*</w:t>
+</w:r>
+<w:r w:rsidR="00015118">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080" w:themeColor="background1" w:themeShade="80"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t>PKit</w:t>
+</w:r>
+<w:r w:rsidR="0011531E">
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-3"/>
+</w:rPr>
+<w:t xml:space="preserve"> </w:t>
+</w:r>
+<w:r>
+<w:rPr>
+<w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/>
+<w:color w:val="808080"/>
+<w:spacing w:val="-5"/>
+</w:rPr>
+<w:t>kWp</w:t>
+</w:r>
+</w:p>
+<w:sectPr w:rsidR="00E66E54">
+<w:headerReference w:type="default" r:id="rId21"/>
+<w:footerReference w:type="default" r:id="rId22"/>
+<w:pgSz w:w="11910" w:h="16840"/>
+<w:pgMar w:top="1580" w:right="1580" w:bottom="780" w:left="1600" w:header="0" w:footer="598" w:gutter="0"/>
+<w:cols w:space="720"/>
+</w:sectPr>
+</w:body>
+</w:document>
