@@ -688,10 +688,6 @@ int main(int argc, char *argv[])
                 WriteReplacement(XMLWrite, Data, Answer.String);
                 memset_explicit(ReadReplace, 0, sizeof(ReadReplace));//Clear buffer for next element to read
             }
-            else
-            {
-                goto defer;
-            }
 		}
 	}
 	fclose(XMLFile);
