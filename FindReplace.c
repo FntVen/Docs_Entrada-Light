@@ -675,6 +675,11 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
+		if(CharacterPos == 2147483646 && Debugging)
+      	{
+     		printf("Too high!");
+     		goto defer;
+      	}
             ReadReplace[ReadCharacters] = ReadBuf[0];
             ReadCharacters++;
             printf("ReadReplace: ");
