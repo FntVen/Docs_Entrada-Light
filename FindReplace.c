@@ -60,11 +60,11 @@ ClientData TestFillData()
 	ClientData TestData;
 	snprintf(TestData.NClient,sizeof(TestData.NClient),"NomedoClienteTeste");
 	snprintf(TestData.CClient,sizeof(TestData.CClient),"CodigodoClienteTeste");
-	snprintf(TestData.CInstalação,sizeof(TestData.CInstalação),"CódigodeInstalaçãoTeste");
+	snprintf(TestData.CInstalação,sizeof(TestData.CInstalação),"CodigodeInstalaçãoTeste");
 	snprintf(TestData.QModulos,sizeof(TestData.QModulos),"QuantidadeTesteModulos");
 	snprintf(TestData.QInversores,sizeof(TestData.QInversores),"QuantidadeTesteInversores");
-	snprintf(TestData.PModulos,sizeof(TestData.PModulos),"PotênciaModuloTeste");
-	snprintf(TestData.PInversores,sizeof(TestData.PInversores),"PotênciaInversorTeste");
+	snprintf(TestData.PModulos,sizeof(TestData.PModulos),"PotenciaModuloTeste");
+	snprintf(TestData.PInversores,sizeof(TestData.PInversores),"PotenciaInversorTeste");
 	snprintf(TestData.IFabricantes,sizeof(TestData.IFabricantes),"FabricanteTesteInversor");
 	snprintf(TestData.IModelo,sizeof(TestData.IModelo),"ModeloTesteInversor");
 	snprintf(TestData.MModulos,sizeof(TestData.MModulos),"MarcaTesteModulos");
@@ -81,7 +81,7 @@ ClientData TestFillData()
 	snprintf(TestData.CKWh,sizeof(TestData.CKWh),"Kwh-tst");
 	snprintf(TestData.CCabo,sizeof(TestData.CCabo),"Tst-Cabo");
 	snprintf(TestData.CEst,sizeof(TestData.CEst),"Estrutura-Teste");
-	snprintf(TestData.PKit,sizeof(TestData.PKit),"PotênciaKit-Teste");
+	snprintf(TestData.PKit,sizeof(TestData.PKit),"PotenciaKit-Teste");
 	snprintf(TestData.AArranjos,sizeof(TestData.AArranjos),"Area-Teste");
 	snprintf(TestData.CPF_CNPJ,sizeof(TestData.CPF_CNPJ),"000.000.000-00");
 	snprintf(TestData.CEndereço,sizeof(TestData.CEndereço),"Rua-Teste");
@@ -453,258 +453,259 @@ bool MakeDocx(const char *FileName, const char *DocumentRequested)
 
 void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundString)//bug - comparing the wrong things always results in no writes
 {
-	char tempbuf[40] = "CClient";
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+	char tempbuf[40] = {0};
+	snprintf(tempbuf, sizeof(tempbuf),"%s","CClient");
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! CClient");
+        printf("Found! CClient\n");
         fprintf(WriteFile,Data.CClient);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CData");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 5, false))
     {
-        printf("Found! CData");
+        printf("Found! CData\n");
         fprintf(WriteFile,Data.CData);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"TodayData");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 9, false))
     {
-        printf("Found! TodayData");
+        printf("Found! TodayData\n");
         fprintf(WriteFile,Data.TodayData);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"AArranjos");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf,9, false))
     {
-        printf("Found! AArranjos");
+        printf("Found! AArranjos\n");
         fprintf(WriteFile,Data.AArranjos);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CBairro");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf,7, false))
     {
-        printf("Found! CBairro");
+        printf("Found! CBairro\n");
         fprintf(WriteFile,Data.CBairro);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCabo");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 5, false))
     {
-        printf("Found! CCabo");
+        printf("Found! CCabo\n");
         fprintf(WriteFile,Data.CCabo);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCep");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 4, false))
     {
-        printf("Found! CCep");
+        printf("Found! CCep\n");
         fprintf(WriteFile,Data.CCep);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CDisjuntor");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 10, false))
     {
-        printf("Found! CDisjunto");
+        printf("Found! CDisjunto\n");
         fprintf(WriteFile,Data.CDisjuntor);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCidade");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! CCidade");
+        printf("Found! CCidade\n");
         fprintf(WriteFile,Data.CCidade);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEmail");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 6, false))
     {
-        printf("Found! CEmail");
+        printf("Found! CEmail\n");
         fprintf(WriteFile,Data.CEmail);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEndereco");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 9, false))
     {
-        printf("Found! CEndereço");
+        printf("Found! CEndereço\n");
         fprintf(WriteFile,Data.CEndereço);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEst");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 4, false))
     {
-        printf("Found! CEst");
+        printf("Found! CEst\n");
         fprintf(WriteFile,Data.CEst);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEstado");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! CEstado");
+        printf("Found! CEstado\n");
         fprintf(WriteFile,Data.CEstado);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CInstalação");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 11, false))
     {
-        printf("Found! CInstalação");
+        printf("Found! CInstalação\n");
         fprintf(WriteFile,Data.CInstalação);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CKWh");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 4, false))
     {
-        printf("Found! CKWh");
+        printf("Found! CKWh\n");
         fprintf(WriteFile,Data.CKWh);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CNumero");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! CNumero");
+        printf("Found! CNumero\n");
         fprintf(WriteFile,Data.CNumero);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CPF_CNPJ");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 8, false))
     {
-        printf("Found! CPF_CNPJ");
+        printf("Found! CPF_CNPJ\n");
         fprintf(WriteFile,Data.CPF_CNPJ);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CTel");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 4, false))
     {
-        printf("Found! CTel");
+        printf("Found! CTel\n");
         fprintf(WriteFile,Data.CTel);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CTerra");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 6, false))
     {
-        printf("Found! CTerra");
+        printf("Found! CTerra\n");
         fprintf(WriteFile,Data.CTerra);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"IFabricantes");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 12, false))
     {
-        printf("Found! IFabricantes");
+        printf("Found! IFabricantes\n");
         fprintf(WriteFile,Data.IFabricantes);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"IModelo");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! IModelo");
+        printf("Found! IModelo\n");
         fprintf(WriteFile,Data.IModelo);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Aero");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 9, false))
     {
-        printf("Found! Inst_Aero");
+        printf("Found! Inst_Aero\n");
         fprintf(WriteFile,Data.Inst_Aero);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Sub");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 8, false))
     {
-        printf("Found! Inst_Sub");
+        printf("Found! Inst_Sub\n");
         fprintf(WriteFile,Data.Inst_Sub);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Classe");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 11, false))
     {
-        printf("Found! Inst_Classe");
+        printf("Found! Inst_Classe\n");
         fprintf(WriteFile,Data.Inst_Classe);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"MModelo");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! MModelo");
+        printf("Found! MModelo\n");
         fprintf(WriteFile,Data.MModelo);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"MModulos");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 8, false))
     {
-        printf("Found! MModulos");
+        printf("Found! MModulos\n");
         fprintf(WriteFile,Data.MModulos);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
-	snprintf(tempbuf, sizeof(tempbuf),"PKit");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
-    {
-        printf("Found! PKit");
-        fprintf(WriteFile,Data.PKit);
-    	return;
-    }
-	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"NClient");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString) - 1, false))
+    if(StrComp(FoundString, tempbuf, 7, false))
     {
-        printf("Found! NClient");
+        printf("Found! NClient \n");
         fprintf(WriteFile,Data.NClient);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"PInversores");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 11, false))
     {
-        printf("Found! PInversores");
+        printf("Found! PInversores\n");
         fprintf(WriteFile,Data.PInversores);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"PModulos");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 8, false))
     {
-        printf("Found! PModulos");
+        printf("Found! PModulos\n");
         fprintf(WriteFile,Data.PModulos);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"QInversores");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 11, false))
     {
-        printf("Found! QInversores");
+        printf("Found! QInversores\n");
         fprintf(WriteFile,Data.QInversores);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"PKit");
+	if(StrComp(FoundString, tempbuf, 4, true))
+	{
+		printf("Found! PKit\n");
+		fprintf(WriteFile,Data.PKit);
+		return;
+	}
+	memset(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"QModulos");
-    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
+    if(StrComp(FoundString, tempbuf, 8, false))
     {
-        printf("Found! QModulos");
+        printf("Found! QModulos\n");
         fprintf(WriteFile,Data.QModulos);
     }
 }
@@ -809,11 +810,11 @@ int main(int argc, char *argv[])
 
 /*		 To-do
  * ° CClient not showing - Fixed
- * ° PKit not showing
- * ° CKWh not showing
- * ° CCabos not showing
- * ° CTerra not showing
- * ° Erro no CEstado?
+ * ° PKit not showing - Fixed
+ * ° CKWh not showing - Fixed
+ * ° CCabos not showing - Fixed
+ * ° CTerra not showing - Fixed
+ * ° Erro no CEstado? (Conflito com CEst que define estruturas)
  * ° Introduzir espaços no XML em certos pontos para formatação - Fixed
  * ° TodayData na primeira pagina não foi detectado em geral - Fixed
  * ° Copy command copies parent folder (Windows)
