@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <stdbool.h>
-#include <string.h>
+#include <stdint.h>
+#include <string.h>//Implement a native buffer clear to get rid of this
 
 #if defined(_WIN32) || defined(_WIN64)
 	#define OSsep  '\\'
@@ -94,22 +95,15 @@ ClientData TestFillData()
 	return TestData;
 }
 
-bool _StringComp(const char *String1, const char *String2, int ExpSize, bool Ordered)
+static bool StrComp(const char *String1, const char *String2, int ExpSize, bool DebugUse)
 {
-	if(Ordered == true)
-	{
-		if(sizeof(String1)-1 != ExpSize)
-		{
-			perror("(_StringComp) size of reference different from expected size  Note: 0 Based Index");
-		}
-		if(sizeof(String2)-1 != ExpSize)
-		{
-			return false;
-		}
-	}
 	bool Result = true;
 	for(int i = 0; i <= ExpSize; i++)
 	{
+		if (DebugUse)
+		{
+			printf("Comparing String1: %c and String2 %c \n",String1[i],String2[i]);
+		}
 		if(String1[i] != String2[i])
 		{
 			Result = false;
@@ -122,18 +116,18 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 {
 	//possible strings to replace
 	char NClient[8] = "NClient";
-	char CClient[7] = "CClient";
-	char CInstalação[14] = "CInstalação";
+	char CClient[8] = "CClient";
+	char CInstalação[12] = "CInstalacão";
 	char QModulos[9] = "QModulos";
 	char QInversores[12] = "QInversores";
 	char MModulos[9] = "MModulos";
-	char MModelo[8] = "MModulos";
+	char MModelo[8] = "MModelo";
 	char PModulos[9] = "PModulos";
 	char IFabricantes[13] = "IFabricantes";
 	char IModelo[8] = "IModelo";
 	char PInversores[12] = "PInversores";
-	char CData[11] = "CData";
-	char TodayData[11] = "TodayData";
+	char CData[6] = "CData";
+	char TodayData[10] = "TodayData";
 	char Inst_Sub[9] = "Inst_Sub";
 	char Inst_Aero[10] = "Inst_Aero";
 	char Inst_Classe[12] = "Inst_Classe";
@@ -146,7 +140,7 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	char AArranjos[10] = "AArranjos";
 	char CPF_CNPJ[9] = "CPF_CNPJ";
 	char CCep[5] = "CCep";
-	char CEndereço[10] = "CEndereço";
+	char CEndereço[10] = "CEndereco";
 	char CBairro[8] = "CBairro";
 	char CNumero[8] = "CNumero";
 	char CCidade[8] = "CCidade";
@@ -159,232 +153,233 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	Answer.Result = false;
 	snprintf(Answer.String, sizeof(Answer.String), "Not Found");
 	bool FoundFlag = false;
-	FoundFlag = _StringComp(NClient, ToReplace,(int)sizeof(NClient) - 1,false);
+	FoundFlag = StrComp(NClient, ToReplace,(int)sizeof(NClient) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), NClient);
 		return Answer;
 	}
-	FoundFlag = _StringComp(QInversores, ToReplace,(int)sizeof(QInversores) - 1,false);
+
+	FoundFlag = StrComp(QInversores, ToReplace,(int)sizeof(QInversores) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), QInversores);
 		return Answer;
 	}
-	FoundFlag = _StringComp(MModelo, ToReplace,(int)sizeof(MModelo) - 1,false);
+	FoundFlag = StrComp(MModelo, ToReplace,(int)sizeof(MModelo) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), MModelo);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CClient, ToReplace,(int)sizeof(CClient) - 1,false);
+	FoundFlag = StrComp(CClient, ToReplace,(int)sizeof(CClient) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CClient);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CInstalação, ToReplace,(int)sizeof(CInstalação) - 1,false);
+	FoundFlag = StrComp(CInstalação, ToReplace,(int)sizeof(CInstalação) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CInstalação);
 		return Answer;
 	}
-	FoundFlag = _StringComp(QModulos, ToReplace,(int)sizeof(QModulos) - 1,false);
+	FoundFlag = StrComp(QModulos, ToReplace,(int)sizeof(QModulos) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), QModulos);
 		return Answer;
 	}
-	FoundFlag = _StringComp(MModulos, ToReplace,(int)sizeof(MModulos) - 1,false);
+	FoundFlag = StrComp(MModulos, ToReplace,(int)sizeof(MModulos) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), MModulos);
 		return Answer;
 	}
-	FoundFlag = _StringComp(PModulos, ToReplace,(int)sizeof(PModulos) - 1,false);
+	FoundFlag = StrComp(PModulos, ToReplace,(int)sizeof(PModulos) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), PModulos);
 		return Answer;
 	}
-	FoundFlag = _StringComp(IFabricantes, ToReplace,(int)sizeof(IFabricantes) - 1,false);
+	FoundFlag = StrComp(IFabricantes, ToReplace,(int)sizeof(IFabricantes) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), IFabricantes);
 		return Answer;
 	}
-	FoundFlag = _StringComp(IModelo, ToReplace,(int)sizeof(IModelo) - 1,false);
+	FoundFlag = StrComp(IModelo, ToReplace,(int)sizeof(IModelo) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), IModelo);
 		return Answer;
 	}
-	FoundFlag = _StringComp(PInversores, ToReplace,(int)sizeof(PInversores) - 1,false);
+	FoundFlag = StrComp(PInversores, ToReplace,(int)sizeof(PInversores) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), PInversores);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CData, ToReplace,(int)sizeof(CData) - 1,false);
+	FoundFlag = StrComp(CData, ToReplace,(int)sizeof(CData) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CData);
 		return Answer;
 	}
-	FoundFlag = _StringComp(TodayData, ToReplace,(int)sizeof(TodayData) - 1,false);
+	FoundFlag = StrComp(TodayData, ToReplace,(int)sizeof(TodayData) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), TodayData);
 		return Answer;
 	}
-	FoundFlag = _StringComp(Inst_Sub, ToReplace,(int)sizeof(Inst_Sub) - 1,false);
+	FoundFlag = StrComp(Inst_Sub, ToReplace,(int)sizeof(Inst_Sub) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), Inst_Sub);
 		return Answer;
 	}
-	FoundFlag = _StringComp(Inst_Aero, ToReplace,(int)sizeof(Inst_Aero) - 1,false);
+	FoundFlag = StrComp(Inst_Aero, ToReplace,(int)sizeof(Inst_Aero) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), Inst_Aero);
 		return Answer;
 	}
-	FoundFlag = _StringComp(Inst_Classe, ToReplace,(int)sizeof(Inst_Classe) - 1,false);
+	FoundFlag = StrComp(Inst_Classe, ToReplace,(int)sizeof(Inst_Classe) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), Inst_Classe);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CCabo, ToReplace,(int)sizeof(CCabo) - 1,false);
+	FoundFlag = StrComp(CCabo, ToReplace,(int)sizeof(CCabo) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CCabo);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CDisjuntor, ToReplace,(int)sizeof(CDisjuntor) - 1,false);
+	FoundFlag = StrComp(CDisjuntor, ToReplace,(int)sizeof(CDisjuntor) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CDisjuntor);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CTerra, ToReplace,(int)sizeof(CTerra) - 1,false);
+	FoundFlag = StrComp(CTerra, ToReplace,(int)sizeof(CTerra) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CTerra);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CKWh, ToReplace,(int)sizeof(CKWh) - 1,false);
+	FoundFlag = StrComp(CKWh, ToReplace,(int)sizeof(CKWh) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CKWh);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CEst, ToReplace,(int)sizeof(CEst) - 1,false);
+	FoundFlag = StrComp(CEst, ToReplace,(int)sizeof(CEst) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CEst);
 		return Answer;
 	}
-	FoundFlag = _StringComp(PKit, ToReplace,(int)sizeof(PKit) - 1,false);
+	FoundFlag = StrComp(PKit, ToReplace,(int)sizeof(PKit) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), PKit);
 		return Answer;
 	}
-	FoundFlag = _StringComp(AArranjos, ToReplace,(int)sizeof(AArranjos) - 1,false);
+	FoundFlag = StrComp(AArranjos, ToReplace,(int)sizeof(AArranjos) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), AArranjos);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CPF_CNPJ, ToReplace,(int)sizeof(CPF_CNPJ) - 1,false);
+	FoundFlag = StrComp(CPF_CNPJ, ToReplace,(int)sizeof(CPF_CNPJ) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CPF_CNPJ);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CCep, ToReplace,(int)sizeof(CCep) - 1,false);
+	FoundFlag = StrComp(CCep, ToReplace,(int)sizeof(CCep) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CCep);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CEndereço, ToReplace,(int)sizeof(CEndereço) - 1,false);
+	FoundFlag = StrComp(CEndereço, ToReplace,(int)sizeof(CEndereço) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CEndereço);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CBairro, ToReplace,(int)sizeof(CBairro) - 1,false);
+	FoundFlag = StrComp(CBairro, ToReplace,(int)sizeof(CBairro) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CBairro);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CNumero, ToReplace,(int)sizeof(CNumero) - 1,false);
+	FoundFlag = StrComp(CNumero, ToReplace,(int)sizeof(CNumero) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CNumero);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CCidade, ToReplace,(int)sizeof(CCidade) - 1,false);
+	FoundFlag = StrComp(CCidade, ToReplace,(int)sizeof(CCidade) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CCidade);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CEstado, ToReplace,(int)sizeof(CEstado) - 1,false);
+	FoundFlag = StrComp(CEstado, ToReplace,(int)sizeof(CEstado) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CEstado);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CEmail, ToReplace,(int)sizeof(CEmail) - 1,false);
+	FoundFlag = StrComp(CEmail, ToReplace,(int)sizeof(CEmail) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CEmail);
 		return Answer;
 	}
-	FoundFlag = _StringComp(CTel, ToReplace,(int)sizeof(CTel) - 1,false);
+	FoundFlag = StrComp(CTel, ToReplace,(int)sizeof(CTel) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
 	    snprintf(Answer.String, sizeof(Answer.String), CTel);
 		return Answer;
 	}
-
-	return Answer;
+	Deb:
+		return Answer;
 }//Should return what trigger word was found and if anything was found using a struct
 
 void EraseUnfinished(const char *FileName, const char *DocumentRequested)
@@ -419,19 +414,19 @@ bool MakeDocx(const char *FileName, const char *DocumentRequested)
 
     if(OSsep == '\\')// tar -caf File.zip path/one path/two.xml //No need to quotes if there is not space in the relative path //We can also do -v if we wanto to show whats being compressed for a progress screen or log
     {
-        snprintf(Co_CopyBuf,sizeof(Co_CopyBuf),"xcopy Arquivos\\Unzipped\\%s Arquivos\\Tozip /s /e",DocumentRequested);
-        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"tar -caf %s.zip Arquivos\\Tozip\\_rels Arquivos\\Tozip\\customXml Arquivos\\Tozip\\docProps Arquivos\\Tozip\\word Arquivos\\Tozip\\[Content_Types].xml",DocumentRequested);
-        snprintf(Co_DeleteBuf, sizeof(Co_DeleteBuf), "del Arquivos\\Tozip\\word\\document.xml");
-        snprintf(Co_MoveBuf, sizeof(Co_MoveBuf), "move document.xml Arquivos\\Tozip\\_rels Arquivos\\Tozip\\word");
+        snprintf(Co_CopyBuf,sizeof(Co_CopyBuf),"xcopy Unzipped\\%s Tozip /s /e",DocumentRequested);
+        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"tar -caf %s.zip Tozip\\_rels Tozip\\customXml Tozip\\docProps Tozip\\word Tozip\\[Content_Types].xml",DocumentRequested);
+        snprintf(Co_DeleteBuf, sizeof(Co_DeleteBuf), "del Tozip\\word\\document.xml");
+        snprintf(Co_MoveBuf, sizeof(Co_MoveBuf), "move document.xml Tozip\\_rels Tozip\\word");
         snprintf(Co_RenameBuf, sizeof(Co_RenameBuf),"move %s.zip %s.docx",FileName,FileName);
     }
     else
     {
-        snprintf(Co_MoveBuf,sizeof(Co_MoveBuf),"mv document.xml Arquivos/Tozip/_rels Arquivos/Tozip/word");
+        snprintf(Co_MoveBuf,sizeof(Co_MoveBuf),"mv document.xml Tozip/_rels Arquivos/Tozip/word");
         snprintf(Co_RenameBuf, sizeof(Co_MoveBuf),"mv %s.zip %s.docx",FileName,FileName);
-        snprintf(Co_DeleteBuf,sizeof(Co_DeleteBuf),"rm Arquivos/Tozip/word/document.xml");
-        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"zip -r %s.zip Arquivos/Tozip/_rels Arquivos/Tozip/customXml Arquivos/Tozip/docProps Arquivos/Tozip/word Arquivos/Tozip/[Content_Types].xml",DocumentRequested);
-        snprintf(Co_CopyBuf, sizeof(Co_CopyBuf),"cp -R Arquivos/Unzipped/%s Arquivos/Tozip", DocumentRequested);
+        snprintf(Co_DeleteBuf,sizeof(Co_DeleteBuf),"rm Tozip/word/document.xml");
+        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"zip -r %s.zip Tozip/_rels Tozip/customXml Tozip/docProps Tozip/word Tozip/[Content_Types].xml",DocumentRequested);
+        snprintf(Co_CopyBuf, sizeof(Co_CopyBuf),"cp -R Unzipped/%s Tozip", DocumentRequested);
     }
     int ReturnCodes[5] = {0};
     ReturnCodes[0] = system(Co_CopyBuf);    //Copy template to somewere to work in
@@ -456,164 +451,258 @@ bool MakeDocx(const char *FileName, const char *DocumentRequested)
     return Result;
 }//Copy template folder system -> send modified xml into the copied template -> compact copied template folders and files -> rename to .docx
 
-void WriteReplacement(FILE *WriteFile, ClientData Data, char *FoundString)
+void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundString)//bug - comparing the wrong things always results in no writes
 {
-    if(_StringComp(FoundString, Data.CClient, (int)sizeof(FoundString), false))
+	char tempbuf[40] = "CClient";
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CClient");
         fprintf(WriteFile,Data.CClient);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CData, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CData");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CData");
         fprintf(WriteFile,Data.CData);
+    	return;
     }
-    if(_StringComp(FoundString, Data.TodayData, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"TodayData");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! TodayData");
         fprintf(WriteFile,Data.TodayData);
+    	return;
     }
-    if(_StringComp(FoundString, Data.AArranjos, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"AArranjos");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! AArranjos");
         fprintf(WriteFile,Data.AArranjos);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CBairro, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CBairro");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CBairro");
         fprintf(WriteFile,Data.CBairro);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CCabo, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CCabo");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CCabo");
         fprintf(WriteFile,Data.CCabo);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CCep, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CCep");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CCep");
         fprintf(WriteFile,Data.CCep);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CDisjuntor, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CDisjuntor");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CDisjunto");
         fprintf(WriteFile,Data.CDisjuntor);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CCidade, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CCidade");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CCidade");
         fprintf(WriteFile,Data.CCidade);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CEmail, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CEmail");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CEmail");
         fprintf(WriteFile,Data.CEmail);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CEndereço, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CEndereco");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CEndereço");
         fprintf(WriteFile,Data.CEndereço);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CEst, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CEst");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CEst");
         fprintf(WriteFile,Data.CEst);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CEstado, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CEstado");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CEstado");
         fprintf(WriteFile,Data.CEstado);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CInstalação, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CInstalação");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CInstalação");
         fprintf(WriteFile,Data.CInstalação);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CKWh, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CKWh");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CKWh");
         fprintf(WriteFile,Data.CKWh);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CNumero, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CNumero");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CNumero");
         fprintf(WriteFile,Data.CNumero);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CPF_CNPJ, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CPF_CNPJ");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CPF_CNPJ");
         fprintf(WriteFile,Data.CPF_CNPJ);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CTel, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CTel");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CTel");
         fprintf(WriteFile,Data.CTel);
+    	return;
     }
-    if(_StringComp(FoundString, Data.CTerra, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"CTerra");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! CTerra");
         fprintf(WriteFile,Data.CTerra);
+    	return;
     }
-    if(_StringComp(FoundString, Data.IFabricantes, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"IFabricantes");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! IFabricantes");
         fprintf(WriteFile,Data.IFabricantes);
+    	return;
     }
-    if(_StringComp(FoundString, Data.IModelo, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"IModelo");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! IModelo");
         fprintf(WriteFile,Data.IModelo);
+    	return;
     }
-    if(_StringComp(FoundString, Data.Inst_Aero, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"Inst_Aero");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! Inst_Aero");
         fprintf(WriteFile,Data.Inst_Aero);
+    	return;
     }
-    if(_StringComp(FoundString, Data.Inst_Sub, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"Inst_Sub");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! Inst_Sub");
         fprintf(WriteFile,Data.Inst_Sub);
+    	return;
     }
-    if(_StringComp(FoundString, Data.Inst_Classe, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"Inst_Classe");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! Inst_Classe");
         fprintf(WriteFile,Data.Inst_Classe);
+    	return;
     }
-    if(_StringComp(FoundString, Data.MModelo, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"MModelo");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! MModelo");
         fprintf(WriteFile,Data.MModelo);
+    	return;
     }
-    if(_StringComp(FoundString, Data.MModulos, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"MModulos");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! MModulos");
         fprintf(WriteFile,Data.MModulos);
+    	return;
     }
-    if(_StringComp(FoundString, Data.PKit, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"PKit");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! PKit");
         fprintf(WriteFile,Data.PKit);
+    	return;
     }
-    if(_StringComp(FoundString, Data.NClient, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"NClient");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString) - 1, false))
     {
         printf("Found! NClient");
         fprintf(WriteFile,Data.NClient);
+    	return;
     }
-    if(_StringComp(FoundString, Data.PInversores, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"PInversores");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! PInversores");
         fprintf(WriteFile,Data.PInversores);
+    	return;
     }
-    if(_StringComp(FoundString, Data.PModulos, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"PModulos");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! PModulos");
         fprintf(WriteFile,Data.PModulos);
+    	return;
     }
-    if(_StringComp(FoundString, Data.QInversores, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"QInversores");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! QInversores");
         fprintf(WriteFile,Data.QInversores);
+    	return;
     }
-    if(_StringComp(FoundString, Data.QModulos, (int)sizeof(FoundString), false))
+	memset(tempbuf, 0, sizeof(tempbuf));
+	snprintf(tempbuf, sizeof(tempbuf),"QModulos");
+    if(StrComp(FoundString, tempbuf, (int)sizeof(FoundString)-1, false))
     {
         printf("Found! QModulos");
         fprintf(WriteFile,Data.QModulos);
@@ -647,20 +736,21 @@ int main(int argc, char *argv[])
 	}
 
 	char ReadBuf[2] = {0};  // Character reading from the template xml file
-	int CharacterPos = 0;   // For debugging
+	uint32_t CharacterPos = 0;   // For debugging
 	int ReadCharacters = 0; // How many characters read post FoundFlag
 	char Asterisk[2] = {0}; // 1 Based
 	snprintf(Asterisk,sizeof(Asterisk),"*");
 	bool FoundFlag = false;
-	char ReadReplace[100] = {0};
+	char ReadReplace[20] = {0};
 
-	while(fgets(ReadBuf,sizeof(ReadBuf),XMLFile) != NULL)
+	while(fgets(ReadBuf,sizeof(ReadBuf),XMLFile) == ReadBuf)
 	{
-	    printf("In fgets at character %d \n",CharacterPos);
+	    //printf("In fgets at character %d \n",CharacterPos);
+		//printf("ReadBuf : %s \n",ReadBuf);
 		CharacterPos++;
 		if(FoundFlag == false)
 		{
-            if(_StringComp(ReadBuf, Asterisk,0,false))
+            if(StrComp(ReadBuf, Asterisk,0,false))
       		{
      			FoundFlag = true;
      			printf("Found * in position %d \n",CharacterPos);// Just for testing
@@ -685,18 +775,29 @@ int main(int argc, char *argv[])
             printf("ReadReplace: ");
             printf("%s \n",ReadReplace);
             R_ReadBuffer Answer = ReadCompare(ReadReplace);
+			printf("Result found in 'Answer': %d | And string is: %s \n",Answer.Result,Answer.String);
             if(Answer.Result == true)
             {
                 FoundFlag = false;
                 ClientData Data = TestFillData();
-                printf("Searching...");
+                printf("Searching... \n");
                 WriteReplacement(XMLWrite, Data, Answer.String);
-                memset_explicit(ReadReplace, 0, sizeof(ReadReplace));//Clear buffer for next element to read
+                memset(ReadReplace, 0, sizeof(ReadReplace));//Clear buffer for next element to read
+				ReadCharacters = 0;
             }
 		}
 	}
-	fclose(XMLFile);
-	fclose(XMLWrite);
+	if(ferror(XMLFile) == true)
+	{
+		printf("Error reading XMLWrite file \n");
+		goto defer;
+	}
+	if(ferror(XMLWrite) == true)
+	{
+		printf("Error writing to XMLWrite file \n");
+		goto defer;
+	}
+	printf("MakeDocx in \n");
 	MakeDocx(argv[2], argv[3]);
 
 	defer:
@@ -705,3 +806,16 @@ int main(int argc, char *argv[])
 		fclose(XMLWrite);
 		return 1;
 }
+
+/*		 To-do
+ * ° CClient not showing - Fixed
+ * ° PKit not showing
+ * ° CKWh not showing
+ * ° CCabos not showing
+ * ° CTerra not showing
+ * ° Erro no CEstado?
+ * ° Introduzir espaços no XML em certos pontos para formatação - Fixed
+ * ° TodayData na primeira pagina não foi detectado em geral - Fixed
+ * ° Copy command copies parent folder (Windows)
+ * ° Error in one of the cmd commands syntax (Windows)
+ */
