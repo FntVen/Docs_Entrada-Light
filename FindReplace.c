@@ -41,7 +41,7 @@ typedef struct
 	char CDisjuntor[256];//Amperagem do Disjuntor
 	char CTerra[256];//Diametro do cabo de Aterramento
 	char CKWh[256];//KWh da instalação
-	char CEst[256];//Estrutura da instalação (Ceramico, Fibrocimento etc)
+	char IEst[256];//Estrutura da instalação (Ceramico, Fibrocimento etc)
 	char PKit[256];//Potência em Kwp de todo o Sistema
 	char AArranjos[256];// Area total dos arranjos
 	char CPF_CNPJ[256];//Cpf ou Cnpj do Cliente
@@ -80,7 +80,7 @@ ClientData TestFillData()
 	snprintf(TestData.CTerra,sizeof(TestData.CTerra),"Tst-Terra");
 	snprintf(TestData.CKWh,sizeof(TestData.CKWh),"Kwh-tst");
 	snprintf(TestData.CCabo,sizeof(TestData.CCabo),"Tst-Cabo");
-	snprintf(TestData.CEst,sizeof(TestData.CEst),"Estrutura-Teste");
+	snprintf(TestData.IEst,sizeof(TestData.IEst),"Estrutura-Teste");
 	snprintf(TestData.PKit,sizeof(TestData.PKit),"PotenciaKit-Teste");
 	snprintf(TestData.AArranjos,sizeof(TestData.AArranjos),"Area-Teste");
 	snprintf(TestData.CPF_CNPJ,sizeof(TestData.CPF_CNPJ),"000.000.000-00");
@@ -135,7 +135,7 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	char CDisjuntor[11] = "CDisjuntor";
 	char CTerra[7] = "CTerra";
 	char CKWh[5] = "CKWh";
-	char CEst[5] = "CEst";
+	char IEst[5] = "IEst";
 	char PKit[5] = "PKit";
 	char AArranjos[10] = "AArranjos";
 	char CPF_CNPJ[9] = "CPF_CNPJ";
@@ -294,11 +294,11 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	    snprintf(Answer.String, sizeof(Answer.String), CKWh);
 		return Answer;
 	}
-	FoundFlag = StrComp(CEst, ToReplace,(int)sizeof(CEst) - 1,false);
+	FoundFlag = StrComp(IEst, ToReplace,(int)sizeof(IEst) - 1,false);
 	if(FoundFlag)
 	{
 	    Answer.Result = true;
-	    snprintf(Answer.String, sizeof(Answer.String), CEst);
+	    snprintf(Answer.String, sizeof(Answer.String), IEst);
 		return Answer;
 	}
 	FoundFlag = StrComp(PKit, ToReplace,(int)sizeof(PKit) - 1,false);
@@ -542,11 +542,11 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
-	snprintf(tempbuf, sizeof(tempbuf),"CEst");
+	snprintf(tempbuf, sizeof(tempbuf),"IEst");
     if(StrComp(FoundString, tempbuf, 4, false))
     {
-        printf("Found! CEst\n");
-        fprintf(WriteFile,Data.CEst);
+        printf("Found! IEst\n");
+        fprintf(WriteFile,Data.IEst);
     	return;
     }
 	memset(tempbuf, 0, sizeof(tempbuf));
@@ -814,7 +814,7 @@ int main(int argc, char *argv[])
  * ° CKWh not showing - Fixed
  * ° CCabos not showing - Fixed
  * ° CTerra not showing - Fixed
- * ° Erro no CEstado? (Conflito com CEst que define estruturas)
+ * ° Erro no CEstado? (Conflito com CEst que define estruturas) - Fixed (Agora é IEst)
  * ° Introduzir espaços no XML em certos pontos para formatação - Fixed
  * ° TodayData na primeira pagina não foi detectado em geral - Fixed
  * ° Copy command copies parent folder (Windows)
