@@ -12,6 +12,9 @@
 	#define OSsep  '/'
 #endif
 
+int ReturnCode = 0;
+bool Error = false;
+
 #define Debugging true
 
 typedef struct
@@ -404,53 +407,6 @@ void EraseUnfinished(const char *FileName, const char *DocumentRequested)
  }
 }//Erase whatever was already made
 
-bool MakeDocx(const char *FileName, const char *DocumentRequested)
-{
-    char Co_ZipBuf[140] = {0};
-    char Co_CopyBuf[80] = {0};
-    char Co_MoveBuf[60] = {0};
-    char Co_RenameBuf[256] = {0};//Part of the string is a variable of unknow size
-    char Co_DeleteBuf[60] = {0};
-
-    if(OSsep == '\\')// tar -caf File.zip path/one path/two.xml //No need to quotes if there is not space in the relative path //We can also do -v if we wanto to show whats being compressed for a progress screen or log
-    {
-        snprintf(Co_CopyBuf,sizeof(Co_CopyBuf),"xcopy Unzipped\\%s Tozip /s /e",DocumentRequested);
-        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"tar -caf %s.zip Tozip\\_rels Tozip\\customXml Tozip\\docProps Tozip\\word Tozip\\[Content_Types].xml",DocumentRequested);
-        snprintf(Co_DeleteBuf, sizeof(Co_DeleteBuf), "del Tozip\\word\\document.xml");
-        snprintf(Co_MoveBuf, sizeof(Co_MoveBuf), "move document.xml Tozip\\_rels Tozip\\word");
-        snprintf(Co_RenameBuf, sizeof(Co_RenameBuf),"move %s.zip %s.docx",FileName,FileName);
-    }
-    else
-    {
-        snprintf(Co_MoveBuf,sizeof(Co_MoveBuf),"mv document.xml Tozip/_rels Arquivos/Tozip/word");
-        snprintf(Co_RenameBuf, sizeof(Co_MoveBuf),"mv %s.zip %s.docx",FileName,FileName);
-        snprintf(Co_DeleteBuf,sizeof(Co_DeleteBuf),"rm Tozip/word/document.xml");
-        snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"zip -r %s.zip Tozip/_rels Tozip/customXml Tozip/docProps Tozip/word Tozip/[Content_Types].xml",DocumentRequested);
-        snprintf(Co_CopyBuf, sizeof(Co_CopyBuf),"cp -R Unzipped/%s Tozip", DocumentRequested);
-    }
-    int ReturnCodes[5] = {0};
-    ReturnCodes[0] = system(Co_CopyBuf);    //Copy template to somewere to work in
-    ReturnCodes[1] = system(Co_DeleteBuf);  //Delete document.xml from template
-    ReturnCodes[2] = system(Co_MoveBuf);    //Move modified document.xml to it's position in the template
-    ReturnCodes[3] = system(Co_ZipBuf);     //zip new document
-    ReturnCodes[4] = system(Co_RenameBuf);  //Make zip into docx
-    bool Result = false;
-    for(int i = 0; i<= sizeof(ReturnCodes) - 1; i++)
-    {
-        if(ReturnCodes[i] == -1 || ReturnCodes[i] == 0)
-        {
-            Result = true;
-        }
-        else
-        {
-            Result = false;
-            EraseUnfinished(FileName,DocumentRequested);
-            break;
-        }
-    }
-    return Result;
-}//Copy template folder system -> send modified xml into the copied template -> compact copied template folders and files -> rename to .docx
-
 void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundString)//bug - comparing the wrong things always results in no writes
 {
 	char tempbuf[40] = {0};
@@ -710,9 +666,14 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
     }
 }
 
+void ReplaceMedia()
+{
+	//Replace the data in the template docx using the MasterMedia folder and what needs to be provided by the user can be saved in the folders where the document.xml is located
+}
+
 int main(int argc, char *argv[])
 {
-	char PathUnchecked[200] = {0}; //Revise if size is sufficient
+	char PathUnchecked[200] = {0};
 	if(argv[1] == NULL)
 	{
         printf("Invalid First Argument  (Expected: path to xml) \n");
@@ -729,10 +690,27 @@ int main(int argc, char *argv[])
 	}
 	printf("Path Checked in buffer: %s \n",PathUnchecked);
 	FILE *XMLFile = fopen(PathUnchecked,"r");
-	FILE *XMLWrite = fopen("document.xml","w");
+
+	//Copy Structure of docx file
+	char Co_CopyBufToBuild[80] = {0};
+	if(OSsep == '\\')
+	{
+		snprintf(Co_CopyBufToBuild,sizeof(Co_CopyBufToBuild),"xcopy  Unzipped%c%s Tozip /s /e",OSsep,argv[3]);
+	}
+	else
+	{
+		snprintf(Co_CopyBufToBuild,sizeof(Co_CopyBufToBuild),"cp -R Unzipped%c%s Tozip",OSsep, argv[3]);
+	}
+	system(Co_CopyBufToBuild);
+	char DocXmlbuf[25] = {0};
+	snprintf(DocXmlbuf,sizeof(DocXmlbuf),"Tozip%cword%cdocument.xml",OSsep,OSsep);
+	printf("Write Path: %s \n",DocXmlbuf);//For some reason the first .xml doesn't register
+	FILE *XMLWrite = fopen(DocXmlbuf,"w");
 	if(XMLWrite == NULL || XMLFile == NULL)
 	{
 	    printf("Error Opening or creating XML file \n");
+		Error = true;
+		ReturnCode = 1;
 	    goto defer;
 	}
 
@@ -760,6 +738,8 @@ int main(int argc, char *argv[])
       		if(CharacterPos == 2147483646 && Debugging)
       		{
      			printf("Never Recognized");
+      			Error = true;
+      			ReturnCode = 1;
      			goto defer;
       		}
         fprintf(XMLWrite, "%s", ReadBuf);
@@ -769,6 +749,8 @@ int main(int argc, char *argv[])
 		if(CharacterPos == 2147483646 && Debugging)
       	{
      		printf("Too high!");
+			Error = true;
+			ReturnCode = 1;
      		goto defer;
       	}
             ReadReplace[ReadCharacters] = ReadBuf[0];
@@ -791,21 +773,43 @@ int main(int argc, char *argv[])
 	if(ferror(XMLFile) == true)
 	{
 		printf("Error reading XMLWrite file \n");
+		Error = true;
+		ReturnCode = 1;
 		goto defer;
 	}
 	if(ferror(XMLWrite) == true)
 	{
 		printf("Error writing to XMLWrite file \n");
+		Error = true;
+		ReturnCode = 1;
 		goto defer;
 	}
-	printf("MakeDocx in \n");
-	MakeDocx(argv[2], argv[3]);
-
 	defer:
-	    printf("Defer");
+		printf("Defer");
 		fclose(XMLFile);
 		fclose(XMLWrite);
-		return 1;
+		if (Error)
+		{
+			return ReturnCode;
+		}
+	printf("MakeDocx in \n");
+	// Zip --> Rename/Move
+	char Co_ZipBuf[140] = {0};
+	char Co_MoveBufToOutput[80] = {0};
+	if(OSsep == '\\')//	Windows
+	{
+		snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"tar -caf %s.zip -C Tozip *",argv[2]);
+		snprintf(Co_MoveBufToOutput,sizeof(Co_MoveBufToOutput),"move %s.zip %s.docx",argv[2],argv[2]);//Eventually make exit path modular
+	}
+	else//	Mac/Linux
+	{
+		snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"cd Tozip && zip -r ..%c%s.zip",OSsep,argv[2]);
+		snprintf(Co_MoveBufToOutput,sizeof(Co_MoveBufToOutput),"mv %s.zip %s.docx",argv[2],argv[2]);
+	}
+	fclose(XMLWrite);
+	system(Co_ZipBuf);
+	system(Co_MoveBufToOutput);
+	return ReturnCode;
 }
 
 /*		 To-do
@@ -817,6 +821,6 @@ int main(int argc, char *argv[])
  * ° Erro no CEstado? (Conflito com CEst que define estruturas) - Fixed (Agora é IEst)
  * ° Introduzir espaços no XML em certos pontos para formatação - Fixed
  * ° TodayData na primeira pagina não foi detectado em geral - Fixed
- * ° Copy command copies parent folder (Windows)
- * ° Error in one of the cmd commands syntax (Windows)
+ * ° Copy command copies parent folder (Windows) - Patched
+ * ° Error in one of the cmd commands syntax (Windows) - Patched
  */
