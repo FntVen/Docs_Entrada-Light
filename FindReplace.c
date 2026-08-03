@@ -4,7 +4,7 @@
 #include <errno.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <string.h>//Implement a native buffer clear to get rid of this
+#include <string.h>//Replacement function made (Not Tested)
 
 #if defined(_WIN32) || defined(_WIN64)
 	#define OSsep  '\\'
@@ -74,14 +74,17 @@ static bool StrComp(const char *String1, const char *String2, int ExpSize, bool 
 	}
 	return Result;
 }//If ordered is set to true then "String1" is the reference and "String2" is the compared one
-static void MemClear(void *Buffer, int B1_Size)
+void * MemClear(void *Buffer,register int Clear,register size_t B1_Size)
 {
+	unsigned char *TypedBuffer = Buffer;
     for(int i = 0; i <= B1_Size - 1; i++)
     {
-        Buffer = 0;
+        *TypedBuffer = Clear;
         Buffer++;
     }
+	return Buffer;
 }
+
 /*Active Functions*/
 ClientData TestFillData()
 {
@@ -122,7 +125,6 @@ ClientData TestFillData()
 	snprintf(TestData.CTel,sizeof(TestData.CTel),"21994206969");
 	return TestData;
 }
-
 R_ReadBuffer ReadCompare(const char *ToReplace)
 {
 	//possible strings to replace
@@ -392,7 +394,6 @@ R_ReadBuffer ReadCompare(const char *ToReplace)
 	Deb:
 		return Answer;
 }//Should return what trigger word was found and if anything was found using a struct
-
 void EraseUnfinished(const char *FileName, const char *DocumentRequested)
 {
     char Del_Xml[60] = {0};
@@ -413,8 +414,7 @@ void EraseUnfinished(const char *FileName, const char *DocumentRequested)
      snprintf(Del_Xml, sizeof(Del_Xml),"rm document.xml");
      snprintf(Del_CopyDir, sizeof(Del_CopyDir),"rm Arquivos\\Tozip\\_rels Arquivos\\Tozip\\customXml Arquivos\\Tozip\\docProps Arquivos\\Tozip\\word Arquivos\\Tozip\\[Content_Types].xml");
  }
-}//Erase whatever was already made
-
+}//Erase whatever was already made in the case of an error (Not Implemented)
 void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundString)//bug - comparing the wrong things always results in no writes
 {
 	char tempbuf[40] = {0};
@@ -425,7 +425,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CClient);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CData");
     if(StrComp(FoundString, tempbuf, 5, false))
     {
@@ -433,7 +433,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CData);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"TodayData");
     if(StrComp(FoundString, tempbuf, 9, false))
     {
@@ -441,7 +441,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.TodayData);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"AArranjos");
     if(StrComp(FoundString, tempbuf,9, false))
     {
@@ -449,7 +449,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.AArranjos);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CBairro");
     if(StrComp(FoundString, tempbuf,7, false))
     {
@@ -457,7 +457,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CBairro);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCabo");
     if(StrComp(FoundString, tempbuf, 5, false))
     {
@@ -465,7 +465,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CCabo);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCep");
     if(StrComp(FoundString, tempbuf, 4, false))
     {
@@ -473,7 +473,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CCep);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CDisjuntor");
     if(StrComp(FoundString, tempbuf, 10, false))
     {
@@ -481,7 +481,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CDisjuntor);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CCidade");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -489,7 +489,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CCidade);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEmail");
     if(StrComp(FoundString, tempbuf, 6, false))
     {
@@ -497,7 +497,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CEmail);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEndereco");
     if(StrComp(FoundString, tempbuf, 9, false))
     {
@@ -505,7 +505,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CEndereço);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"IEst");
     if(StrComp(FoundString, tempbuf, 4, false))
     {
@@ -513,7 +513,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.IEst);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CEstado");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -521,7 +521,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CEstado);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CInstalação");
     if(StrComp(FoundString, tempbuf, 11, false))
     {
@@ -529,7 +529,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CInstalação);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CKWh");
     if(StrComp(FoundString, tempbuf, 4, false))
     {
@@ -537,7 +537,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CKWh);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CNumero");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -545,7 +545,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CNumero);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CPF_CNPJ");
     if(StrComp(FoundString, tempbuf, 8, false))
     {
@@ -553,7 +553,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CPF_CNPJ);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CTel");
     if(StrComp(FoundString, tempbuf, 4, false))
     {
@@ -561,7 +561,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CTel);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"CTerra");
     if(StrComp(FoundString, tempbuf, 6, false))
     {
@@ -569,7 +569,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.CTerra);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"IFabricantes");
     if(StrComp(FoundString, tempbuf, 12, false))
     {
@@ -577,7 +577,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.IFabricantes);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"IModelo");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -585,7 +585,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.IModelo);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Aero");
     if(StrComp(FoundString, tempbuf, 9, false))
     {
@@ -593,7 +593,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.Inst_Aero);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Sub");
     if(StrComp(FoundString, tempbuf, 8, false))
     {
@@ -601,7 +601,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.Inst_Sub);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"Inst_Classe");
     if(StrComp(FoundString, tempbuf, 11, false))
     {
@@ -609,7 +609,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.Inst_Classe);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"MModelo");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -617,7 +617,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.MModelo);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"MModulos");
     if(StrComp(FoundString, tempbuf, 8, false))
     {
@@ -625,7 +625,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.MModulos);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"NClient");
     if(StrComp(FoundString, tempbuf, 7, false))
     {
@@ -633,7 +633,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.NClient);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"PInversores");
     if(StrComp(FoundString, tempbuf, 11, false))
     {
@@ -641,7 +641,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.PInversores);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"PModulos");
     if(StrComp(FoundString, tempbuf, 8, false))
     {
@@ -649,7 +649,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.PModulos);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"QInversores");
     if(StrComp(FoundString, tempbuf, 11, false))
     {
@@ -657,7 +657,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.QInversores);
     	return;
     }
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"PKit");
 	if(StrComp(FoundString, tempbuf, 4, true))
 	{
@@ -665,7 +665,7 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
 		fprintf(WriteFile,Data.PKit);
 		return;
 	}
-	memset(tempbuf, 0, sizeof(tempbuf));
+	MemClear(tempbuf, 0, sizeof(tempbuf));
 	snprintf(tempbuf, sizeof(tempbuf),"QModulos");
     if(StrComp(FoundString, tempbuf, 8, false))
     {
@@ -673,12 +673,10 @@ void WriteReplacement(FILE *WriteFile, const ClientData Data, const char *FoundS
         fprintf(WriteFile,Data.QModulos);
     }
 }
-
 void ReplaceMedia()
 {
 	//Replace the data in the template docx using the MasterMedia folder and what needs to be provided by the user can be saved in the folders where the document.xml is located
-}
-
+}// Change other datapoints on the docx files such as images
 int main(int argc, char *argv[])
 {
 	char PathUnchecked[200] = {0};
@@ -773,7 +771,7 @@ int main(int argc, char *argv[])
                 ClientData Data = TestFillData();
                 printf("Searching... \n");
                 WriteReplacement(XMLWrite, Data, Answer.String);
-                memset(ReadReplace, 0, sizeof(ReadReplace));//Clear buffer for next element to read
+                MemClear(ReadReplace, 0, sizeof(ReadReplace));//Clear buffer for next element to read
 				ReadCharacters = 0;
             }
 		}
