@@ -58,6 +58,27 @@ typedef struct
 	char CTel[256];//Telefone do Cliente
 }ClientData;
 
+/*Helper Functions*/
+static bool StrComp(const char *String1, const char *String2, int ExpSize, bool DebugUse)
+{
+	bool Result = true;
+	for(int i = 0; i <= ExpSize; i++)
+	{
+		if (DebugUse)
+		{
+			printf("Comparing String1: %c and String2 %c \n",String1[i],String2[i]);
+		}
+		if(String1[i] != String2[i])
+		{
+			Result = false;
+		}
+	}
+	return Result;
+}//If ordered is set to true then "String1" is the reference and "String2" is the compared one
+static void MemClear()
+{
+}
+/*Active Functions*/
 ClientData TestFillData()
 {
 	ClientData TestData;
@@ -97,23 +118,6 @@ ClientData TestFillData()
 	snprintf(TestData.CTel,sizeof(TestData.CTel),"21994206969");
 	return TestData;
 }
-
-static bool StrComp(const char *String1, const char *String2, int ExpSize, bool DebugUse)
-{
-	bool Result = true;
-	for(int i = 0; i <= ExpSize; i++)
-	{
-		if (DebugUse)
-		{
-			printf("Comparing String1: %c and String2 %c \n",String1[i],String2[i]);
-		}
-		if(String1[i] != String2[i])
-		{
-			Result = false;
-		}
-	}
-	return Result;
-}//If ordered is set to true then "String1" is the reference and "String2" is the compared one
 
 R_ReadBuffer ReadCompare(const char *ToReplace)
 {
@@ -821,6 +825,6 @@ int main(int argc, char *argv[])
  * ° Erro no CEstado? (Conflito com CEst que define estruturas) - Fixed (Agora é IEst)
  * ° Introduzir espaços no XML em certos pontos para formatação - Fixed
  * ° TodayData na primeira pagina não foi detectado em geral - Fixed
- * ° Copy command copies parent folder (Windows) - Patched
- * ° Error in one of the cmd commands syntax (Windows) - Patched
+ * ° Copy command copies parent folder (Windows) - Fixed
+ * ° Error in one of the cmd commands syntax (Windows) - Fixed
  */
