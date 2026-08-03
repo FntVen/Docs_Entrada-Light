@@ -75,8 +75,13 @@ static bool StrComp(const char *String1, const char *String2, int ExpSize, bool 
 	}
 	return Result;
 }//If ordered is set to true then "String1" is the reference and "String2" is the compared one
-static void MemClear()
+static void MemClear(void *Buffer, int B1_Size)
 {
+    for(int i = 0; i <= B1_Size - 1; i++)
+    {
+        Buffer = 0;
+        Buffer++;
+    }
 }
 /*Active Functions*/
 ClientData TestFillData()
