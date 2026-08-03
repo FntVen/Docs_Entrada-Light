@@ -57,7 +57,6 @@ typedef struct
 	char CEmail[256];//Email do Cliente
 	char CTel[256];//Telefone do Cliente
 }ClientData;
-
 /*Helper Functions*/
 static bool StrComp(const char *String1, const char *String2, int ExpSize, bool DebugUse)
 {
