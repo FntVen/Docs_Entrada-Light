@@ -1,10 +1,9 @@
 //Necessary Arguments: (1)Path-to-Xml, (2)Name-of-The-Final-File(No extension), (3)Which document is being made
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
+#include <errno.h> //Check if these libraries really arent necessary
 #include <stdbool.h>
 #include <stdint.h>
-#include <string.h>//Replacement function made (Not Tested)
 
 #if defined(_WIN32) || defined(_WIN64)
 	#define OSsep  '\\'
@@ -80,7 +79,7 @@ void * MemClear(void *Buffer,register int Clear,register size_t B1_Size)
     for(int i = 0; i <= B1_Size - 1; i++)
     {
         *TypedBuffer = Clear;
-        Buffer++;
+        TypedBuffer++;
     }
 	return Buffer;
 }
