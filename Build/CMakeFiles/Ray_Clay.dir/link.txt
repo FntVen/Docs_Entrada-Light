@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRay_Clay.a CMakeFiles/Ray_Clay.dir/Lib/raylib/clay_renderer_raylib.c.o
+/usr/bin/ranlib libRay_Clay.a

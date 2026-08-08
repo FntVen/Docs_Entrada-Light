@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/ClayTstBuild.dir/link.d CMakeFiles/ClayTstBuild.dir/EntryPoint.c.o -o ClayTstBuild
