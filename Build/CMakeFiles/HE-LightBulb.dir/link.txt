@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/HE-LightBulb.dir/link.d "CMakeFiles/HE-LightBulb.dir/EntryPoint.c.o" -o HE-LightBulb

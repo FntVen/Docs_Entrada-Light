@@ -1,4 +1,0 @@
-/home/lfnt/Programming/Projects/Docs_Entrada-Light-main/Build/CMakeFiles/HE-LightBulb.dir
-/home/lfnt/Programming/Projects/Docs_Entrada-Light-main/Build/CMakeFiles/Ray_Clay.dir
-/home/lfnt/Programming/Projects/Docs_Entrada-Light-main/Build/CMakeFiles/edit_cache.dir
-/home/lfnt/Programming/Projects/Docs_Entrada-Light-main/Build/CMakeFiles/rebuild_cache.dir
