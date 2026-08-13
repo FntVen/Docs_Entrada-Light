@@ -704,7 +704,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		snprintf(Co_CopyBufToBuild,sizeof(Co_CopyBufToBuild),"cp -R Unzipped%c%s Tozip",OSsep, argv[3]);
+		snprintf(Co_CopyBufToBuild,sizeof(Co_CopyBufToBuild),"cp -R Unzipped%c%s/* Tozip",OSsep, argv[3]);
 	}
 	system(Co_CopyBufToBuild);
 	char DocXmlbuf[25] = {0};
@@ -808,10 +808,9 @@ int main(int argc, char *argv[])
 	}
 	else//	Mac/Linux
 	{
-		snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"cd Tozip && zip -r ..%c%s.zip",OSsep,argv[2]);
+		snprintf(Co_ZipBuf,sizeof(Co_ZipBuf),"cd Tozip && zip -r ../%c%s.zip *",OSsep,argv[2]);
 		snprintf(Co_MoveBufToOutput,sizeof(Co_MoveBufToOutput),"mv %s.zip %s.docx",argv[2],argv[2]);
 	}
-	fclose(XMLWrite);
 	system(Co_ZipBuf);
 	system(Co_MoveBufToOutput);
 	return ReturnCode;

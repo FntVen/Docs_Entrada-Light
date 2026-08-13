@@ -1,8 +1,3 @@
-//UI Goals
-// - Main Screen controlled by side bar
-// - Side bar contents should be something close to [Cliente - Estrutura - Materiais - Documento]
-// - Loading bar when creating files?
-// - Maps support ideias [QTMaps - ]
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <stdio.h>
