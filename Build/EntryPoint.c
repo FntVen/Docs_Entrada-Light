@@ -33,6 +33,15 @@ static void init()
     Clay_SetMeasureTextFunction(sclay_measure_text, NULL);
 }
 
+void ClientMenu()/* (1)Nome - (2)CPF/CNPJ - (3)Telefone - (4)Email - (5)Endereço/ImagemLocal */
+{}
+void SolarMenu()/* (1)Quantidade/Potencia/Marca/Modelo dos Paineis - (2)Quantidade/Potencia/Marca/Modelo dos Inversores - (3) Potencia do Kit (4) Area de Instalaçao */
+{}
+void InstMenu()/* (_1)Codigo do Cliente - (_2)Codigo da Instalaçao - (3)ART - (4)Diametro dos cabos/terra - (5) Disjuntor - (6) Telha/Solo - (7) Grupo/A/B - (8) Area/Sub */
+{}
+void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao - (3) */
+{}
+
 Clay_RenderCommandArray MainPage()
 {
     //int BorderHeight = sapp_height() - 20;
@@ -78,14 +87,26 @@ Clay_RenderCommandArray MainPage()
                     .layout =
                     {
                         .layoutDirection = CLAY_TOP_TO_BOTTOM,
-                        .sizing = {.height = layoutExpand.height, .width = 400},
-                        .padding = {0, 0, 20, 20},
+                        .sizing = {.height = layoutExpand.height, .width = 300},
+                        .padding = {.left = 10, .right = 10, .top = 7, .bottom = 7},
                         .childGap = 20,
                     },
                 }
             )
             {
-
+                CLAY(
+                    CLAY_ID("ClientMen_Btn"),
+                    {
+                    .backgroundColor = {250, 250, 250, 20},
+                        .cornerRadius = {15,15,15,15},
+                        .layout =
+                        {
+                            .layoutDirection = CLAY_LEFT_TO_RIGHT,
+                            .sizing = {.height = 33, .width = 280}
+                        }
+                    }
+                )
+                {}
             }
             CLAY(
                 CLAY_ID("Focus_Men"),
