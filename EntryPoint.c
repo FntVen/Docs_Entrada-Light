@@ -3,51 +3,158 @@
 // - Side bar contents should be something close to [Cliente - Estrutura - Materiais - Documento]
 // - Loading bar when creating files?
 // - Maps support ideias [QTMaps - ]
-#include "renderers/raylib/raylib.h"
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <stdio.h>
+#define SOKOL_IMPL
+#define SOKOL_GLCORE
 #define CLAY_IMPLEMENTATION
-#include "clay.h"
-#include "renderers/raylib/clay_renderer_raylib.c"
+#define SOKOL_CLAY_IMPL
+#define FONTSTASH_IMPLEMENTATION
+#include "Lib/SOKOL/sokol_gfx.h"
+#include "Lib/SOKOL/util/sokol_gl.h"
+#include "Lib/SOKOL/sokol_app.h"
+#include "Lib/SOKOL/sokol_glue.h"
+#include "Lib/SOKOL/sokol_log.h"
+#include "Lib/CLAY/clay.h"
+#include "Lib/SOKOL/stb_truetype.h"
+#include "Lib/SOKOL/fontstash.h"
+#include "Lib/SOKOL/util/sokol_fontstash.h"
+#include "Lib/CLAY/sokol_clay.h"
 
-void Clay_Erno(Clay_ErrorData errorData)
+static void init()
 {
-    printf("Clay Triggered Error: %s",errorData.errorText.chars);
+    sg_setup(&(sg_desc){
+        .environment = sglue_environment(),
+        .logger.func = slog_func,
+    });
+    sgl_setup(&(sgl_desc_t){
+        .logger.func = slog_func,
+    });
+    sclay_setup();
+    uint64_t totalMemorySize = Clay_MinMemorySize();
+    Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(totalMemorySize, malloc(totalMemorySize));
+    Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
+    Clay_SetMeasureTextFunction(sclay_measure_text, NULL);
 }
 
-int main()
+Clay_RenderCommandArray MainPage()
 {
-    //Clay Setup
-    Clay_Raylib_Initialize(1024, 768, "He-LightBulb", FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE /*| FLAG_MSAA_4X_HINT (Check performance and style later) */);
-    uint64_t Clay_Mem = Clay_MinMemorySize(); //The minimum memory necessary for an arena
-    Clay_Arena Arena = (Clay_Arena)
+    //int BorderHeight = sapp_height() - 20;
+    Clay_BeginLayout();
+    Clay_Sizing layoutExpand =
     {
-        .memory = malloc(Clay_Mem),
-        .capacity = Clay_Mem
+        .width = CLAY_SIZING_GROW(0),
+        .height = CLAY_SIZING_GROW(0)
     };
-    Clay_Initialize
-    (
-        Arena,
-        (Clay_Dimensions)
-        {
-            .height = (float)GetScreenHeight(),
-            .width = (float)GetScreenWidth()
-        },
-        (Clay_ErrorHandler) {Clay_Erno, 0}
-    );
-    Font font[1];
-    font[0] =LoadFont("Resources/Roboto-Regular.ttf");
-    //Mainlopp (Immediate mode)
-    while (!WindowShouldClose())
-    {
-        Clay_BeginLayout();
-        //Begin UI
-        //CLAY
-        //(){}
-        //End UI
-        Clay_RenderCommandArray RCommands = Clay_EndLayout(GetFrameTime());
-        BeginDrawing();
-        ClearBackground(BLACK);
-        Clay_Raylib_Render(RCommands, font);
-        EndDrawing();
 
+    CLAY(//Definition of Parent
+        CLAY_ID("Main_Column"),
+        {
+            .backgroundColor = {43, 41, 51, 255},
+            .layout =
+            {
+                .layoutDirection = CLAY_TOP_TO_BOTTOM,
+                .sizing = layoutExpand,
+                .padding = {.left = 10, .right = 10, .bottom = 10, .top = 10},
+                .childGap = 20
+            }
+        }
+    )
+    {//Child Element
+        CLAY(
+            CLAY_ID("Main_Row"),
+            {
+                .layout =
+                {
+                    .layoutDirection = CLAY_LEFT_TO_RIGHT,
+                    .sizing = layoutExpand,
+                    .padding = {0, 0, 20, 20},
+                    .childGap = 20
+                }
+            }
+        )
+        {
+            CLAY(
+                CLAY_ID("Select_Men"),
+                {
+                    .backgroundColor = {53, 51, 61, 255},
+                    .cornerRadius = {15,15,15,15},
+                    .layout =
+                    {
+                        .layoutDirection = CLAY_TOP_TO_BOTTOM,
+                        .sizing = {.height = layoutExpand.height, .width = 400},
+                        .padding = {0, 0, 20, 20},
+                        .childGap = 20,
+                    },
+                }
+            )
+            {
+
+            }
+            CLAY(
+                CLAY_ID("Focus_Men"),
+                {
+                    .backgroundColor = {53, 51, 61, 255},
+                    .cornerRadius = {15,15,15,15},
+                    .layout =
+                    {
+                        .layoutDirection = CLAY_TOP_TO_BOTTOM,
+                        .sizing = layoutExpand,
+                        .padding = {0, 0, 20, 20},
+                        .childGap = 20
+                    }
+                }
+            )
+            {
+
+            }
+        }
     }
+    return Clay_EndLayout(0);
+}
+
+static void frame()
+{
+    sclay_new_frame();
+    Clay_RenderCommandArray renderCommands = MainPage();//CornerRadiusTest();// Should return an array of Clay drawings
+
+    sg_begin_pass(&(sg_pass){ .swapchain = sglue_swapchain() });
+    sgl_matrix_mode_modelview();
+    sgl_load_identity();
+    sclay_render(renderCommands, NULL);
+    sgl_draw();
+    sg_end_pass();
+    sg_commit();
+}
+
+static void event(const sapp_event *ev)
+{
+    if(ev->type == SAPP_EVENTTYPE_KEY_DOWN && ev->key_code == SAPP_KEYCODE_D){
+        Clay_SetDebugModeEnabled(true);
+    } else {
+        sclay_handle_event(ev);
+    }
+}
+
+static void cleanup()
+{
+    sclay_shutdown();
+    sgl_shutdown();
+    sg_shutdown();
+}
+
+sapp_desc sokol_main(int argc, char **argv)//This is the new main of the application
+{
+    return (sapp_desc){
+        .init_cb = init,
+        .frame_cb = frame,
+        .event_cb = event,
+        .cleanup_cb = cleanup,
+        .window_title = "Luciano Ui Test - 1",
+        .width = 1200,
+        .height = 600,
+        .icon.sokol_default = true,
+        .logger.func = slog_func,
+    };
 }
