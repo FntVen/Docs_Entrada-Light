@@ -17,6 +17,8 @@
 #include "Lib/SOKOL/util/sokol_fontstash.h"
 #include "Lib/CLAY/sokol_clay.h"
 
+static sclay_font_t fonts[1];
+
 static void init()
 {
     sg_setup(&(sg_desc){
@@ -30,6 +32,7 @@ static void init()
     uint64_t totalMemorySize = Clay_MinMemorySize();
     Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(totalMemorySize, malloc(totalMemorySize));
     Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
+    fonts[0] = sclay_add_font("resources/Roboto-Regular.ttf");
     Clay_SetMeasureTextFunction(sclay_measure_text, NULL);
 }
 
@@ -39,12 +42,11 @@ void SolarMenu()/* (1)Quantidade/Potencia/Marca/Modelo dos Paineis - (2)Quantida
 {}
 void InstMenu()/* (_1)Codigo do Cliente - (_2)Codigo da Instalaçao - (3)ART - (4)Diametro dos cabos/terra - (5) Disjuntor - (6) Telha/Solo - (7) Grupo/A/B - (8) Area/Sub */
 {}
-void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao - (3) */
+void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao*/
 {}
 
 Clay_RenderCommandArray MainPage()
 {
-    //int BorderHeight = sapp_height() - 20;
     Clay_BeginLayout();
     Clay_Sizing layoutExpand =
     {
@@ -106,7 +108,16 @@ Clay_RenderCommandArray MainPage()
                         }
                     }
                 )
-                {}
+                {
+                    CLAY_TEXT(
+                    CLAY_STRING("Text"),
+                    {
+                        .textAlignment = CLAY_TEXT_ALIGN_CENTER,
+                        .textColor = {255,255,255,255},
+                        .fontSize = 20,
+                        .fontId = 0
+                    });
+                }
             }
             CLAY(
                 CLAY_ID("Focus_Men"),
