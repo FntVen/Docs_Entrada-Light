@@ -19,6 +19,12 @@
 
 static sclay_font_t fonts[1];
 
+static struct {
+    float mouse_x;
+    float mouse_y;
+    bool mouse_down;
+} Pointer_State = {0};
+
 static void init()
 {
     sg_setup(&(sg_desc){
@@ -45,8 +51,18 @@ void InstMenu()/* (_1)Codigo do Cliente - (_2)Codigo da Instalaçao - (3)ART - (
 void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao*/
 {}
 
+void HandleButtonInteraction(Clay_ElementId elementId, Clay_PointerData pointerData, void * userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+        printf("Sokol + Clay: Botão pressionado!\n");
+    }
+}
+
+
+
+
 Clay_RenderCommandArray MainPage()
 {
+    Clay_SetPointerState((Clay_Vector2){ Pointer_State.mouse_x, Pointer_State.mouse_y }, Pointer_State.mouse_down);
     Clay_BeginLayout();
     Clay_Sizing layoutExpand =
     {
@@ -98,8 +114,8 @@ Clay_RenderCommandArray MainPage()
             {
                 CLAY(
                     CLAY_ID("ClientMen_Btn"),
-                    {
-                    .backgroundColor = {250, 250, 250, 20},
+                    {                                       /*Orange*/                        /*Gray*/
+                        .backgroundColor = Clay_Hovered() ? (Clay_Color){255, 167, 73, 255} : (Clay_Color){250, 250, 250, 20},
                         .cornerRadius = {15,15,15,15},
                         .layout =
                         {
@@ -109,6 +125,7 @@ Clay_RenderCommandArray MainPage()
                     }
                 )
                 {
+                    Clay_OnHover(HandleButtonInteraction, 0);
                     CLAY_TEXT(
                     CLAY_STRING("Text"),
                     {
@@ -155,13 +172,24 @@ static void frame()
     sg_commit();
 }
 
-static void event(const sapp_event *ev)
+static void event(const sapp_event *ev)// Handler of Keyboard an mouse events
 {
     if(ev->type == SAPP_EVENTTYPE_KEY_DOWN && ev->key_code == SAPP_KEYCODE_D){
         Clay_SetDebugModeEnabled(true);
     } else {
         sclay_handle_event(ev);
     }
+    if (ev->type == SAPP_EVENTTYPE_MOUSE_MOVE) {
+            Pointer_State.mouse_x = ev->mouse_x;
+            Pointer_State.mouse_y = ev->mouse_y;
+        }
+        else if (ev->type == SAPP_EVENTTYPE_MOUSE_DOWN && ev->mouse_button == SAPP_MOUSEBUTTON_LEFT) {
+            Pointer_State.mouse_down = true;
+        }
+        else if (ev->type == SAPP_EVENTTYPE_MOUSE_UP && ev->mouse_button == SAPP_MOUSEBUTTON_LEFT) {
+            Pointer_State.mouse_down = false;
+        }
+
 }
 
 static void cleanup()
