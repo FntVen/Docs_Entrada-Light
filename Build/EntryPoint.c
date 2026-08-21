@@ -1,3 +1,4 @@
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <stdio.h>
@@ -17,13 +18,37 @@
 #include "Lib/SOKOL/util/sokol_fontstash.h"
 #include "Lib/CLAY/sokol_clay.h"
 
-static sclay_font_t fonts[1];
-
+static sclay_font_t Fonts[1];
+static int FontIndex;
+FONScontext *FC;
 static struct {
     float mouse_x;
     float mouse_y;
     bool mouse_down;
 } Pointer_State = {0};
+
+static Clay_Dimensions ClayFontCalc(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData)
+{
+    FONScontext *FunctionContext = (FONScontext*)userData;
+    fonsClearState(FunctionContext);
+    fonsSetFont(FunctionContext, (int)config->fontId);
+    fonsSetSize(FunctionContext, config->fontSize);
+    fonsSetColor(FunctionContext, sfons_rgba(255, 255, 255, 255));
+    fonsSetAlign(FunctionContext, FONS_ALIGN_CENTER);
+
+    float bounds[4];
+        // Pass null for string end to read the whole slice length
+        float width = fonsTextBounds(FunctionContext, 0, 0, text.chars, text.chars + text.length, bounds);
+        float height = bounds[3] - bounds[1];
+
+    return (Clay_Dimensions){ .width = width, .height = height };
+}
+
+void HandleButtonInteraction(Clay_ElementId elementId, Clay_PointerData pointerData, void * userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+        printf("AAAAAAAAAAAAAAAAAAHHHHH\n");
+    }
+}
 
 static void init()
 {
@@ -38,8 +63,10 @@ static void init()
     uint64_t totalMemorySize = Clay_MinMemorySize();
     Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(totalMemorySize, malloc(totalMemorySize));
     Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
-    fonts[0] = sclay_add_font("resources/Roboto-Regular.ttf");
-    Clay_SetMeasureTextFunction(sclay_measure_text, NULL);
+    FC = sfons_create(&(sfons_desc_t){.height = 512, .width = 512});
+    FontIndex = fonsAddFont(FC, "Roboto","resources/Roboto-Regular.ttf");
+    Fonts[FontIndex] = fonsAddFont(FC, "Roboto","resources/Roboto-Regular.ttf");
+    Clay_SetMeasureTextFunction(sclay_measure_text, &ClayFontCalc);
 }
 
 void ClientMenu()/* (1)Nome - (2)CPF/CNPJ - (3)Telefone - (4)Email - (5)Endereço/ImagemLocal */
@@ -48,21 +75,12 @@ void SolarMenu()/* (1)Quantidade/Potencia/Marca/Modelo dos Paineis - (2)Quantida
 {}
 void InstMenu()/* (_1)Codigo do Cliente - (_2)Codigo da Instalaçao - (3)ART - (4)Diametro dos cabos/terra - (5) Disjuntor - (6) Telha/Solo - (7) Grupo/A/B - (8) Area/Sub */
 {}
-void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao*/
+void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao - (3) */
 {}
-
-void HandleButtonInteraction(Clay_ElementId elementId, Clay_PointerData pointerData, void * userData) {
-    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
-        printf("Sokol + Clay: Botão pressionado!\n");
-    }
-}
-
-
-
 
 Clay_RenderCommandArray MainPage()
 {
-    Clay_SetPointerState((Clay_Vector2){ Pointer_State.mouse_x, Pointer_State.mouse_y }, Pointer_State.mouse_down);
+    //int BorderHeight = sapp_height() - 20;
     Clay_BeginLayout();
     Clay_Sizing layoutExpand =
     {
@@ -120,20 +138,13 @@ Clay_RenderCommandArray MainPage()
                         .layout =
                         {
                             .layoutDirection = CLAY_LEFT_TO_RIGHT,
-                            .sizing = {.height = 33, .width = 280}
+                            .sizing = {.height = 33, .width = 280},
                         }
                     }
                 )
                 {
-                    Clay_OnHover(HandleButtonInteraction, 0);
-                    CLAY_TEXT(
-                    CLAY_STRING("Text"),
-                    {
-                        .textAlignment = CLAY_TEXT_ALIGN_CENTER,
-                        .textColor = {255,255,255,255},
-                        .fontSize = 20,
-                        .fontId = 0
-                    });
+                Clay_OnHover(HandleButtonInteraction, 0);
+
                 }
             }
             CLAY(
@@ -151,7 +162,15 @@ Clay_RenderCommandArray MainPage()
                 }
             )
             {
-
+            CLAY_TEXT(
+                CLAY_STRING("Text Test"),
+                {
+                    .textAlignment = CLAY_TEXT_ALIGN_CENTER,
+                    .textColor = {255,255,255,255},
+                    .fontSize = 10,
+                    .fontId = 0,
+                }
+            );
             }
         }
     }
@@ -162,34 +181,50 @@ static void frame()
 {
     sclay_new_frame();
     Clay_RenderCommandArray renderCommands = MainPage();//CornerRadiusTest();// Should return an array of Clay drawings
+    for(int i = 0; i <= renderCommands.length - 1; i++)
+    {
+        Clay_RenderCommand *cmd = Clay_RenderCommandArray_Get(&renderCommands, i);
+
+            switch (cmd->commandType)
+            {
+                case CLAY_RENDER_COMMAND_TYPE_TEXT: {
+                    Clay_TextRenderData *textData = &cmd->renderData.text;
+
+                    // Configure FontStash using Clay's computed layout positions
+                    fonsSetFont(FC, textData->fontId);
+                    fonsSetSize(FC, textData->fontSize);
+                    fonsSetColor(FC, sfons_rgba(textData->textColor.r, textData->textColor.g, textData->textColor.b, textData->textColor.a));
+
+                    // Draw text exactly where Clay told us to
+                    fonsDrawText(
+                        FC,
+                        textData->fontSize,
+                        textData->lineHeight + textData->fontSize, // FontStash draws from baseline
+                        textData->stringContents.chars,
+                        textData->stringContents.chars + textData->stringContents.length
+                    );
+                    break;
+                }
+    }
 
     sg_begin_pass(&(sg_pass){ .swapchain = sglue_swapchain() });
     sgl_matrix_mode_modelview();
     sgl_load_identity();
-    sclay_render(renderCommands, NULL);
+    sclay_render(renderCommands, Fonts);
+    sfons_flush(FC);
     sgl_draw();
     sg_end_pass();
     sg_commit();
+    }
 }
 
-static void event(const sapp_event *ev)// Handler of Keyboard an mouse events
+static void event(const sapp_event *ev)
 {
     if(ev->type == SAPP_EVENTTYPE_KEY_DOWN && ev->key_code == SAPP_KEYCODE_D){
         Clay_SetDebugModeEnabled(true);
     } else {
         sclay_handle_event(ev);
     }
-    if (ev->type == SAPP_EVENTTYPE_MOUSE_MOVE) {
-            Pointer_State.mouse_x = ev->mouse_x;
-            Pointer_State.mouse_y = ev->mouse_y;
-        }
-        else if (ev->type == SAPP_EVENTTYPE_MOUSE_DOWN && ev->mouse_button == SAPP_MOUSEBUTTON_LEFT) {
-            Pointer_State.mouse_down = true;
-        }
-        else if (ev->type == SAPP_EVENTTYPE_MOUSE_UP && ev->mouse_button == SAPP_MOUSEBUTTON_LEFT) {
-            Pointer_State.mouse_down = false;
-        }
-
 }
 
 static void cleanup()
