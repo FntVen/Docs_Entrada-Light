@@ -25,7 +25,6 @@ static struct {
 
 static Clay_Dimensions ClayFontCalc(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData)
 {
-    //FONScontext *FunctionContext = (FONScontext*)userData;
     fonsClearState(Stash);
     fonsSetFont(Stash, (int)config->fontId);
     fonsSetSize(Stash, config->fontSize);
@@ -33,21 +32,28 @@ static Clay_Dimensions ClayFontCalc(Clay_StringSlice text, Clay_TextElementConfi
     fonsSetAlign(Stash, config -> textAlignment);
 
     float bounds[4];
-        // Pass null for string end to read the whole slice length
-        float width = 20/*fonsTextBounds(Stash, 0, 0, text.chars, text.chars + text.length, bounds)*/;
-        float height = 20/*bounds[3] - bounds[1]*/;
+    fonsTextBounds(Stash, 0/*Offset*/, 0/*Offset*/, text.chars, text.chars + text.length, bounds);
+    float width = bounds[2] - bounds[0];
+    float height = bounds[3] - bounds[1];
+
     printf("FontID: %d \n",config ->fontId);
     printf("FontSize: %d \n",config->fontSize);
     printf("Fontheight: %d | Fontwidth: %d \n",(int)height,(int)width);
     printf("FontColor: R-> %d | G -> %d | B -> %d \n",(int)config->textColor.r,(int)config->textColor.g,(int)config->textColor.b);
     printf("AlignmentID: %d \n",config ->textAlignment);
+    printf("TextData: ");
+    for(int i = 0; i <=text.length; i++)
+    {
+        printf("%c",text.chars[i]);
+    }
+    printf("\n");
 
     return (Clay_Dimensions){ .width = width, .height = height };
 }
 
 void HandleButtonInteraction(Clay_ElementId elementId, Clay_PointerData pointerData, void * userData) {
     if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
-        printf("AAAAAAAAAAAAAAAAAAHHHHH\n");
+        printf("Please\n");
     }
 }
 
@@ -66,12 +72,13 @@ static void init()
     Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
     Stash = sfons_create(&(sfons_desc_t){.height = 512, .width = 512});
     FontIndex[0] = fonsAddFont(Stash, "Roboto","resources/Roboto-Regular.ttf");
+    FontIndex[1] = fonsAddFont(Stash, "Roboto2","resources/Roboto-Regular.ttf");//test
     for(int i = 0; i <= sizeof(FontIndex) - 1; i++)
     {
         printf("Id of Font: %d At index : %d ",FontIndex[i],i);
     }
     printf("\n");
-    Clay_SetMeasureTextFunction(&ClayFontCalc, Stash);
+    Clay_SetMeasureTextFunction(ClayFontCalc, Stash);
 }
 
 void ClientMenu()/* (1)Nome - (2)CPF/CNPJ - (3)Telefone - (4)Email - (5)Endereço/ImagemLocal */
@@ -85,7 +92,6 @@ void MiscMenu()/*(1)Data de Criaçao - (2)Data de Instalaçao - (3) */
 
 Clay_RenderCommandArray MainPage()
 {
-    //int BorderHeight = sapp_height() - 20;
     Clay_BeginLayout();
     Clay_Sizing layoutExpand =
     {
@@ -149,7 +155,6 @@ Clay_RenderCommandArray MainPage()
                 )
                 {
                 Clay_OnHover(HandleButtonInteraction, 0);
-
                 }
             }
             CLAY(
@@ -168,13 +173,13 @@ Clay_RenderCommandArray MainPage()
             )
             {
             CLAY_TEXT(
-                CLAY_STRING("Text Test"),
-                {
+                CLAY_STRING("Hand"),
+                CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .textColor = {255,255,255,255},
                     .fontSize = 10,
-                    .fontId = 0,
-                }
+                    .fontId = FontIndex[0],
+                })
             );
             }
         }
@@ -193,14 +198,23 @@ static void frame()
             switch (cmd->commandType)
             {
                 case CLAY_RENDER_COMMAND_TYPE_TEXT: {
+                    printf("In Switch case Type Text\n");
                     Clay_TextRenderData *textData = &cmd->renderData.text;
 
-                    // Configure FontStash using Clay's computed layout positions
                     fonsSetFont(Stash, textData->fontId);
                     fonsSetSize(Stash, textData->fontSize);
                     fonsSetColor(Stash, sfons_rgba(textData->textColor.r, textData->textColor.g, textData->textColor.b, textData->textColor.a));
-
-                    // Draw text exactly where Clay told us to
+                    printf("Data sent to Stash: \n");
+                    printf("FontId: %d \n",textData->fontId);
+                    printf("FontSize: %d \n",textData->fontSize);
+                    printf("FontColor: R -> %d | G -> %d | B -> %d | A -> %d \n",(int)textData->textColor.r,(int)textData->textColor.g,(int)textData->textColor.b,(int)textData->textColor.a);
+                    printf("Text: ");
+                    for(int i = 0; i <=textData->stringContents.length; i++)
+                    {
+                        printf("%c", textData->stringContents.chars[i]);
+                    }
+                    printf("\n");
+                    printf("Last character: %c \n",textData->stringContents.chars[textData->stringContents.length - 1]);
                     fonsDrawText(
                         Stash,
                         textData->fontSize,
@@ -208,6 +222,7 @@ static void frame()
                         textData->stringContents.chars,
                         textData->stringContents.chars + textData->stringContents.length
                     );
+                    printf("End of Switch \n");
                     break;
                 }
     }
@@ -246,7 +261,7 @@ sapp_desc sokol_main(int argc, char **argv)//This is the new main of the applica
         .frame_cb = frame,
         .event_cb = event,
         .cleanup_cb = cleanup,
-        .window_title = "Luciano Ui Test - 1",
+        .window_title = "Luciano Ui Test - 2",
         .width = 1200,
         .height = 600,
         .icon.sokol_default = true,
