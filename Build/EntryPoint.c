@@ -14,7 +14,7 @@
 #include "Lib/SOKOL/fontstash.h"
 #include "Lib/SOKOL/util/sokol_fontstash.h"
 #include "Lib/CLAY/sokol_clay.h"
-
+int DebugLevel = 2;
 static int FontIndex[5] = {0};
 FONScontext *Stash;
 static struct {
@@ -34,19 +34,21 @@ static Clay_Dimensions ClayFontCalc(Clay_StringSlice text, Clay_TextElementConfi
     float bounds[4];
     fonsTextBounds(Stash, 0/*Offset*/, 0/*Offset*/, text.chars, text.chars + text.length, bounds);
     float width = bounds[2] - bounds[0];
-    float height = bounds[3] - bounds[1];
-
-    printf("FontID: %d \n",config ->fontId);
-    printf("FontSize: %d \n",config->fontSize);
-    printf("Fontheight: %d | Fontwidth: %d \n",(int)height,(int)width);
-    printf("FontColor: R-> %d | G -> %d | B -> %d \n",(int)config->textColor.r,(int)config->textColor.g,(int)config->textColor.b);
-    printf("AlignmentID: %d \n",config ->textAlignment);
-    printf("TextData: ");
-    for(int i = 0; i <=text.length; i++)
+    float height = config->fontSize;
+    if(DebugLevel >= 1)
     {
-        printf("%c",text.chars[i]);
+        printf("FontID: %d \n",config ->fontId);
+        printf("FontSize: %d \n",config->fontSize);
+        printf("Fontheight: %d | Fontwidth: %d \n",(int)height,(int)width);
+        printf("FontColor: R-> %d | G -> %d | B -> %d \n",(int)config->textColor.r,(int)config->textColor.g,(int)config->textColor.b);
+        printf("AlignmentID: %d \n",config ->textAlignment);
+        printf("TextData: ");
+        for(int i = 0; i <=text.length; i++)
+        {
+            printf("%c",text.chars[i]);
+        }
+        printf("\n");
     }
-    printf("\n");
 
     return (Clay_Dimensions){ .width = width, .height = height };
 }
@@ -72,12 +74,15 @@ static void init()
     Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
     Stash = sfons_create(&(sfons_desc_t){.height = 512, .width = 512});
     FontIndex[0] = fonsAddFont(Stash, "Roboto","resources/Roboto-Regular.ttf");
-    FontIndex[1] = fonsAddFont(Stash, "Roboto2","resources/Roboto-Regular.ttf");//test
-    for(int i = 0; i <= sizeof(FontIndex) - 1; i++)
+    if(DebugLevel >= 1)
     {
-        printf("Id of Font: %d At index : %d ",FontIndex[i],i);
+        FontIndex[1] = fonsAddFont(Stash, "Roboto2","resources/Roboto-Regular.ttf");//test
+        for(int i = 0; i <= sizeof(FontIndex) - 1; i++)
+        {
+            printf("Id of Font: %d At index : %d ",FontIndex[i],i);
+        }
+        printf("\n");
     }
-    printf("\n");
     Clay_SetMeasureTextFunction(ClayFontCalc, Stash);
 }
 
@@ -190,6 +195,7 @@ Clay_RenderCommandArray MainPage()
 static void frame()
 {
     sclay_new_frame();
+
     Clay_RenderCommandArray renderCommands = MainPage();//CornerRadiusTest();// Should return an array of Clay drawings
     for(int i = 0; i <= renderCommands.length - 1; i++)
     {
@@ -198,23 +204,31 @@ static void frame()
             switch (cmd->commandType)
             {
                 case CLAY_RENDER_COMMAND_TYPE_TEXT: {
-                    printf("In Switch case Type Text\n");
+                    if(DebugLevel >= 2)
+                    {
+                        printf("In Switch case Type Text\n");
+                    }
                     Clay_TextRenderData *textData = &cmd->renderData.text;
 
                     fonsSetFont(Stash, textData->fontId);
                     fonsSetSize(Stash, textData->fontSize);
                     fonsSetColor(Stash, sfons_rgba(textData->textColor.r, textData->textColor.g, textData->textColor.b, textData->textColor.a));
-                    printf("Data sent to Stash: \n");
-                    printf("FontId: %d \n",textData->fontId);
-                    printf("FontSize: %d \n",textData->fontSize);
-                    printf("FontColor: R -> %d | G -> %d | B -> %d | A -> %d \n",(int)textData->textColor.r,(int)textData->textColor.g,(int)textData->textColor.b,(int)textData->textColor.a);
-                    printf("Text: ");
-                    for(int i = 0; i <=textData->stringContents.length; i++)
+                    if(DebugLevel >= 2)
                     {
-                        printf("%c", textData->stringContents.chars[i]);
+                        printf("Data sent to Stash: \n");
+                        printf("FontId: %d \n",textData->fontId);
+                        printf("FontSize: %d \n",textData->fontSize);
+                        printf("FontColor: R -> %d | G -> %d | B -> %d | A -> %d \n",(int)textData->textColor.r,(int)textData->textColor.g,(int)textData->textColor.b,(int)textData->textColor.a);
+                        printf("Text: ");
+                        for(int i = 0; i <=textData->stringContents.length; i++)
+                        {
+                            printf("%c", textData->stringContents.chars[i]);
+                        }
+                        printf("\n");
+                        printf("Last character: %c \n",textData->stringContents.chars[textData->stringContents.length - 1]);
+                        printf("Bounding Boxes: PositionX %f SizeX %f | PositionY %f SizeY %f \n",cmd->boundingBox.x,cmd->boundingBox.width,cmd->boundingBox.y,cmd->boundingBox.height);
                     }
-                    printf("\n");
-                    printf("Last character: %c \n",textData->stringContents.chars[textData->stringContents.length - 1]);
+
                     fonsDrawText(
                         Stash,
                         textData->fontSize,
@@ -222,7 +236,10 @@ static void frame()
                         textData->stringContents.chars,
                         textData->stringContents.chars + textData->stringContents.length
                     );
-                    printf("End of Switch \n");
+                    if(DebugLevel >= 2)
+                    {
+                       printf("End of Switch \n");
+                    }
                     break;
                 }
     }
