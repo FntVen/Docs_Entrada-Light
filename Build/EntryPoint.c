@@ -1,6 +1,3 @@
-#include <X11/X.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #include <stdio.h>
 #define SOKOL_IMPL
 #define SOKOL_GLCORE
@@ -18,9 +15,8 @@
 #include "Lib/SOKOL/util/sokol_fontstash.h"
 #include "Lib/CLAY/sokol_clay.h"
 
-static sclay_font_t Fonts[1];
-static int FontIndex;
-FONScontext *FC;
+static int FontIndex[5] = {0};
+FONScontext *Stash;
 static struct {
     float mouse_x;
     float mouse_y;
@@ -29,17 +25,22 @@ static struct {
 
 static Clay_Dimensions ClayFontCalc(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData)
 {
-    FONScontext *FunctionContext = (FONScontext*)userData;
-    fonsClearState(FunctionContext);
-    fonsSetFont(FunctionContext, (int)config->fontId);
-    fonsSetSize(FunctionContext, config->fontSize);
-    fonsSetColor(FunctionContext, sfons_rgba(255, 255, 255, 255));
-    fonsSetAlign(FunctionContext, FONS_ALIGN_CENTER);
+    //FONScontext *FunctionContext = (FONScontext*)userData;
+    fonsClearState(Stash);
+    fonsSetFont(Stash, (int)config->fontId);
+    fonsSetSize(Stash, config->fontSize);
+    fonsSetColor(Stash, sfons_rgba((int)config->textColor.r, (int)config->textColor.g, (int)config->textColor.b, (int)config->textColor.a));
+    fonsSetAlign(Stash, config -> textAlignment);
 
     float bounds[4];
         // Pass null for string end to read the whole slice length
-        float width = fonsTextBounds(FunctionContext, 0, 0, text.chars, text.chars + text.length, bounds);
-        float height = bounds[3] - bounds[1];
+        float width = 20/*fonsTextBounds(Stash, 0, 0, text.chars, text.chars + text.length, bounds)*/;
+        float height = 20/*bounds[3] - bounds[1]*/;
+    printf("FontID: %d \n",config ->fontId);
+    printf("FontSize: %d \n",config->fontSize);
+    printf("Fontheight: %d | Fontwidth: %d \n",(int)height,(int)width);
+    printf("FontColor: R-> %d | G -> %d | B -> %d \n",(int)config->textColor.r,(int)config->textColor.g,(int)config->textColor.b);
+    printf("AlignmentID: %d \n",config ->textAlignment);
 
     return (Clay_Dimensions){ .width = width, .height = height };
 }
@@ -63,10 +64,14 @@ static void init()
     uint64_t totalMemorySize = Clay_MinMemorySize();
     Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(totalMemorySize, malloc(totalMemorySize));
     Clay_Initialize(clayMemory, (Clay_Dimensions){ (float)sapp_width(), (float)sapp_height() }, (Clay_ErrorHandler){0});
-    FC = sfons_create(&(sfons_desc_t){.height = 512, .width = 512});
-    FontIndex = fonsAddFont(FC, "Roboto","resources/Roboto-Regular.ttf");
-    Fonts[FontIndex] = fonsAddFont(FC, "Roboto","resources/Roboto-Regular.ttf");
-    Clay_SetMeasureTextFunction(sclay_measure_text, &ClayFontCalc);
+    Stash = sfons_create(&(sfons_desc_t){.height = 512, .width = 512});
+    FontIndex[0] = fonsAddFont(Stash, "Roboto","resources/Roboto-Regular.ttf");
+    for(int i = 0; i <= sizeof(FontIndex) - 1; i++)
+    {
+        printf("Id of Font: %d At index : %d ",FontIndex[i],i);
+    }
+    printf("\n");
+    Clay_SetMeasureTextFunction(&ClayFontCalc, Stash);
 }
 
 void ClientMenu()/* (1)Nome - (2)CPF/CNPJ - (3)Telefone - (4)Email - (5)Endereço/ImagemLocal */
@@ -191,13 +196,13 @@ static void frame()
                     Clay_TextRenderData *textData = &cmd->renderData.text;
 
                     // Configure FontStash using Clay's computed layout positions
-                    fonsSetFont(FC, textData->fontId);
-                    fonsSetSize(FC, textData->fontSize);
-                    fonsSetColor(FC, sfons_rgba(textData->textColor.r, textData->textColor.g, textData->textColor.b, textData->textColor.a));
+                    fonsSetFont(Stash, textData->fontId);
+                    fonsSetSize(Stash, textData->fontSize);
+                    fonsSetColor(Stash, sfons_rgba(textData->textColor.r, textData->textColor.g, textData->textColor.b, textData->textColor.a));
 
                     // Draw text exactly where Clay told us to
                     fonsDrawText(
-                        FC,
+                        Stash,
                         textData->fontSize,
                         textData->lineHeight + textData->fontSize, // FontStash draws from baseline
                         textData->stringContents.chars,
@@ -210,8 +215,8 @@ static void frame()
     sg_begin_pass(&(sg_pass){ .swapchain = sglue_swapchain() });
     sgl_matrix_mode_modelview();
     sgl_load_identity();
-    sclay_render(renderCommands, Fonts);
-    sfons_flush(FC);
+    sclay_render(renderCommands, FontIndex);
+    sfons_flush(Stash);
     sgl_draw();
     sg_end_pass();
     sg_commit();
