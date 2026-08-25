@@ -14,7 +14,7 @@
 #include "Lib/SOKOL/fontstash.h"
 #include "Lib/SOKOL/util/sokol_fontstash.h"
 #include "Lib/CLAY/sokol_clay.h"
-int DebugLevel = 2;
+int DebugLevel = 1;
 static int FontIndex[5] = {0};
 FONScontext *Stash;
 static struct {
@@ -227,6 +227,7 @@ static void frame()
                         printf("\n");
                         printf("Last character: %c \n",textData->stringContents.chars[textData->stringContents.length - 1]);
                         printf("Bounding Boxes: PositionX %f SizeX %f | PositionY %f SizeY %f \n",cmd->boundingBox.x,cmd->boundingBox.width,cmd->boundingBox.y,cmd->boundingBox.height);
+                        printf("Reference Screen Width: %d | Height %d \n",sapp_width(),sapp_height());
                     }
 
                     fonsDrawText(
@@ -238,12 +239,33 @@ static void frame()
                     );
                     if(DebugLevel >= 2)
                     {
-                       printf("End of Switch \n");
+                        printf("Stash DirtyRec: ");
+                        for(int i= 0; i <= 3 ; i++)
+                        {
+                            printf("%d ",Stash->dirtyRect[i]);
+                        }
+                        printf("\n");
+                        printf("Stash AtlasHeight: %d \n",Stash->atlas->height);
+                        printf("Stash AtlasWidth: %d \n",Stash->atlas->width);
+                        printf("End of Switch \n");
                     }
                     break;
                 }
     }
-
+    int DInt[4];
+    bool DirtyAtlas = fonsValidateTexture(Stash, DInt /*Stash->dirtyRect...?*/);
+    if (DirtyAtlas)
+    {
+        int Width, Height;
+        const unsigned char *Atlas  = fonsGetTextureData(Stash, &Width, &Height);
+        sg_update_image(sg_image, &(sg_image_data){
+            .subimage[0][0] = {
+                .ptr = Atlas,
+                .size = (size_t)(Width * Height)
+            }
+        });
+        //font_atlas_dirty = false;
+    }
     sg_begin_pass(&(sg_pass){ .swapchain = sglue_swapchain() });
     sgl_matrix_mode_modelview();
     sgl_load_identity();
