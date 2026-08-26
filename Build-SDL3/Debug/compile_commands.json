@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/Debug",
+  "command": "/usr/bin/cc -DSDL_GLCORE33 -I/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/Lib/SDL3_INCLUDE/SDL3 -std=gnu2x -o CMakeFiles/HE-LightBulb.dir/EntryPoint.c.o -c /home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/EntryPoint.c",
+  "file": "/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/EntryPoint.c",
+  "output": "CMakeFiles/HE-LightBulb.dir/EntryPoint.c.o"
+}
+]

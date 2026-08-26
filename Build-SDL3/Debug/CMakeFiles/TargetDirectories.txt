@@ -1,0 +1,3 @@
+/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/Debug/CMakeFiles/HE-LightBulb.dir
+/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/Debug/CMakeFiles/edit_cache.dir
+/home/Fonte/Programming/Projects/C/He-LightBulb/Build-SDL3/Debug/CMakeFiles/rebuild_cache.dir
