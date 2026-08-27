@@ -10,14 +10,16 @@
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
-SDL_FRect TestRect;
+SDL_FRect TabRec;
+SDL_FRect MainRec;
+SDL_FRect OptionsRec;
 
 #define WnHeight 600
 #define WnWidth 1200
 
 int ErrorArray[7] = {0};/*(1)Bg (2)-- (3)-- (4)-- (5)-- (6)-- */
 
-static float CalcPercent(float NUM, int PERCENT)
+static float CalcPercent(float NUM, float PERCENT)
 {
     float Result = (NUM * PERCENT)/100;
     return Result;
@@ -36,14 +38,14 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
-    SDL_SetRenderLogicalPresentation(renderer, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_STRETCH);
+    SDL_SetRenderLogicalPresentation(renderer, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
 
     return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
-    ErrorArray[0] = SDL_SetRenderDrawColor(renderer, 255, 255, 255,SDL_ALPHA_OPAQUE);
+    ErrorArray[0] = SDL_SetRenderDrawColor(renderer, 40, 40, 40,SDL_ALPHA_OPAQUE);
 
     for(int i=0;i<sizeof(ErrorArray);i++)
     {
@@ -52,17 +54,22 @@ SDL_AppResult SDL_AppIterate(void *appstate)
             SDL_APP_FAILURE;
         }
     }
+    //Tab Menu & CO
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, 60, 60, 60, SDL_ALPHA_OPAQUE);
     int Height, Width;
-    SDL_GetWindowSize(window, &Width, &Height);
-    printf("Width: %d | Height %d \n Half Width: %f | Half Height: %f",Width,Height,CalcPercent(Width, 50),CalcPercent(Height, 50));
-    TestRect.x = 0;
-    TestRect.y = 0;
-    TestRect.w = CalcPercent(Width, 50);
-    TestRect.h = Height;
-    SDL_RenderFillRect(renderer,&TestRect);
-
+    SDL_GetWindowSizeInPixels(window, &Width, &Height);
+    TabRec.x = 40;
+    TabRec.y = 20;
+    TabRec.w = CalcPercent(Width, 30);
+    TabRec.h = CalcPercent(Height, 95);
+    SDL_RenderFillRect(renderer,&TabRec);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderLine(renderer, TabRec.x + 6, TabRec.y + 24.5, TabRec.w , TabRec.y + 24.5);
+    SDL_SetRenderScale(renderer, 1.5, 1.5);
+    SDL_RenderDebugText(renderer, 40,22,"Categorias");
+    SDL_SetRenderScale(renderer, 1, 1);
+    //Main Screen & Co
     SDL_RenderPresent(renderer);
 
     return SDL_APP_CONTINUE;
