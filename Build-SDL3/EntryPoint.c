@@ -54,14 +54,14 @@ SDL_AppResult SDL_AppIterate(void *appstate)
             SDL_APP_FAILURE;
         }
     }
+    int Height, Width;
+    SDL_GetWindowSizeInPixels(window, &Width, &Height);
     //Tab Menu & CO
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 60, 60, 60, SDL_ALPHA_OPAQUE);
-    int Height, Width;
-    SDL_GetWindowSizeInPixels(window, &Width, &Height);
     TabRec.x = 40;
     TabRec.y = 20;
-    TabRec.w = CalcPercent(Width, 30);
+    TabRec.w = CalcPercent(Width, 20);
     TabRec.h = CalcPercent(Height, 95);
     SDL_RenderFillRect(renderer,&TabRec);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -69,7 +69,15 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_SetRenderScale(renderer, 1.5, 1.5);
     SDL_RenderDebugText(renderer, 40,22,"Categorias");
     SDL_SetRenderScale(renderer, 1, 1);
+    // -> Tabs
     //Main Screen & Co
+    SDL_SetRenderDrawColor(renderer, 60, 60, 60, SDL_ALPHA_OPAQUE);//Diffent color fo debugging
+    MainRec.x = TabRec.x + TabRec.w + 20;
+    MainRec.y = 20;
+    MainRec.w = Width - TabRec.w - 90;
+    MainRec.h = CalcPercent(Height, 95);
+    SDL_RenderFillRect(renderer,&MainRec);
+
     SDL_RenderPresent(renderer);
 
     return SDL_APP_CONTINUE;
