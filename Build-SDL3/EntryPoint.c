@@ -13,11 +13,30 @@ static SDL_Renderer *renderer = NULL;
 SDL_FRect TabRec;
 SDL_FRect MainRec;
 SDL_FRect OptionsRec;
+SDL_FRect Tabs[5];//Cliente - Solar - Local - Contrato - Planta Baixa
+char *StringArrays[5] = {"Cliente","Solar","Local","Contrato","P. Baixa"};
 
 #define WnHeight 600
 #define WnWidth 1200
 
-int ErrorArray[7] = {0};/*(1)Bg (2)-- (3)-- (4)-- (5)-- (6)-- */
+int ErrorArray[7] = {0};/*(1)Bg (2)TabOptions (3)CenterMenu (4)-- (5)-- (6)-- */
+
+#define ClientMen 0
+#define SolarMen 1
+#define LocalMen 2
+#define ContractMen 3
+#define MainMen 5
+#define FinalMen 4
+int CurrentMenu = MainMen;
+
+static void MainMenu()
+{
+
+}
+static void FinalMenu()
+{
+
+}
 
 static float CalcPercent(float NUM, float PERCENT)
 {
@@ -59,25 +78,53 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     //Tab Menu & CO
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 60, 60, 60, SDL_ALPHA_OPAQUE);
-    TabRec.x = 40;
+    TabRec.x = 30;
     TabRec.y = 20;
     TabRec.w = CalcPercent(Width, 20);
     TabRec.h = CalcPercent(Height, 95);
     SDL_RenderFillRect(renderer,&TabRec);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderLine(renderer, TabRec.x + 6, TabRec.y + 24.5, TabRec.w , TabRec.y + 24.5);
+    SDL_RenderLine(renderer, TabRec.x + 6, TabRec.y + 24.8, TabRec.w , TabRec.y + 24.5);
     SDL_SetRenderScale(renderer, 1.5, 1.5);
     SDL_RenderDebugText(renderer, 40,22,"Categorias");
     SDL_SetRenderScale(renderer, 1, 1);
+    OptionsRec.y = (TabRec.y + TabRec.h) - 50;
+    OptionsRec.h = 40;
+    OptionsRec.x = TabRec.x + 10;
+    OptionsRec.w = 40;
+    SDL_SetRenderDrawColor(renderer, 40, 40, 40,SDL_ALPHA_OPAQUE);
+    SDL_RenderFillRect(renderer, &OptionsRec);
     // -> Tabs
+    SDL_SetRenderDrawColor(renderer, 65, 65, 65, 255);
+    for(int i=0;i<4;i++)
+    {
+        Tabs[i].y = (TabRec.y + 40) + 40 * i;
+        Tabs[i].x = TabRec.x;
+        Tabs[i].w = TabRec.w;
+        Tabs[i].h = 30;
+        if(false)
+        {
+            printf("Tab[%d].y = %f \n",i,(TabRec.y + 40) + 33 * i);
+            printf("Tab[%d].x = %f \n",i,TabRec.x);
+            printf("Tab[%d].w = %f \n",i,TabRec.w);
+            printf("Tab[%d].h = %f \n",i,Tabs[i].h);
+        }
+    }
+    SDL_RenderFillRects(renderer,Tabs,4);
+    SDL_SetRenderDrawColor(renderer, 175, 175, 175, SDL_ALPHA_OPAQUE);
+    for(int i=0;i<4;i++)
+    {
+        SDL_RenderDebugText(renderer, TabRec.x + 9, Tabs[i].y+ 13, StringArrays[i]);
+    }
+
     //Main Screen & Co
     SDL_SetRenderDrawColor(renderer, 60, 60, 60, SDL_ALPHA_OPAQUE);//Diffent color fo debugging
     MainRec.x = TabRec.x + TabRec.w + 20;
     MainRec.y = 20;
-    MainRec.w = Width - TabRec.w - 90;
+    MainRec.w = Width - TabRec.w - 85;
     MainRec.h = CalcPercent(Height, 95);
     SDL_RenderFillRect(renderer,&MainRec);
-
+    //->Inside Screen
     SDL_RenderPresent(renderer);
 
     return SDL_APP_CONTINUE;
