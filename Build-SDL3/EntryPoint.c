@@ -1,27 +1,10 @@
-#include <SDL3/SDL_events.h>
-#include <SDL3/SDL_filesystem.h>
-#include <SDL3/SDL_init.h>
+#include "Lib/HEHelper&Maker.h"
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
-#include <SDL3/SDL_stdinc.h>
-#include <SDL3/SDL_surface.h>
-#include <SDL3/SDL_video.h>
-#include <stdio.h>
-#define SDL_MAIN_USE_CALLBACKS 1
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
 
-#if defined(_WIN32) || defined(_WIN64)
-	#define OSsep  '\\'
-#else
-	#define OSsep  '/'
-#endif
-
-static SDL_Window *window = NULL;
-static SDL_Renderer *renderer = NULL;
 static SDL_Texture *CogTexture = NULL;
-static int THeight;
-static int TWidth;
+int THeight;
+int TWidth;
 static SDL_FRect TabRec;
 int TabRecIndex;
 static SDL_FRect MainRec;
@@ -38,7 +21,7 @@ typedef struct
     float G;
     float B;
 }Color;
-Color Bg_Color = {.R = 43, .G = 41, .B = 51};
+Color HightLightColor[5];//(0)Black | (1) Green | (2) Purple
 int UsedBoxesCount = 0;
 typedef struct
 {
@@ -48,6 +31,7 @@ typedef struct
     float Width[100];
     float Height[100];
     Color RGB[100];
+    int ColorIndex[100];
 }SelBoxes;
 SelBoxes UsedBoxes;
 typedef struct
@@ -69,8 +53,6 @@ typedef struct
 }MHover;
 MHover MouseHover = {.HoverState = false};
 
-int ErrorArray[7] = {0};/*(1)Bg (2)TabOptions (3)CenterMenu (4)-- (5)-- (6)-- */
-
 #define WnHeight 600
 #define WnWidth 1200
 
@@ -82,20 +64,41 @@ int ErrorArray[7] = {0};/*(1)Bg (2)TabOptions (3)CenterMenu (4)-- (5)-- (6)-- */
 #define FinalMen 4
 int CurrentMenu = MainMen;
 
+static float CalcPercent(float NUM, float PERCENT)
+{
+    float Result = (NUM * PERCENT)/100;
+    return Result;
+}
+
+
 static void MainMenu()
 {
-
+    SDL_SetRenderDrawColor(Render, 120, 120, 120, 100);
+    SDL_FRect BannerBar = {
+        .x = MainRec.x,
+        .w = MainRec.w,
+        .y = MainRec.y + 40,
+        .h = 70
+    };
+    SDL_FRect BannerSide = {
+        .y = (MainRec.y + MainRec.h) - 70,
+        .h = 50,
+        .x = MainRec.x,
+        .w = CalcPercent(MainRec.w, 40)
+    };
+    SDL_RenderFillRect(Render, &BannerBar);
+    SDL_RenderFillRect(Render, &BannerSide);
+    SDL_SetRenderScale(Render, 1.5, 1.5);
+    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
+    SDL_RenderDebugText(Render,(BannerBar.x + CalcPercent(BannerBar.w, 15))/1.5, (BannerBar.y + (BannerBar.h/2))/1.5, "Selecione a Documentação que Deseja Criar");
+    SDL_SetRenderScale(Render, 1, 1);
+    SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
 }
 static void FinalMenu()
 {
 
 }
 
-static float CalcPercent(float NUM, float PERCENT)
-{
-    float Result = (NUM * PERCENT)/100;
-    return Result;
-}
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
@@ -105,12 +108,23 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Luciano Test 1", WnWidth, WnHeight, SDL_WINDOW_RESIZABLE, &window, &renderer))
+    if (!SDL_CreateWindowAndRenderer("Luciano Test 1", WnWidth, WnHeight, SDL_WINDOW_RESIZABLE, &window, &Render))
     {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
-    SDL_SetRenderLogicalPresentation(renderer, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
+    SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
+    HightLightColor[0].R = 0;
+    HightLightColor[0].G = 0;
+    HightLightColor[0].B = 0;
+
+    HightLightColor[1].R = 63;
+    HightLightColor[1].G = 82;
+    HightLightColor[1].B = 52;
+
+    HightLightColor[2].R = 63;
+    HightLightColor[2].G = 52;
+    HightLightColor[2].B = 82;
 
     //Texture Handling
     //->Cog Png
@@ -127,7 +141,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 
     THeight = Plane->h;
     TWidth = Plane->w;
-    CogTexture = SDL_CreateTextureFromSurface(renderer, Plane);
+    CogTexture = SDL_CreateTextureFromSurface(Render, Plane);
     if(!CogTexture)
     {
         printf("Erro Criando Bitmap da Texture");
@@ -138,16 +152,8 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     //Setting Layout
     int Height, Width;
     SDL_GetWindowSizeInPixels(window, &Width, &Height);
-    //Tab Box
-    TabRec.x = 30;
-    TabRec.y = 20;
-    TabRec.w = CalcPercent(Width, 20);
-    TabRec.h = CalcPercent(Height, 95);
+
     //Menu Box
-    OptionsRec.y = (TabRec.y + TabRec.h) - 50;
-    OptionsRec.h = 40;
-    OptionsRec.x = TabRec.x + 10;
-    OptionsRec.w = 40;
     UsedBoxes.BoxObj[UsedBoxesCount] = &OptionsRec;
     UsedBoxes.X[UsedBoxesCount] = OptionsRec.x;
     UsedBoxes.Y[UsedBoxesCount] = OptionsRec.y;
@@ -156,15 +162,12 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     UsedBoxes.RGB[UsedBoxesCount].R = 63;
     UsedBoxes.RGB[UsedBoxesCount].G = 61;
     UsedBoxes.RGB[UsedBoxesCount].B = 71;
+    UsedBoxes.ColorIndex[UsedBoxesCount] = 1;
     OptionsRecIndex = UsedBoxesCount;
     UsedBoxesCount++;
     //Tabs
     for(int i=0;i<4;i++)
     {
-        Tabs[i].y = (TabRec.y + 40) + 40 * i;
-        Tabs[i].x = TabRec.x;
-        Tabs[i].w = TabRec.w;
-        Tabs[i].h = 30;
         UsedBoxes.BoxObj[UsedBoxesCount] = &Tabs[i];
         UsedBoxes.X[UsedBoxesCount] = Tabs[i].x;
         UsedBoxes.Y[UsedBoxesCount] = Tabs[i].y;
@@ -173,21 +176,17 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         UsedBoxes.RGB[UsedBoxesCount].R = 63;//63, 61, 71
         UsedBoxes.RGB[UsedBoxesCount].G = 61;
         UsedBoxes.RGB[UsedBoxesCount].B = 71;
+        UsedBoxes.ColorIndex[UsedBoxesCount] = 1;
         TabsIndex[i] = UsedBoxesCount;
         UsedBoxesCount++;
     }
-    //Main LeftBox
-    MainRec.x = TabRec.x + TabRec.w + 20;
-    MainRec.y = 20;
-    MainRec.w = Width - TabRec.w - 85;
-    MainRec.h = CalcPercent(Height, 95);
     return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
-    SDL_SetRenderDrawColor(renderer, Bg_Color.R, Bg_Color.G, Bg_Color.B,SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(Render);
     int Height, Width;
     SDL_GetWindowSizeInPixels(window, &Width, &Height);
     //Tab Menu & CO
@@ -195,14 +194,14 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     TabRec.y = 20;
     TabRec.w = CalcPercent(Width, 20);
     TabRec.h = CalcPercent(Height, 95);
-    SDL_SetRenderDrawColor(renderer,53, 51, 61, SDL_ALPHA_OPAQUE);
-    SDL_RenderFillRect(renderer,&TabRec);
+    SDL_SetRenderDrawColor(Render,53, 51, 61, SDL_ALPHA_OPAQUE);
+    SDL_RenderFillRect(Render,&TabRec);
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderLine(renderer, TabRec.x + 6, TabRec.y + 24.8, TabRec.w , TabRec.y + 24.5);
-    SDL_SetRenderScale(renderer, 1.5, 1.5);
-    SDL_RenderDebugText(renderer, 40,22,"Categorias");
-    SDL_SetRenderScale(renderer, 1, 1);
+    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
+    SDL_RenderLine(Render, TabRec.x + 6, TabRec.y + 24.8, TabRec.w , TabRec.y + 24.5);
+    SDL_SetRenderScale(Render, 1.5, 1.5);
+    SDL_RenderDebugText(Render, 40,22,"Categorias");
+    SDL_SetRenderScale(Render, 1, 1);
 
     OptionsRec.y = (TabRec.y + TabRec.h) - 50;
     OptionsRec.h = 40;
@@ -212,8 +211,8 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     UsedBoxes.Y[OptionsRecIndex] = OptionsRec.y;
     UsedBoxes.Width[OptionsRecIndex] = OptionsRec.w;
     UsedBoxes.Height[OptionsRecIndex] = OptionsRec.h;
-    SDL_SetRenderDrawColor(renderer, UsedBoxes.RGB[OptionsRecIndex].R, UsedBoxes.RGB[OptionsRecIndex].G, UsedBoxes.RGB[OptionsRecIndex].B,SDL_ALPHA_OPAQUE);
-    SDL_RenderTexture(renderer, CogTexture, NULL, &OptionsRec);
+    SDL_SetRenderDrawColor(Render, UsedBoxes.RGB[OptionsRecIndex].R, UsedBoxes.RGB[OptionsRecIndex].G, UsedBoxes.RGB[OptionsRecIndex].B,SDL_ALPHA_OPAQUE);
+    SDL_RenderTexture(Render, CogTexture, NULL, &OptionsRec);
 
     // -> Tabs
     for(int i=0;i<4;i++)
@@ -226,10 +225,10 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         UsedBoxes.Y[TabsIndex[i]] = Tabs[i].y;
         UsedBoxes.Width[TabsIndex[i]] = Tabs[i].w;
         UsedBoxes.Height[TabsIndex[i]] = Tabs[i].h;
-        SDL_SetRenderDrawColor(renderer, UsedBoxes.RGB[TabsIndex[i]].R, UsedBoxes.RGB[TabsIndex[i]].G, UsedBoxes.RGB[TabsIndex[i]].B, 255);
-        SDL_RenderFillRect(renderer,&Tabs[i]);
-        SDL_SetRenderDrawColor(renderer, 175, 175, 175, SDL_ALPHA_OPAQUE);
-        SDL_RenderDebugText(renderer, TabRec.x + 9, Tabs[i].y+ 13, StringArrays[i]);
+        SDL_SetRenderDrawColor(Render, UsedBoxes.RGB[TabsIndex[i]].R, UsedBoxes.RGB[TabsIndex[i]].G, UsedBoxes.RGB[TabsIndex[i]].B, 255);
+        SDL_RenderFillRect(Render,&Tabs[i]);
+        SDL_SetRenderDrawColor(Render, 175, 175, 175, SDL_ALPHA_OPAQUE);
+        SDL_RenderDebugText(Render, TabRec.x + 9, Tabs[i].y+ 13, StringArrays[i]);
     }
 
     //Main Screen & Co
@@ -237,13 +236,31 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     MainRec.y = 20;
     MainRec.w = Width - TabRec.w - 85;
     MainRec.h = CalcPercent(Height, 95);
-    SDL_SetRenderDrawColor(renderer, 53, 51, 61, SDL_ALPHA_OPAQUE);
-    SDL_RenderFillRect(renderer,&MainRec);
+    SDL_SetRenderDrawColor(Render, 53, 51, 61, SDL_ALPHA_OPAQUE);
+    SDL_RenderFillRect(Render,&MainRec);
     //->Inside Screen
-    SDL_RenderPresent(renderer);
+    switch (CurrentMenu)
+    {
+        case MainMen:
+            MainMenu();
+            break;
+        case ClientMen:
+            break;
+        case SolarMen:
+            break;
+        case LocalMen:
+            break;
+        case ContractMen:
+            break;
+        case FinalMen:
+            FinalMenu();
+            break;
+
+    }
+
+    SDL_RenderPresent(Render);
     return SDL_APP_CONTINUE;
 }
-
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 {
     if (event->type == SDL_EVENT_QUIT)
@@ -289,9 +306,9 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                         MouseHover.ContextBounding_Y1 = UsedBoxes.Y[i];
                         MouseHover.ContextBounding_Y2 = UsedBoxes.Y[i] + UsedBoxes.Height[i];
                         MouseHover.Index = i;
-                        UsedBoxes.RGB[i].R = 63;
-                        UsedBoxes.RGB[i].G = 82;
-                        UsedBoxes.RGB[i].B = 52;
+                        UsedBoxes.RGB[i].R = HightLightColor[UsedBoxes.ColorIndex[i]].R;
+                        UsedBoxes.RGB[i].G = HightLightColor[UsedBoxes.ColorIndex[i]].G;
+                        UsedBoxes.RGB[i].B = HightLightColor[UsedBoxes.ColorIndex[i]].B;
                     }
                 }
             }
