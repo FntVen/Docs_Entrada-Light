@@ -1,7 +1,6 @@
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_filesystem.h>
 #include <SDL3/SDL_init.h>
-#include <SDL3/SDL_oldnames.h>
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_stdinc.h>
@@ -53,17 +52,18 @@ typedef struct
 SelBoxes UsedBoxes;
 typedef struct
 {
-
+    char TEvent[15];
+    //Find a way to pass event data
 }BtnEvent;
 
 static float MPosition[2];
 typedef struct
 {
     bool HoverState;
-    float Bounding_X1;
-    float Bounding_X2;
-    float Bounding_Y1;
-    float Bounding_Y2;
+    float ContextBounding_X1;
+    float ContextBounding_X2;
+    float ContextBounding_Y1;
+    float ContextBounding_Y2;
     int Index;
     Color ItemRGB;
 }MHover;
@@ -117,8 +117,8 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     SDL_Surface *Plane = NULL;
     char *CogPath = NULL;
 
-    SDL_asprintf(&CogPath, "%sResources%csettings.png",SDL_GetBasePath(),OSsep);
-    Plane = SDL_LoadPNG(CogPath);
+    SDL_asprintf(&CogPath, "%sResources%cSettings.bmp",SDL_GetBasePath(),OSsep);
+    Plane = SDL_LoadBMP(CogPath);
     if(!Plane)
     {
         printf("Erro Mapeando Textura");
@@ -135,7 +135,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
     SDL_free(CogPath);
     SDL_DestroySurface(Plane);
-
+    //Setting Layout
     int Height, Width;
     SDL_GetWindowSizeInPixels(window, &Width, &Height);
     //Tab Box
@@ -191,7 +191,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     int Height, Width;
     SDL_GetWindowSizeInPixels(window, &Width, &Height);
     //Tab Menu & CO
-    // TabRec.x = 30;
+    TabRec.x = 30;
     TabRec.y = 20;
     TabRec.w = CalcPercent(Width, 20);
     TabRec.h = CalcPercent(Height, 95);
@@ -254,10 +254,9 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         MPosition[0] = event->motion.x;
         MPosition[1] = event->motion.y;
-        //printf("Motion X: %f | Motion Y: %f \n",MPosition[0],MPosition[1]);
         if(MouseHover.HoverState)
         {
-            if(MPosition[0] <= MouseHover.Bounding_X1 || MPosition[0] >= MouseHover.Bounding_X2 || MPosition[1] <= MouseHover.Bounding_Y1 || MPosition[1] >= MouseHover.Bounding_Y2)
+            if(MPosition[0] <= MouseHover.ContextBounding_X1 || MPosition[0] >= MouseHover.ContextBounding_X2 || MPosition[1] <= MouseHover.ContextBounding_Y1 || MPosition[1] >= MouseHover.ContextBounding_Y2)
             {
                 UsedBoxes.RGB[MouseHover.Index].R = MouseHover.ItemRGB.R;
                 UsedBoxes.RGB[MouseHover.Index].G = MouseHover.ItemRGB.G;
@@ -266,10 +265,10 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 MouseHover.ItemRGB.R = 0;
                 MouseHover.ItemRGB.G = 0;
                 MouseHover.ItemRGB.B = 0;
-                MouseHover.Bounding_X1 = 0;
-                MouseHover.Bounding_X2 = 0;
-                MouseHover.Bounding_Y1 = 0;
-                MouseHover.Bounding_Y2 = 0;
+                MouseHover.ContextBounding_X1 = 0;
+                MouseHover.ContextBounding_X2 = 0;
+                MouseHover.ContextBounding_Y1 = 0;
+                MouseHover.ContextBounding_Y2 = 0;
                 MouseHover.HoverState = false;
             }
         }
@@ -285,14 +284,14 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                         MouseHover.ItemRGB.R = UsedBoxes.RGB[i].R;
                         MouseHover.ItemRGB.G = UsedBoxes.RGB[i].G;
                         MouseHover.ItemRGB.B = UsedBoxes.RGB[i].B;
-                        MouseHover.Bounding_X1 = UsedBoxes.X[i];
-                        MouseHover.Bounding_X2 = UsedBoxes.X[i] + UsedBoxes.Width[i];
-                        MouseHover.Bounding_Y1 = UsedBoxes.Y[i];
-                        MouseHover.Bounding_Y2 = UsedBoxes.Y[i] + UsedBoxes.Height[i];
+                        MouseHover.ContextBounding_X1 = UsedBoxes.X[i];
+                        MouseHover.ContextBounding_X2 = UsedBoxes.X[i] + UsedBoxes.Width[i];
+                        MouseHover.ContextBounding_Y1 = UsedBoxes.Y[i];
+                        MouseHover.ContextBounding_Y2 = UsedBoxes.Y[i] + UsedBoxes.Height[i];
                         MouseHover.Index = i;
-                        UsedBoxes.RGB[i].R = 255;
-                        UsedBoxes.RGB[i].B = 0;
-                        UsedBoxes.RGB[i].G = 255;
+                        UsedBoxes.RGB[i].R = 63;
+                        UsedBoxes.RGB[i].G = 82;
+                        UsedBoxes.RGB[i].B = 52;
                     }
                 }
             }
@@ -321,5 +320,5 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 
 // To-do
 // Replace PNGs with SVGs
-// Add Interactivity
+// (Done) Add Interactivity
 // Replace Debug Fonts with actual fonts
