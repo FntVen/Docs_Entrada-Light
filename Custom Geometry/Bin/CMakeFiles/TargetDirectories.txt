@@ -1,0 +1,3 @@
+/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/Bin/CMakeFiles/HE-LightBulb.dir
+/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/Bin/CMakeFiles/edit_cache.dir
+/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/Bin/CMakeFiles/rebuild_cache.dir

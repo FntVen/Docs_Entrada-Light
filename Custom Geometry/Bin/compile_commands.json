@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/Bin",
+  "command": "/usr/bin/cc -DSDL_GLCORE33   -o CMakeFiles/HE-LightBulb.dir/MakeCircle.c.o -c \"/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/MakeCircle.c\"",
+  "file": "/home/lfnt/Programming/PlayGround/SDLTests/Custom Geometry/MakeCircle.c",
+  "output": "CMakeFiles/HE-LightBulb.dir/MakeCircle.c.o"
+}
+]
