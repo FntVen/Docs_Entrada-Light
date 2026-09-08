@@ -20,34 +20,10 @@ SDL_Window *window = NULL;
 SDL_Renderer *Render = NULL;
 #define WnHeight 600
 #define WnWidth 1200
+
 void Render_PolyGon(float IN_X, float IN_Y,int IN_Radius, int IN_EdgeNum, SDL_Vertex *OUT_Vert[])
 {
-    float Vertex_Angle = (float)(180+(180*(IN_EdgeNum - 3)))/IN_EdgeNum;
-    float Turning_Angle = 180 - Vertex_Angle;
-    SDL_Vertex *Vertexes[IN_EdgeNum];
-    float Previous_Coords[2] = {0};
-    for(int i=0;i<=IN_EdgeNum;i++)
-    {
-        if(i==0)
-        {
-            Vertexes[i]->position.x = IN_X;
-            Vertexes[i]->position.y = IN_Y - IN_Radius;
-            Previous_Coords[0] = Vertexes[i]->position.x;
-            Previous_Coords[1] = Vertexes[i]->position.y;
-        }
-        float OldTemp_X = Previous_Coords[0] - IN_X;
-        float OldTemp_Y = Previous_Coords[1] - IN_Y;
 
-        float NewTemp_X = IN_Radius*cos(Turning_Angle)*cos(90 - (Turning_Angle * i))-IN_Radius*sin(Turning_Angle)*sin(90 - (Turning_Angle * i));
-        float NewTemp_Y = IN_Radius*sin(Turning_Angle)*cos(90 - (Turning_Angle * i))+IN_Radius*cos(Turning_Angle)*sin(90 - (Turning_Angle * i));
-
-        Vertexes[i]->position.x = NewTemp_X + IN_X;
-        Vertexes[i]->position.y = NewTemp_Y + IN_Y;
-
-        Previous_Coords[0] = Vertexes[i]->position.x;
-        Previous_Coords[1] = Vertexes[i]->position.y;
-    }
-    OUT_Vert = Vertexes;//Arrays automatically act as pointers
 }
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
@@ -75,6 +51,7 @@ typedef struct
 }Line;
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
+
     int WSize[2];
     SDL_GetWindowSizeInPixels(window, &WSize[0], &WSize[1]);
     SDL_SetRenderDrawColor(Render, 0, 0, 0, 255);
@@ -105,24 +82,57 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     Vertices[2].color.a = 1;
     SDL_RenderGeometry(Render, NULL, Vertices, 3, NULL, 0);
     */
+    int Vertice_Count = 9;
+    float Angle_Vertices = (float)(180+(180*(Vertice_Count - 3)))/Vertice_Count;
+    float AngleStep = 0.0174444444445;
+    float Spinning_Angle = AngleStep * (180 - Angle_Vertices);
+    SDL_Vertex Vertex[Vertice_Count];
+    SDL_zeroa(Vertex);//memclear
+    float X = (float)WSize[0]/2;
+    float Y = (float)WSize[1]/2;
+    float PointX;
+    float PointY;
+    int Radius = 80;
+    float DeltaAngle;
+    bool DirectionUP = true;
+    bool RotationPositive = false;
 
-    //Complex Shape
-    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
-    int Vert_Num = 4;
-    int Global_Coordinates[2] = {0};
-    int Vert_Angle = (180+(180*(Vert_Num -3)))/Vert_Num;
-    float Radius = 100;
-
-    SDL_GetWindowSizeInPixels(window, &Global_Coordinates[0], &Global_Coordinates[1]);
-    float X = (float)Global_Coordinates[0]/2;
-    float Y = (float)Global_Coordinates[1]/2;
-    SDL_Vertex *Vertexes[3];
-    Render_PolyGon(X, Y, 10, 3, Vertexes);
-    for(int i=0;i<3;i++)
+    float Cords[2];
+    SDL_SetRenderDrawColor(Render, 255, 0, 0, 255);
+    for(int i=0;i<Vertice_Count;i++)
     {
-        printf("Vertex %d: X-> %f| Y-> %f \n",i,Vertexes[i]->position.x,Vertexes[i]->position.y);
+        Vertex[i].color.r = 1;
+        Vertex[i].color.g = 1;
+        Vertex[i].color.b = 1;
+        Vertex[i].color.a = 1;
+        if(i==0)
+        {
+            PointX = X;
+            PointY = Y - Radius;
+            Cords[0] = X;
+            Cords[1] = Y - Radius;
+            Vertex[i].position.x = Cords[0];
+            Vertex[i].position.y = Cords[1];
+            SDL_RenderPoint(Render, Cords[0], Cords[1]);
+            //SDL_RenderLine(Render, X, Y, Cords[0], Cords[1]);
+            continue;
+        }
+        PointX = PointX - X;
+        PointY = PointY - Y;
+        Cords[0] = (PointX*cos(Spinning_Angle * i)-PointY*sin(Spinning_Angle * i)) + X;
+        Cords[1] = (PointX*sin(Spinning_Angle * i)+PointY*cos(Spinning_Angle * i)) + Y;
+        SDL_RenderPoint(Render, Cords[0], Cords[1]);
+        Vertex[i].position.x = Cords[0];
+        Vertex[i].position.y = Cords[1];
+        //SDL_RenderLine(Render, X, Y, Cords[0], Cords[1]);
+        PointX = PointX + X;
+        PointY = PointY + Y;
     }
-    SDL_RenderGeometry(Render, NULL, *Vertexes, 3, NULL, 0);
+    SDL_RenderGeometry(Render, NULL, Vertex, Vertice_Count, NULL, 0);
+    SDL_SetRenderDrawColor(Render, 0, 0, 255, 255);
+    SDL_RenderPoint(Render, X, Y);
+    SDL_SetRenderDrawColor(Render, 0, 0, 0, 255);
+
     SDL_RenderPresent(Render);
     return SDL_APP_CONTINUE;
 }
