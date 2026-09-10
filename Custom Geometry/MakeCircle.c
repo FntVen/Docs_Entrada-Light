@@ -21,9 +21,92 @@ SDL_Renderer *Render = NULL;
 #define WnHeight 600
 #define WnWidth 1200
 
-void Render_PolyGon(float IN_X, float IN_Y,int IN_Radius, int IN_EdgeNum, SDL_Vertex *OUT_Vert[])
+SDL_AppResult Render_Polygon(float IN_PosX, float IN_PosY,int IN_Radius, int IN_Vertice_Count)
 {
 
+    if(IN_Vertice_Count<=2)
+    {
+        printf("Não Poligono com %d vertices\n",IN_Vertice_Count);
+        return SDL_APP_FAILURE;
+    }
+    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
+    float Angle_Vertices = (float)(180+(180*(IN_Vertice_Count - 3)))/IN_Vertice_Count;
+    float AngleStep = 0.0174444444445;
+    float Spinning_Angle = AngleStep * (180 - Angle_Vertices);
+
+    SDL_Vertex Vertices[IN_Vertice_Count+1];
+    SDL_zeroa(Vertices);
+    int Ind[IN_Vertice_Count*3] = {};//Need to find a way to be a const
+    int Offset = 0;
+    int Height;//Debug
+    int Width;//Debug
+    SDL_GetWindowSizeInPixels(window, &Width, &Height);//Debug
+    for(int i=2;i<=IN_Vertice_Count;i++)
+    {
+        if(i==2)
+        {
+            Vertices[0].position.x = IN_PosX;
+            Vertices[0].position.y = IN_PosY;
+            Vertices[1].position.x = IN_PosX;
+            Vertices[1].position.y = IN_PosY - IN_Radius;
+            Vertices[2].position.x = ((Vertices[1].position.x - IN_PosX)*cos(Spinning_Angle * (i-1))-(Vertices[1].position.y - IN_PosY)*sin(Spinning_Angle * (i-1))) + IN_PosX;
+            Vertices[2].position.y = ((Vertices[1].position.x - IN_PosX)*sin(Spinning_Angle * (i-1))+(Vertices[1].position.y - IN_PosY)*cos(Spinning_Angle * (i-1))) + IN_PosY;
+            Ind[0] = 1;
+            Ind[1] = 0;
+            Ind[2] = 2;
+            Vertices[0].color.a = 1;
+            Vertices[0].color.r = 1;
+            Vertices[0].color.g = 1;
+            Vertices[0].color.b = 1;
+            Vertices[1].color.a = 1;
+            Vertices[1].color.r = 1;
+            Vertices[1].color.g = 1;
+            Vertices[1].color.b = 1;
+            Vertices[2].color.a = 1;
+            Vertices[2].color.r = 1;
+            Vertices[2].color.g = 1;
+            Vertices[2].color.b = 1;
+            continue;
+        }
+        Vertices[i].position.x = ((Vertices[1].position.x - IN_PosX)*cos(Spinning_Angle * (i-1))-(Vertices[1].position.y - IN_PosY)*sin(Spinning_Angle * (i-1))) + IN_PosX;
+        Vertices[i].position.y = ((Vertices[1].position.x - IN_PosX)*sin(Spinning_Angle * (i-1))+(Vertices[1].position.y - IN_PosY)*cos(Spinning_Angle * (i-1))) + IN_PosY;
+        Vertices[i].color.a = 1;
+        Vertices[i].color.r = 1;
+        Vertices[i].color.g = 1;
+        Vertices[i].color.b = 1;
+        Ind[i + Offset] = i-1;
+        Offset++;
+        Ind[i + Offset] = 0;
+        Offset++;
+        Ind[i + Offset] = i;
+        if(i==IN_Vertice_Count)
+        {
+            Offset++;
+            Ind[i+Offset] = i;
+            Offset++;
+            Ind[i+Offset] = 0;
+            Offset++;
+            Ind[i+Offset] = 1;
+        }
+    }
+    for(int i=0;i<=IN_Vertice_Count;i++)
+    {
+        if(i==5)
+        {
+            SDL_SetRenderDrawColor(Render, 255, 0, 0, 255);
+            SDL_RenderPoint(Render, Vertices[i].position.x, Vertices[i].position.y);
+            SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
+        }
+        else
+        {
+            SDL_RenderPoint(Render, Vertices[i].position.x, Vertices[i].position.y);
+        }
+        SDL_RenderDebugTextFormat(Render, 10, (Height - 10) - (10 * i), "Point %d: X > %f and Y >%f\n",i, Vertices[i].position.x,Vertices[i].position.y);
+    }
+    //const int Indices[] = {1,0,2,2,0,3,3,0,4,4,0,5,5,0,1};
+    SDL_RenderGeometry(Render, NULL, Vertices, IN_Vertice_Count+1,Ind,IN_Vertice_Count*3);
+
+    return SDL_APP_CONTINUE;
 }
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
@@ -56,82 +139,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_GetWindowSizeInPixels(window, &WSize[0], &WSize[1]);
     SDL_SetRenderDrawColor(Render, 0, 0, 0, 255);
     SDL_RenderClear(Render);
-    /*
-    //Simple Triangle
-    SDL_Vertex Vertices[3];
-    SDL_zeroa(Vertices);//memclear
-    Vertices[0].position.x = (int)WSize[0]/2;
-    Vertices[0].position.y = (int)WSize[1]/2;
-    Vertices[0].color.r = 1;
-    Vertices[0].color.g = 1;
-    Vertices[0].color.b = 1;
-    Vertices[0].color.a = 1;
+    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
 
-    Vertices[1].position.x = (int)WSize[0]/1.5;
-    Vertices[1].position.y = (int)WSize[1]/1.5;
-    Vertices[1].color.r = 1;
-    Vertices[1].color.g = 1;
-    Vertices[1].color.b = 1;
-    Vertices[1].color.a = 1;
-
-    Vertices[2].position.x = (int)WSize[0]/3;
-    Vertices[2].position.y = (int)WSize[1]/1.5;
-    Vertices[2].color.r = 1;
-    Vertices[2].color.g = 1;
-    Vertices[2].color.b = 1;
-    Vertices[2].color.a = 1;
-    SDL_RenderGeometry(Render, NULL, Vertices, 3, NULL, 0);
-    */
-    int Vertice_Count = 9;
-    float Angle_Vertices = (float)(180+(180*(Vertice_Count - 3)))/Vertice_Count;
-    float AngleStep = 0.0174444444445;
-    float Spinning_Angle = AngleStep * (180 - Angle_Vertices);
-    SDL_Vertex Vertex[Vertice_Count];
-    SDL_zeroa(Vertex);//memclear
-    float X = (float)WSize[0]/2;
-    float Y = (float)WSize[1]/2;
-    float PointX;
-    float PointY;
-    int Radius = 80;
-    float DeltaAngle;
-    bool DirectionUP = true;
-    bool RotationPositive = false;
-
-    float Cords[2];
-    SDL_SetRenderDrawColor(Render, 255, 0, 0, 255);
-    for(int i=0;i<Vertice_Count;i++)
-    {
-        Vertex[i].color.r = 1;
-        Vertex[i].color.g = 1;
-        Vertex[i].color.b = 1;
-        Vertex[i].color.a = 1;
-        if(i==0)
-        {
-            PointX = X;
-            PointY = Y - Radius;
-            Cords[0] = X;
-            Cords[1] = Y - Radius;
-            Vertex[i].position.x = Cords[0];
-            Vertex[i].position.y = Cords[1];
-            SDL_RenderPoint(Render, Cords[0], Cords[1]);
-            //SDL_RenderLine(Render, X, Y, Cords[0], Cords[1]);
-            continue;
-        }
-        PointX = PointX - X;
-        PointY = PointY - Y;
-        Cords[0] = (PointX*cos(Spinning_Angle * i)-PointY*sin(Spinning_Angle * i)) + X;
-        Cords[1] = (PointX*sin(Spinning_Angle * i)+PointY*cos(Spinning_Angle * i)) + Y;
-        SDL_RenderPoint(Render, Cords[0], Cords[1]);
-        Vertex[i].position.x = Cords[0];
-        Vertex[i].position.y = Cords[1];
-        //SDL_RenderLine(Render, X, Y, Cords[0], Cords[1]);
-        PointX = PointX + X;
-        PointY = PointY + Y;
-    }
-    SDL_RenderGeometry(Render, NULL, Vertex, Vertice_Count, NULL, 0);
-    SDL_SetRenderDrawColor(Render, 0, 0, 255, 255);
-    SDL_RenderPoint(Render, X, Y);
-    SDL_SetRenderDrawColor(Render, 0, 0, 0, 255);
+    Render_Polygon((float)WSize[0]/2, (float)WSize[1]/2, 60, 5);
 
     SDL_RenderPresent(Render);
     return SDL_APP_CONTINUE;
