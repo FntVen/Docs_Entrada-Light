@@ -1,5 +1,7 @@
 #include "Lib/HEHelper&Maker.h"
 #include <SDL3/SDL_init.h>
+#include <SDL3/SDL_render.h>
+#include <complex.h>
 //Start Main Elements
 static SDL_Texture *CogTexture = NULL;
 int THeight;
@@ -13,6 +15,9 @@ int OptionsRecIndex;
 static SDL_FRect Tabs[5];//Cliente - Solar - Local - Contrato - Planta Baixa
 int TabsIndex[5];
 static char *StringArrays[5] = {"Cliente","Solar","Local","Contrato","P. Baixa"};
+bool _Homologação = false;
+bool _Contrato = false;
+bool _PBaixa = false;
 //End Main Elements
 //Start Button Functions
 typedef union
@@ -27,11 +32,34 @@ typedef union
     char WORDS[256];
     bool CHOICE;
 }EventParams2;
+enum Function
+{
+  SWITCHTABS,
+  ENABLETABS
+};
 SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
 {
     //Param1: Index| Use index to decide how to switch CurrentMenu
     SDL_AppResult Result = SDL_APP_FAILURE;
-
+    switch(Param1.NUMBER)
+    {
+        case 0:
+            printf("Switch to tab %d\n",Param1.NUMBER);
+            Result = SDL_APP_CONTINUE;
+            break;
+        case 1:
+            printf("Switch to tab %d\n",Param1.NUMBER);
+            Result = SDL_APP_CONTINUE;
+            break;
+        case 2:
+            printf("Switch to tab %d\n",Param1.NUMBER);
+            Result = SDL_APP_CONTINUE;
+            break;
+        case 3:
+            printf("Switch to tab %d\n",Param1.NUMBER);
+            Result = SDL_APP_CONTINUE;
+            break;
+    }
     return Result;
 }
 SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
@@ -39,15 +67,69 @@ SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
     //Param1 Which tab to modify| Using kwy words to indicate which tab to change by changing a variable that also affects the radio button visuals
     //Param2 Possible necessary cleanup info if there is any data on that tab?
     SDL_AppResult Result = SDL_APP_FAILURE;
+    printf("IN ENABLE TABS \n");
+    if(Param1.NUMBER == 0)
+    {
+        if(_Homologação)
+        {
+            _Homologação = false;
+        }
+        else
+        {
+            _Homologação = true;
+        }
+        printf("_Homologação: %b\n",_Homologação);
+        Result = SDL_APP_CONTINUE;
+    }
+    if(Param1.NUMBER == 1)
+    {
+        if(_Contrato)
+        {
+            _Contrato = false;
+        }
+        else
+        {
+            _Contrato = true;
+        }
+        printf("_Contrato: %b\n",_Contrato);
+        Result = SDL_APP_CONTINUE;
+    }
+    if(Param1.NUMBER == 2)
+    {
+        if(_PBaixa)
+        {
+            _PBaixa = false;
+        }
+        else
+        {
+            _PBaixa = true;
+        }
+        printf("_PBaixa: %b\n",_PBaixa);
+        Result = SDL_APP_CONTINUE;
+    }
+    return Result;
+}
+SDL_AppResult ExecFunc(EventParams1 Param1, EventParams2 Param2, int FunctionName)
+{
+    SDL_AppResult Result = SDL_APP_FAILURE;
+    switch(FunctionName)
+    {
+        case SWITCHTABS:
+            Result = SwitchTabs(Param1,Param2);
+            break;
+        case ENABLETABS:
+            Result = EnableTabs(Param1,Param2);
+            break;
+    }
     return Result;
 }
 //End Button Functions
 //Start Structs and Reusable Elements
 Color HightLightColor[5];//(0)Black | (1) Green | (2) Purple
-int UsedBoxesCount = 0;
+int InteractiveCount = 0;
 typedef struct
 {
-    SDL_FRect *BoxObj[100];
+    void *BoxObj[100];
     float X[100];
     float Y[100];
     float Width[100];
@@ -55,7 +137,9 @@ typedef struct
     bool ColorSwitch[100];
     Color RGB[100];
     int ColorIndex[100];
-    SDL_AppResult EventFunc[100];
+    int Function[100];
+    EventParams1 Param1[100];
+    EventParams2 Param2[100];
 }SelBoxes;
 SelBoxes GeneralInteract;
 static float MPosition[2];
@@ -94,10 +178,23 @@ RadioButton RBtns[3] = {
         .BackColor.R=255,.BackColor.G=255,.BackColor.B=255,.BackColor.A=255,
         .FrontColor.R=0,.FrontColor.G=0,.FrontColor.B=0,.FrontColor.A=255,
         .Size = 10,
-        .State = false,
+    },
+    (RadioButton)
+    {
+        .BackColor.R=255,.BackColor.G=255,.BackColor.B=255,.BackColor.A=255,
+        .FrontColor.R=0,.FrontColor.G=0,.FrontColor.B=0,.FrontColor.A=255,
+        .Size = 10,
+    },
+    (RadioButton)
+    {
+        .BackColor.R=255,.BackColor.G=255,.BackColor.B=255,.BackColor.A=255,
+        .FrontColor.R=0,.FrontColor.G=0,.FrontColor.B=0,.FrontColor.A=255,
+        .Size = 10,
     }
 };
 int Radio_BoxIndex[3];
+int Main_RadioIndex[3];
+bool _Main_RBtns = false;
 static void MainMenu()
 {
     SDL_SetRenderDrawColor(Render, 120, 120, 120, 100);
@@ -122,20 +219,37 @@ static void MainMenu()
     SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
     RBtns[0].XY[0] = MainRec.x + 30;
     RBtns[0].XY[1] = MainRec.h/3;
+    RBtns[0].State = _Homologação;
+    RBtns[1].State = _Contrato;
     RBtns[1].XY[0] = MainRec.x + 30;
     RBtns[1].XY[1] = MainRec.h/2;
-    RBtns[1].XY[0] = MainRec.x + 30;
-    RBtns[1].XY[1] = MainRec.h/1.5;
+    RBtns[2].XY[0] = MainRec.x + 30;
+    RBtns[2].XY[1] = MainRec.h/1.5;
+    RBtns[2].State = _PBaixa;
+
+    if(_Main_RBtns){goto Drawing_RadioBTNS;}
+    for(int i = 0;i<4;i++)
+    {
+        GeneralInteract.BoxObj[InteractiveCount] = &RBtns[i];
+        GeneralInteract.ColorSwitch[InteractiveCount] = false;
+        GeneralInteract.Function[InteractiveCount] = ENABLETABS;
+        GeneralInteract.X[InteractiveCount] = RBtns[i].XY[0] - RBtns[i].Size;
+        GeneralInteract.Width[InteractiveCount] = RBtns[i].Size*2;
+        GeneralInteract.Y[InteractiveCount] = RBtns[i].XY[1] - RBtns[i].Size;
+        GeneralInteract.Height[InteractiveCount] = RBtns[i].Size*2;
+        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
+        Main_RadioIndex[i] = InteractiveCount;
+        InteractiveCount++;
+    }
+    _Main_RBtns = true;
+    Drawing_RadioBTNS:
     SDL_RenderRadioBtn(RBtns[0]);
+    SDL_RenderRadioBtn(RBtns[1]);
+    SDL_RenderRadioBtn(RBtns[2]);
 }
 static void FinalMenu()
 {
 
-}
-SDL_AppResult TestFunc()
-{
-    printf("Teste Funcionou\n");
-    return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -197,18 +311,20 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     //Tabs
     for(int i=0;i<4;i++)
     {
-        GeneralInteract.BoxObj[UsedBoxesCount] = &Tabs[i];
-        GeneralInteract.X[UsedBoxesCount] = Tabs[i].x;
-        GeneralInteract.Y[UsedBoxesCount] = Tabs[i].y;
-        GeneralInteract.Width[UsedBoxesCount] = Tabs[i].w;
-        GeneralInteract.Height[UsedBoxesCount] = Tabs[i].h;
-        GeneralInteract.ColorSwitch[UsedBoxesCount] = true;
-        GeneralInteract.RGB[UsedBoxesCount].R = 63;//63, 61, 71
-        GeneralInteract.RGB[UsedBoxesCount].G = 61;
-        GeneralInteract.RGB[UsedBoxesCount].B = 71;
-        GeneralInteract.ColorIndex[UsedBoxesCount] = 1;
-        TabsIndex[i] = UsedBoxesCount;
-        UsedBoxesCount++;
+        GeneralInteract.BoxObj[InteractiveCount] = &Tabs[i];
+        GeneralInteract.X[InteractiveCount] = Tabs[i].x;
+        GeneralInteract.Y[InteractiveCount] = Tabs[i].y;
+        GeneralInteract.Width[InteractiveCount] = Tabs[i].w;
+        GeneralInteract.Height[InteractiveCount] = Tabs[i].h;
+        GeneralInteract.ColorSwitch[InteractiveCount] = true;
+        GeneralInteract.RGB[InteractiveCount].R = 63;//63, 61, 71
+        GeneralInteract.RGB[InteractiveCount].G = 61;
+        GeneralInteract.RGB[InteractiveCount].B = 71;
+        GeneralInteract.ColorIndex[InteractiveCount] = 1;
+        TabsIndex[i] = InteractiveCount;
+        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
+        GeneralInteract.Function[InteractiveCount] = SWITCHTABS;
+        InteractiveCount++;
     }
     return SDL_APP_CONTINUE;
 }
@@ -258,12 +374,13 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         GeneralInteract.Width[TabsIndex[i]] = Tabs[i].w;
         GeneralInteract.Height[TabsIndex[i]] = Tabs[i].h;
         GeneralInteract.ColorSwitch[TabsIndex[i]] = true;
+        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
+        GeneralInteract.Function[InteractiveCount] = SWITCHTABS;
         SDL_SetRenderDrawColor(Render, GeneralInteract.RGB[TabsIndex[i]].R, GeneralInteract.RGB[TabsIndex[i]].G, GeneralInteract.RGB[TabsIndex[i]].B, 255);
         SDL_RenderFillRect(Render,&Tabs[i]);
         SDL_SetRenderDrawColor(Render, 175, 175, 175, SDL_ALPHA_OPAQUE);
         SDL_RenderDebugText(Render, TabRec.x + 9, Tabs[i].y+ 13, StringArrays[i]);
     }
-
     //Main Screen & Co
     MainRec.x = TabRec.x + TabRec.w + 20;
     MainRec.y = 20;
@@ -326,7 +443,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 MouseHover.HoverState = false;
             }
         }
-        for(int i=0;i<=UsedBoxesCount;i++)
+        for(int i=0;i<=InteractiveCount;i++)
         {
             if(MPosition[0] >=GeneralInteract.X[i] && MPosition[0] <=GeneralInteract.X[i] + GeneralInteract.Width[i])//Correct Horizontal
             {
@@ -356,13 +473,13 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     }
     if(event->type == SDL_EVENT_MOUSE_BUTTON_DOWN)
     {
-        for(int i=0;i<=UsedBoxesCount;i++)
+        for(int i=0;i<=InteractiveCount;i++)
         {
             if(MPosition[0] >=GeneralInteract.X[i] && MPosition[0] <=GeneralInteract.X[i] + GeneralInteract.Width[i])//Correct Horizontal
             {
                 if(MPosition[1] >=GeneralInteract.Y[i] && MPosition[1] <=GeneralInteract.Y[i] + GeneralInteract.Height[i])
                 {
-                    SDL_AppResult Result = GeneralInteract.EventFunc[i];
+                    SDL_AppResult Result = ExecFunc(GeneralInteract.Param1[i], GeneralInteract.Param2[i], GeneralInteract.Function[i]);
                     if(Result != SDL_APP_CONTINUE)
                     {
                         return Result;
