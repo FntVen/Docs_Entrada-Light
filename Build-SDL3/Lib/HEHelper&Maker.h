@@ -1,23 +1,5 @@
-#ifndef H_GUARD
-#define H_GUARD
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include <SDL3/SDL_events.h>
-#include <SDL3/SDL_filesystem.h>
-#include <SDL3/SDL_init.h>
-#include <SDL3/SDL_rect.h>
-#include <SDL3/SDL_render.h>
-#include <SDL3/SDL_stdinc.h>
-#include <SDL3/SDL_surface.h>
-#include <SDL3/SDL_video.h>
-#include <stdio.h>
-#define SDL_MAIN_USE_CALLBACKS 1
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
-
+#include "SDLLV1.h"
+//#include <cstdlib>
 
 typedef struct{
 	char NClient[256];//Nome do Cliente
@@ -61,8 +43,6 @@ typedef struct
     char FileName[50];
 
 }BuildDocument;
-SDL_Window *window = NULL;
-SDL_Renderer *Render = NULL;
 
 #if defined(_WIN32) || defined(_WIN64)
 	#define OSsep  '\\'
@@ -81,6 +61,9 @@ typedef struct{
 }R_ReadBuffer;
 
 /*Helper Functions*/
+
+int Test(){}
+
 static bool MoveFiles(const char *Location, const char *Destination)
 {
     bool Sucess = false;
@@ -915,4 +898,3 @@ static int Init(BuildDocument Doc)
  * ° Copy command copies parent folder (Windows) - Fixed
  * ° Error in one of the cmd commands syntax (Windows) - Fixed
  */
-#endif
