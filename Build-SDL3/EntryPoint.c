@@ -1,7 +1,4 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_init.h>
-#include <SDL3/SDL_render.h>
-#include <complex.h>
 //Start Main Elements
 static SDL_Texture *CogTexture = NULL;
 int THeight;
