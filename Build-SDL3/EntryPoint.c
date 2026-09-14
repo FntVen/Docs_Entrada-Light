@@ -1,6 +1,6 @@
 #include "Lib/HEHelper&Maker.h"
 #include <SDL3/SDL_init.h>
-
+//Start Main Elements
 static SDL_Texture *CogTexture = NULL;
 int THeight;
 int TWidth;
@@ -13,7 +13,36 @@ int OptionsRecIndex;
 static SDL_FRect Tabs[5];//Cliente - Solar - Local - Contrato - Planta Baixa
 int TabsIndex[5];
 static char *StringArrays[5] = {"Cliente","Solar","Local","Contrato","P. Baixa"};
+//End Main Elements
+//Start Button Functions
+typedef union
+{
+    int NUMBER;
+    char WORDS[256];
+    bool CHOICE;
+}EventParams1;
+typedef union
+{
+    int NUMBER;
+    char WORDS[256];
+    bool CHOICE;
+}EventParams2;
+SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
+{
+    //Param1: Index| Use index to decide how to switch CurrentMenu
+    SDL_AppResult Result = SDL_APP_FAILURE;
 
+    return Result;
+}
+SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
+{
+    //Param1 Which tab to modify| Using kwy words to indicate which tab to change by changing a variable that also affects the radio button visuals
+    //Param2 Possible necessary cleanup info if there is any data on that tab?
+    SDL_AppResult Result = SDL_APP_FAILURE;
+    return Result;
+}
+//End Button Functions
+//Start Structs and Reusable Elements
 Color HightLightColor[5];//(0)Black | (1) Green | (2) Purple
 int UsedBoxesCount = 0;
 typedef struct
@@ -26,7 +55,7 @@ typedef struct
     bool ColorSwitch[100];
     Color RGB[100];
     int ColorIndex[100];
-    SDL_AppResult *EventFunc[100];
+    SDL_AppResult EventFunc[100];
 }SelBoxes;
 SelBoxes GeneralInteract;
 static float MPosition[2];
@@ -41,7 +70,7 @@ typedef struct
     Color ItemRGB;
 }MHover;
 MHover MouseHover = {.HoverState = false};
-
+//End Structs and Reusable Elements
 #define WnHeight 600
 #define WnWidth 1200
 
@@ -320,7 +349,6 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                         MouseHover.ContextBounding_Y1 = GeneralInteract.Y[i];
                         MouseHover.ContextBounding_Y2 = GeneralInteract.Y[i] + GeneralInteract.Height[i];
                         MouseHover.Index = i;
-
                     }
                 }
             }
@@ -334,7 +362,11 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             {
                 if(MPosition[1] >=GeneralInteract.Y[i] && MPosition[1] <=GeneralInteract.Y[i] + GeneralInteract.Height[i])
                 {
-
+                    SDL_AppResult Result = GeneralInteract.EventFunc[i];
+                    if(Result != SDL_APP_CONTINUE)
+                    {
+                        return Result;
+                    }
                 }
             }
         }
