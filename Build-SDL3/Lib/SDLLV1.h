@@ -95,11 +95,15 @@ typedef struct
 
 SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
 {
-    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size, 100, IN_RD.BackColor);
+    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size, 200, IN_RD.BackColor);
     if(!IN_RD.State)
     {
         IN_RD.FrontColor = IN_RD.BackColor;
     }
-    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size*0.5, 100, IN_RD.FrontColor);
+    else
+    {
+        IN_RD.FrontColor = (Color){.A=255,.R=0,.G=0,.B=0};
+    }
+    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size*0.5, 200, IN_RD.FrontColor);
     return SDL_APP_CONTINUE;
 }
