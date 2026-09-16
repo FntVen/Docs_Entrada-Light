@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/Bin",
+  "command": "/usr/bin/cc -DSDL_GLCORE33 -I\"/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/Libs\"  -o CMakeFiles/MakeFont.dir/FontMaking.c.o -c \"/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/FontMaking.c\"",
+  "file": "/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/FontMaking.c",
+  "output": "CMakeFiles/MakeFont.dir/FontMaking.c.o"
+}
+]
