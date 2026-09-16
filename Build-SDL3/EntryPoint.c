@@ -1,4 +1,5 @@
 #include "Lib/HEHelper&Maker.h"
+#include <stdio.h>
 //Start Main Elements
 static SDL_Texture *CogTexture = NULL;
 int THeight;
@@ -11,12 +12,14 @@ static SDL_FRect OptionsRec;
 int OptionsRecIndex;
 static SDL_FRect Tabs[5];//Cliente - Solar - Local - Contrato - Planta Baixa
 int TabsIndex[5];
-static char *StringArrays[5] = {"Cliente","Solar","Local","Contrato","P. Baixa"};
+bool _EnabledTabs[5] = {false,false,false,false};
 bool _Homologação = false;
 bool _Contrato = false;
 bool _PBaixa = false;
+static char *StringArrays[5] = {"Cliente","Solar","Local","Contrato","P. Baixa"};
+
 //End Main Elements
-//Start Button Functions
+
 typedef union
 {
     int NUMBER;
@@ -28,12 +31,45 @@ typedef union
     int NUMBER;
     char WORDS[256];
     bool CHOICE;
-}EventParams2;
+}EventParams2;//Currently copy of EventParam1 but realistically it should be more complementary
 enum Function
 {
   SWITCHTABS,
   ENABLETABS
 };
+
+//Start Structs and Reusable Elements
+int InteractiveCount = 0;
+typedef struct
+{
+    void *BoxObj[100];
+    float X[100];
+    float Y[100];
+    float Width[100];
+    float Height[100];
+    bool Enabled[100];
+    Color BaseColor[100];
+    Color HighLightColor[100];
+    Color DisabledColor[100];
+    Color UsedColor[100];
+    int Function[100];
+    EventParams1 Param1[100];
+    EventParams2 Param2[100];
+}SelBoxes;
+SelBoxes GeneralInteract;
+static float MPosition[2];
+typedef struct
+{
+    bool HoverState;
+    float ContextBounding_X1;
+    float ContextBounding_X2;
+    float ContextBounding_Y1;
+    float ContextBounding_Y2;
+    int Index;
+}MHover;
+MHover MouseHover = {.HoverState = false};
+//End Structs and Reusable Elements
+//Start Button Functions
 SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
 {
     //Param1: Index| Use index to decide how to switch CurrentMenu
@@ -41,22 +77,34 @@ SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
     switch(Param1.NUMBER)
     {
         case 0:
-            printf("Switch to tab %d\n",Param1.NUMBER);
+            if(_Homologação)
+            {
+                printf("Switch to tab %d\n",Param1.NUMBER);
+            }
             Result = SDL_APP_CONTINUE;
             break;
         case 1:
-            printf("Switch to tab %d\n",Param1.NUMBER);
+            if(_Homologação)
+            {
+                printf("Switch to tab %d\n",Param1.NUMBER);
+            }
             Result = SDL_APP_CONTINUE;
             break;
         case 2:
-            printf("Switch to tab %d\n",Param1.NUMBER);
+            if(_Homologação)
+            {
+                printf("Switch to tab %d\n",Param1.NUMBER);
+            }
             Result = SDL_APP_CONTINUE;
             break;
         case 3:
-            printf("Switch to tab %d\n",Param1.NUMBER);
+            if(_Contrato)
+            {
+                printf("Switch to tab %d\n",Param1.NUMBER);
+            }
             Result = SDL_APP_CONTINUE;
             break;
-    }
+    }//PBaixa não existe ainda
     return Result;
 }
 SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
@@ -64,18 +112,23 @@ SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
     //Param1 Which tab to modify| Using kwy words to indicate which tab to change by changing a variable that also affects the radio button visuals
     //Param2 Possible necessary cleanup info if there is any data on that tab?
     SDL_AppResult Result = SDL_APP_FAILURE;
-    printf("IN ENABLE TABS \n");
     if(Param1.NUMBER == 0)
     {
         if(_Homologação)
         {
             _Homologação = false;
+            _EnabledTabs[0] = false;
+            _EnabledTabs[1] = false;
+            _EnabledTabs[2] = false;
         }
         else
         {
             _Homologação = true;
+            _EnabledTabs[0] = true;
+            _EnabledTabs[1] = true;
+            _EnabledTabs[2] = true;
         }
-        printf("_Homologação: %b\n",_Homologação);
+        //printf("_Homologação: %b\n",_Homologação);
         Result = SDL_APP_CONTINUE;
     }
     if(Param1.NUMBER == 1)
@@ -83,12 +136,13 @@ SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
         if(_Contrato)
         {
             _Contrato = false;
+            _EnabledTabs[3] = false;
         }
         else
         {
             _Contrato = true;
+            _EnabledTabs[3] = true;
         }
-        printf("_Contrato: %b\n",_Contrato);
         Result = SDL_APP_CONTINUE;
     }
     if(Param1.NUMBER == 2)
@@ -96,13 +150,31 @@ SDL_AppResult EnableTabs(EventParams1 Param1, EventParams2 Param2)
         if(_PBaixa)
         {
             _PBaixa = false;
+            _EnabledTabs[4] = false;
         }
         else
         {
             _PBaixa = true;
+            _EnabledTabs[4] = true;
         }
-        printf("_PBaixa: %b\n",_PBaixa);
         Result = SDL_APP_CONTINUE;
+    }
+    for(int i = 0;i<=4;i++)
+    {
+        if(_EnabledTabs[i])
+        {
+            GeneralInteract.UsedColor[TabsIndex[i]].A = GeneralInteract.BaseColor[TabsIndex[i]].A;
+            GeneralInteract.UsedColor[TabsIndex[i]].R = GeneralInteract.BaseColor[TabsIndex[i]].R;
+            GeneralInteract.UsedColor[TabsIndex[i]].G = GeneralInteract.BaseColor[TabsIndex[i]].G;
+            GeneralInteract.UsedColor[TabsIndex[i]].B = GeneralInteract.BaseColor[TabsIndex[i]].B;
+        }
+        else
+        {
+            GeneralInteract.UsedColor[TabsIndex[i]].A = GeneralInteract.DisabledColor[TabsIndex[i]].A;
+            GeneralInteract.UsedColor[TabsIndex[i]].R = GeneralInteract.DisabledColor[TabsIndex[i]].R;
+            GeneralInteract.UsedColor[TabsIndex[i]].G = GeneralInteract.DisabledColor[TabsIndex[i]].G;
+            GeneralInteract.UsedColor[TabsIndex[i]].B = GeneralInteract.DisabledColor[TabsIndex[i]].B;
+        }
     }
     return Result;
 }
@@ -121,37 +193,6 @@ SDL_AppResult ExecFunc(EventParams1 Param1, EventParams2 Param2, int FunctionNam
     return Result;
 }
 //End Button Functions
-//Start Structs and Reusable Elements
-Color HightLightColor[5];//(0)Black | (1) Green | (2) Purple
-int InteractiveCount = 0;
-typedef struct
-{
-    void *BoxObj[100];
-    float X[100];
-    float Y[100];
-    float Width[100];
-    float Height[100];
-    bool ColorSwitch[100];
-    Color RGB[100];
-    int ColorIndex[100];
-    int Function[100];
-    EventParams1 Param1[100];
-    EventParams2 Param2[100];
-}SelBoxes;
-SelBoxes GeneralInteract;
-static float MPosition[2];
-typedef struct
-{
-    bool HoverState;
-    float ContextBounding_X1;
-    float ContextBounding_X2;
-    float ContextBounding_Y1;
-    float ContextBounding_Y2;
-    int Index;
-    Color ItemRGB;
-}MHover;
-MHover MouseHover = {.HoverState = false};
-//End Structs and Reusable Elements
 #define WnHeight 600
 #define WnWidth 1200
 
@@ -228,7 +269,6 @@ static void MainMenu()
     for(int i = 0;i<4;i++)
     {
         GeneralInteract.BoxObj[InteractiveCount] = &RBtns[i];
-        GeneralInteract.ColorSwitch[InteractiveCount] = false;
         GeneralInteract.Function[InteractiveCount] = ENABLETABS;
         GeneralInteract.X[InteractiveCount] = RBtns[i].XY[0] - RBtns[i].Size;
         GeneralInteract.Width[InteractiveCount] = RBtns[i].Size*2;
@@ -246,7 +286,7 @@ static void MainMenu()
 }
 static void FinalMenu()
 {
-
+    //
 }
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -263,20 +303,6 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
-    HightLightColor[0].A = 0;
-    HightLightColor[0].R = 0;
-    HightLightColor[0].G = 0;
-    HightLightColor[0].B = 0;
-
-    HightLightColor[1].A = 255;
-    HightLightColor[1].R = 63;
-    HightLightColor[1].G = 82;
-    HightLightColor[1].B = 52;
-
-    HightLightColor[2].A = 255;
-    HightLightColor[2].R = 63;
-    HightLightColor[2].G = 52;
-    HightLightColor[2].B = 82;
 
     //Texture Handling
     //->Cog Png
@@ -306,18 +332,30 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     SDL_GetWindowSizeInPixels(window, &Width, &Height);
 
     //Tabs
-    for(int i=0;i<4;i++)
+    for(int i=0;i<=4;i++)
     {
         GeneralInteract.BoxObj[InteractiveCount] = &Tabs[i];
         GeneralInteract.X[InteractiveCount] = Tabs[i].x;
         GeneralInteract.Y[InteractiveCount] = Tabs[i].y;
         GeneralInteract.Width[InteractiveCount] = Tabs[i].w;
         GeneralInteract.Height[InteractiveCount] = Tabs[i].h;
-        GeneralInteract.ColorSwitch[InteractiveCount] = true;
-        GeneralInteract.RGB[InteractiveCount].R = 63;//63, 61, 71
-        GeneralInteract.RGB[InteractiveCount].G = 61;
-        GeneralInteract.RGB[InteractiveCount].B = 71;
-        GeneralInteract.ColorIndex[InteractiveCount] = 1;
+        GeneralInteract.BaseColor[InteractiveCount].A = 255;
+        GeneralInteract.BaseColor[InteractiveCount].R = 63;
+        GeneralInteract.BaseColor[InteractiveCount].G = 61;
+        GeneralInteract.BaseColor[InteractiveCount].B = 71;
+        GeneralInteract.HighLightColor[InteractiveCount].A = 255;
+        GeneralInteract.HighLightColor[InteractiveCount].R = 63;
+        GeneralInteract.HighLightColor[InteractiveCount].G = 82;
+        GeneralInteract.HighLightColor[InteractiveCount].B = 52;
+        GeneralInteract.DisabledColor[InteractiveCount].A = 255;
+        GeneralInteract.DisabledColor[InteractiveCount].R = 43;
+        GeneralInteract.DisabledColor[InteractiveCount].G = 41;
+        GeneralInteract.DisabledColor[InteractiveCount].B = 51;
+        GeneralInteract.UsedColor[InteractiveCount].A = GeneralInteract.DisabledColor[InteractiveCount].A;
+        GeneralInteract.UsedColor[InteractiveCount].R = GeneralInteract.DisabledColor[InteractiveCount].R;
+        GeneralInteract.UsedColor[InteractiveCount].G = GeneralInteract.DisabledColor[InteractiveCount].G;
+        GeneralInteract.UsedColor[InteractiveCount].B = GeneralInteract.DisabledColor[InteractiveCount].B;
+        GeneralInteract.Enabled[InteractiveCount] = false;
         TabsIndex[i] = InteractiveCount;
         GeneralInteract.Param1[InteractiveCount].NUMBER = i;
         GeneralInteract.Function[InteractiveCount] = SWITCHTABS;
@@ -354,13 +392,11 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     GeneralInteract.Y[OptionsRecIndex] = OptionsRec.y;
     GeneralInteract.Width[OptionsRecIndex] = OptionsRec.w;
     GeneralInteract.Height[OptionsRecIndex] = OptionsRec.h;
-    GeneralInteract.ColorSwitch[OptionsRecIndex] = false;
-    //GeneralInteract.EventFunc[OptionsRecIndex] = &TestFunc();
-    SDL_SetRenderDrawColor(Render, GeneralInteract.RGB[OptionsRecIndex].R, GeneralInteract.RGB[OptionsRecIndex].G, GeneralInteract.RGB[OptionsRecIndex].B,SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(Render, GeneralInteract.BaseColor[OptionsRecIndex].R, GeneralInteract.BaseColor[OptionsRecIndex].G, GeneralInteract.BaseColor[OptionsRecIndex].B,SDL_ALPHA_OPAQUE);
     SDL_RenderTexture(Render, CogTexture, NULL, &OptionsRec);
 
     // -> Tabs
-    for(int i=0;i<4;i++)
+    for(int i=0;i<4;i++)//Redo colors every frame
     {
         Tabs[i].y = (TabRec.y + 40) + 40 * i;
         Tabs[i].x = TabRec.x;
@@ -370,10 +406,10 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         GeneralInteract.Y[TabsIndex[i]] = Tabs[i].y;
         GeneralInteract.Width[TabsIndex[i]] = Tabs[i].w;
         GeneralInteract.Height[TabsIndex[i]] = Tabs[i].h;
-        GeneralInteract.ColorSwitch[TabsIndex[i]] = true;
-        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
-        GeneralInteract.Function[InteractiveCount] = SWITCHTABS;
-        SDL_SetRenderDrawColor(Render, GeneralInteract.RGB[TabsIndex[i]].R, GeneralInteract.RGB[TabsIndex[i]].G, GeneralInteract.RGB[TabsIndex[i]].B, 255);
+        GeneralInteract.Enabled[TabsIndex[i]] = _EnabledTabs[i];
+        GeneralInteract.Param1[TabsIndex[i]].NUMBER = i;
+        GeneralInteract.Function[TabsIndex[i]] = SWITCHTABS;
+        SDL_SetRenderDrawColor(Render, GeneralInteract.UsedColor[TabsIndex[i]].R, GeneralInteract.UsedColor[TabsIndex[i]].G, GeneralInteract.UsedColor[TabsIndex[i]].B, GeneralInteract.UsedColor[TabsIndex[i]].A);
         SDL_RenderFillRect(Render,&Tabs[i]);
         SDL_SetRenderDrawColor(Render, 175, 175, 175, SDL_ALPHA_OPAQUE);
         SDL_RenderDebugText(Render, TabRec.x + 9, Tabs[i].y+ 13, StringArrays[i]);
@@ -402,7 +438,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         case FinalMen:
             FinalMenu();
             break;
-
     }
 
     SDL_RenderPresent(Render);
@@ -423,21 +458,18 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         {
             if(MPosition[0] <= MouseHover.ContextBounding_X1 || MPosition[0] >= MouseHover.ContextBounding_X2 || MPosition[1] <= MouseHover.ContextBounding_Y1 || MPosition[1] >= MouseHover.ContextBounding_Y2)
             {
-                if(GeneralInteract.ColorSwitch[MouseHover.Index])
+                if(GeneralInteract.Enabled[MouseHover.Index])
                 {
-                    GeneralInteract.RGB[MouseHover.Index].R = MouseHover.ItemRGB.R;
-                    GeneralInteract.RGB[MouseHover.Index].G = MouseHover.ItemRGB.G;
-                    GeneralInteract.RGB[MouseHover.Index].B = MouseHover.ItemRGB.B;
-
-                    MouseHover.ItemRGB.R = 0;
-                    MouseHover.ItemRGB.G = 0;
-                    MouseHover.ItemRGB.B = 0;
+                    GeneralInteract.UsedColor[MouseHover.Index].A = GeneralInteract.BaseColor[MouseHover.Index].A;
+                    GeneralInteract.UsedColor[MouseHover.Index].R = GeneralInteract.BaseColor[MouseHover.Index].R;
+                    GeneralInteract.UsedColor[MouseHover.Index].G = GeneralInteract.BaseColor[MouseHover.Index].G;
+                    GeneralInteract.UsedColor[MouseHover.Index].B = GeneralInteract.BaseColor[MouseHover.Index].B;
+                    MouseHover.ContextBounding_X1 = 0;
+                    MouseHover.ContextBounding_X2 = 0;
+                    MouseHover.ContextBounding_Y1 = 0;
+                    MouseHover.ContextBounding_Y2 = 0;
+                    MouseHover.HoverState = false;
                 }
-                MouseHover.ContextBounding_X1 = 0;
-                MouseHover.ContextBounding_X2 = 0;
-                MouseHover.ContextBounding_Y1 = 0;
-                MouseHover.ContextBounding_Y2 = 0;
-                MouseHover.HoverState = false;
             }
         }
         for(int i=0;i<=InteractiveCount;i++)
@@ -448,21 +480,19 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 {
                     if(!MouseHover.HoverState)
                     {
-                        MouseHover.HoverState = true;
-                        if(GeneralInteract.ColorSwitch[i])
+                        if(GeneralInteract.Enabled[i])
                         {
-                            MouseHover.ItemRGB.R = GeneralInteract.RGB[i].R;
-                            MouseHover.ItemRGB.G = GeneralInteract.RGB[i].G;
-                            MouseHover.ItemRGB.B = GeneralInteract.RGB[i].B;
-                            GeneralInteract.RGB[i].R = HightLightColor[GeneralInteract.ColorIndex[i]].R;
-                            GeneralInteract.RGB[i].G = HightLightColor[GeneralInteract.ColorIndex[i]].G;
-                            GeneralInteract.RGB[i].B = HightLightColor[GeneralInteract.ColorIndex[i]].B;
+                            MouseHover.HoverState = true;
+                            GeneralInteract.UsedColor[i].A = GeneralInteract.HighLightColor[i].A;
+                            GeneralInteract.UsedColor[i].R = GeneralInteract.HighLightColor[i].R;
+                            GeneralInteract.UsedColor[i].G = GeneralInteract.HighLightColor[i].G;
+                            GeneralInteract.UsedColor[i].B = GeneralInteract.HighLightColor[i].B;
+                            MouseHover.ContextBounding_X1 = GeneralInteract.X[i];
+                            MouseHover.ContextBounding_X2 = GeneralInteract.X[i] + GeneralInteract.Width[i];
+                            MouseHover.ContextBounding_Y1 = GeneralInteract.Y[i];
+                            MouseHover.ContextBounding_Y2 = GeneralInteract.Y[i] + GeneralInteract.Height[i];
+                            MouseHover.Index = i;
                         }
-                        MouseHover.ContextBounding_X1 = GeneralInteract.X[i];
-                        MouseHover.ContextBounding_X2 = GeneralInteract.X[i] + GeneralInteract.Width[i];
-                        MouseHover.ContextBounding_Y1 = GeneralInteract.Y[i];
-                        MouseHover.ContextBounding_Y2 = GeneralInteract.Y[i] + GeneralInteract.Height[i];
-                        MouseHover.Index = i;
                     }
                 }
             }
@@ -494,6 +524,5 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 }
 
 // To-do
-// Replace PNGs with SVGs
-// (Done) Add Interactivity
+// Get HighLights to work again
 // Replace Debug Fonts with actual fonts
