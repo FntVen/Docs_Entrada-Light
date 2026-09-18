@@ -1,7 +1,4 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_rect.h>
-#include <SDL3/SDL_render.h>
-#include <SDL3_ttf/SDL_ttf.h>
 //Start Main Elements
 TTF_Font *MainFont;
 static SDL_Texture *CogTexture = NULL;
@@ -42,7 +39,7 @@ enum Function
 };
 
 //Start Structs and Reusable Elements
-int MainHubScrool = 0;
+int ScrollIndex = 0;
 int InteractiveCount = 0;
 typedef struct
 {
@@ -82,7 +79,7 @@ typedef struct
     const char *String;
     Color RGB;
 }Text;
-Text *ActiveLabels[100];
+Text ActiveLabels[100];
 int LabelCount=0;
 
 bool HubLoaded = false;
@@ -92,38 +89,48 @@ void CleanFonts()//Erases all used fonts in the main hub and clears the "one use
     {
         return;
     }
-    for(int i=0;i<=LabelCount;i++)
+    for(int i=0;i<LabelCount;i++)
     {
-        SDL_DestroyTexture(ActiveLabels[i]->Texture);
+        SDL_DestroyTexture(ActiveLabels[i].Texture);
     }
     HubLoaded = false;
 }
-bool LoadFonts()//Sets a bool that determines that this function should only be executed once preferably at the end of the function
+SDL_Surface *TxtSurface;
+SDL_AppResult LoadFonts(int FontSize)//Sets a bool that determines that this function should only be executed once preferably at the end of the function | Default Fontsize=24
 {
-
-    bool Result = false;
-    for(int i = 0;i<LabelCount;i++)
+    
+    bool Result = SDL_APP_FAILURE;
+    for(int i = 0;i<=LabelCount;i++)
     {
-         SDL_Color TxtColor = {.a=ActiveLabels[i]->RGB.A,.r=ActiveLabels[i]->RGB.R,.g=ActiveLabels[i]->RGB.G,.b=ActiveLabels[i]->RGB.B};
-         SDL_Surface *TxtSurface = TTF_RenderText_Blended(MainFont,ActiveLabels[i]->String, 0, TxtColor);
+        //printf("X: %d | Y: %d | W: %d | H: %d \n",ActiveLabels[i].X,ActiveLabels[i].Y,ActiveLabels[i].Width,ActiveLabels[i].Height);
+        if(HubLoaded)
+        {
+            SDL_SetRenderScale(Render,FontSize/24,FontSize/24);
+            SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){.x=ActiveLabels[i].X,.y=ActiveLabels[i].Y,.h=ActiveLabels[i].Height,.w=ActiveLabels[i].Width});
+            SDL_SetRenderScale(Render,1,1);
+            continue;
+        }
+        
+         SDL_Color TxtColor = {.a=ActiveLabels[i].RGB.A,.r=ActiveLabels[i].RGB.R,.g=ActiveLabels[i].RGB.G,.b=ActiveLabels[i].RGB.B};
+         TxtSurface = TTF_RenderText_Blended(MainFont,ActiveLabels[i].String, 0, TxtColor);
          if(!TxtSurface)
          {
              SDL_Log("Error Loading Font");
-             return false;
+             return SDL_APP_FAILURE;
          }
-         ActiveLabels[i]->Width = TxtSurface->w;
-         ActiveLabels[i]->Height = TxtSurface->h;
+         printf("Loadinf Sucess \n");
+         ActiveLabels[i].Width = TxtSurface->w;
+         ActiveLabels[i].Height = TxtSurface->h;
 
-         ActiveLabels[i]->Texture = SDL_CreateTextureFromSurface(Render, TxtSurface);
+         ActiveLabels[i].Texture = SDL_CreateTextureFromSurface(Render, TxtSurface);
         SDL_DestroySurface(TxtSurface);
-
-        SDL_RenderTexture(Render, ActiveLabels[i]->Texture, NULL, &(SDL_FRect){.x=ActiveLabels[i]->X,.y=ActiveLabels[i]->Y,.h=ActiveLabels[i]->Height,.w=ActiveLabels[i]->Width});
+        SDL_SetRenderScale(Render,FontSize/24,FontSize/24);
+        SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){.x=ActiveLabels[i].X,.y=ActiveLabels[i].Y,.h=ActiveLabels[i].Height,.w=ActiveLabels[i].Width});
+        TxtSurface = NULL;
+        SDL_SetRenderScale(Render,1,1);
     }
-    Result = true;
-    if(Result)
-    {
-        HubLoaded = true;
-    }
+    Result = SDL_APP_SUCCESS;
+    HubLoaded = true;
     return Result;
 }
 //End Structs, Reusable Elements and Functions
@@ -291,7 +298,7 @@ RadioButton RBtns[3] = {
 int Radio_BoxIndex[3];
 int Main_RadioIndex[3];
 bool _Main_RBtns = false;
-static void MainMenu()
+static SDL_AppResult MainMenu()
 {
     SDL_SetRenderDrawColor(Render, 120, 120, 120, 100);
     SDL_FRect BannerBar = {
@@ -309,18 +316,18 @@ static void MainMenu()
     SDL_RenderFillRect(Render, &BannerBar);
     SDL_RenderFillRect(Render, &BannerSide);
     SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
-    Text BannerText ={
-        .X =  BannerBar.x + CalcPercent(BannerBar.w, 15),
-        .Y =  BannerBar.y + (BannerBar.h/2),
+    
+    if(!HubLoaded)
+    {
+        printf("HubIN\n");
+        ActiveLabels[LabelCount] = (Text){
+        .X =  BannerBar.x + CalcPercent(BannerBar.w, 25),
+        .Y =  BannerBar.y + (BannerBar.h/2.9),
         .RGB = {.A=255,.R=255,.G=255,.B=255},
         .String = "Selecione a Documentação que Deseja Criar"
     };
-    if(!HubLoaded)
-    {
-        ActiveLabels[LabelCount] = &BannerText;
         LabelCount++;
     }
-    //SDL_RenderDebugText(Render,(BannerBar.x + CalcPercent(BannerBar.w, 15))/1.5, (BannerBar.y + (BannerBar.h/2))/1.5, "Selecione a Documentação que Deseja Criar");
     SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
     RBtns[0].XY[0] = MainRec.x + 30;
     RBtns[0].XY[1] = MainRec.h/3;
@@ -350,7 +357,13 @@ static void MainMenu()
     SDL_RenderRadioBtn(RBtns[0]);
     SDL_RenderRadioBtn(RBtns[1]);
     SDL_RenderRadioBtn(RBtns[2]);
-    LoadFonts();
+    SDL_AppResult Result =  LoadFonts(24);
+    if(Result != SDL_APP_CONTINUE)
+    {
+        return Result;
+    }
+    return SDL_APP_CONTINUE;
+
 }
 static void FinalMenu()
 {
@@ -376,7 +389,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         SDL_Log("Error in the Font Loader");
         return SDL_APP_FAILURE;
     }
-    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 48);
+    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 24);
     if(!Font)
     {
         SDL_Log("Error Loading Font");
@@ -460,8 +473,17 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
     SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
     SDL_RenderLine(Render, TabRec.x + 6, TabRec.y + 24.8, TabRec.w , TabRec.y + 24.5);
-    SDL_SetRenderScale(Render, 1.5, 1.5);
-    SDL_RenderDebugText(Render, 40,22,"Categorias");
+    /*
+    Text TXT_Categorias ={
+        .String = "Categorias",
+        .RGB = {.A=255,.R=255,.G=255,.B=25},
+        .X = 40,
+        .Y = 12
+    };
+    */
+
+    //LoadFonts(15);
+    //SDL_RenderDebugText(Render, 40,22,"Categorias");
     SDL_SetRenderScale(Render, 1, 1);
 
     OptionsRec.y = (TabRec.y + TabRec.h) - 50;
@@ -501,11 +523,12 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     MainRec.h = CalcPercent(Height, 95);
     SDL_SetRenderDrawColor(Render, 53, 51, 61, SDL_ALPHA_OPAQUE);
     SDL_RenderFillRect(Render,&MainRec);
+    SDL_AppResult Res;
     //->Inside Screen
     switch (CurrentMenu)
     {
         case MainMen:
-            MainMenu();
+            Res = MainMenu();
             break;
         case ClientMen:
             break;
@@ -521,7 +544,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     }
 
     SDL_RenderPresent(Render);
-    return SDL_APP_CONTINUE;
+    return Res;
 }
 
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
