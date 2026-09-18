@@ -1,6 +1,9 @@
 #include "Lib/HEHelper&Maker.h"
-#include <stdio.h>
+#include <SDL3/SDL_rect.h>
+#include <SDL3/SDL_render.h>
+#include <SDL3_ttf/SDL_ttf.h>
 //Start Main Elements
+TTF_Font *MainFont;
 static SDL_Texture *CogTexture = NULL;
 int THeight;
 int TWidth;
@@ -39,6 +42,7 @@ enum Function
 };
 
 //Start Structs and Reusable Elements
+int MainHubScrool = 0;
 int InteractiveCount = 0;
 typedef struct
 {
@@ -68,7 +72,61 @@ typedef struct
     int Index;
 }MHover;
 MHover MouseHover = {.HoverState = false};
-//End Structs and Reusable Elements
+typedef struct
+{
+    SDL_Texture *Texture;
+    float X;
+    float Y;
+    float Width;
+    float Height;
+    const char *String;
+    Color RGB;
+}Text;
+Text *ActiveLabels[100];
+int LabelCount=0;
+
+bool HubLoaded = false;
+void CleanFonts()//Erases all used fonts in the main hub and clears the "one use bool"
+{
+    if(LabelCount == 0)
+    {
+        return;
+    }
+    for(int i=0;i<=LabelCount;i++)
+    {
+        SDL_DestroyTexture(ActiveLabels[i]->Texture);
+    }
+    HubLoaded = false;
+}
+bool LoadFonts()//Sets a bool that determines that this function should only be executed once preferably at the end of the function
+{
+
+    bool Result = false;
+    for(int i = 0;i<LabelCount;i++)
+    {
+         SDL_Color TxtColor = {.a=ActiveLabels[i]->RGB.A,.r=ActiveLabels[i]->RGB.R,.g=ActiveLabels[i]->RGB.G,.b=ActiveLabels[i]->RGB.B};
+         SDL_Surface *TxtSurface = TTF_RenderText_Blended(MainFont,ActiveLabels[i]->String, 0, TxtColor);
+         if(!TxtSurface)
+         {
+             SDL_Log("Error Loading Font");
+             return false;
+         }
+         ActiveLabels[i]->Width = TxtSurface->w;
+         ActiveLabels[i]->Height = TxtSurface->h;
+
+         ActiveLabels[i]->Texture = SDL_CreateTextureFromSurface(Render, TxtSurface);
+        SDL_DestroySurface(TxtSurface);
+
+        SDL_RenderTexture(Render, ActiveLabels[i]->Texture, NULL, &(SDL_FRect){.x=ActiveLabels[i]->X,.y=ActiveLabels[i]->Y,.h=ActiveLabels[i]->Height,.w=ActiveLabels[i]->Width});
+    }
+    Result = true;
+    if(Result)
+    {
+        HubLoaded = true;
+    }
+    return Result;
+}
+//End Structs, Reusable Elements and Functions
 //Start Button Functions
 SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
 {
@@ -250,10 +308,19 @@ static void MainMenu()
     };
     SDL_RenderFillRect(Render, &BannerBar);
     SDL_RenderFillRect(Render, &BannerSide);
-    SDL_SetRenderScale(Render, 1.5, 1.5);
     SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
-    SDL_RenderDebugText(Render,(BannerBar.x + CalcPercent(BannerBar.w, 15))/1.5, (BannerBar.y + (BannerBar.h/2))/1.5, "Selecione a Documentação que Deseja Criar");
-    SDL_SetRenderScale(Render, 1, 1);
+    Text BannerText ={
+        .X =  BannerBar.x + CalcPercent(BannerBar.w, 15),
+        .Y =  BannerBar.y + (BannerBar.h/2),
+        .RGB = {.A=255,.R=255,.G=255,.B=255},
+        .String = "Selecione a Documentação que Deseja Criar"
+    };
+    if(!HubLoaded)
+    {
+        ActiveLabels[LabelCount] = &BannerText;
+        LabelCount++;
+    }
+    //SDL_RenderDebugText(Render,(BannerBar.x + CalcPercent(BannerBar.w, 15))/1.5, (BannerBar.y + (BannerBar.h/2))/1.5, "Selecione a Documentação que Deseja Criar");
     SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
     RBtns[0].XY[0] = MainRec.x + 30;
     RBtns[0].XY[1] = MainRec.h/3;
@@ -283,6 +350,7 @@ static void MainMenu()
     SDL_RenderRadioBtn(RBtns[0]);
     SDL_RenderRadioBtn(RBtns[1]);
     SDL_RenderRadioBtn(RBtns[2]);
+    LoadFonts();
 }
 static void FinalMenu()
 {
@@ -303,6 +371,18 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
+    if(!TTF_Init())
+    {
+        SDL_Log("Error in the Font Loader");
+        return SDL_APP_FAILURE;
+    }
+    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 48);
+    if(!Font)
+    {
+        SDL_Log("Error Loading Font");
+        return SDL_APP_FAILURE;
+    }
+    MainFont = Font;
 
     //Texture Handling
     //->Cog Png
@@ -524,5 +604,4 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 }
 
 // To-do
-// Get HighLights to work again
 // Replace Debug Fonts with actual fonts
