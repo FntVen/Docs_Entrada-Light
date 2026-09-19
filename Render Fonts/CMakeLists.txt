@@ -14,7 +14,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE "Libs")
 
 # Configure header paths pointing to your local system or repository directories
 find_package(SDL3 REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
+find_package(SDL3_ttf CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 SDL3_ttf::SDL3_ttf)
 if(APPLE)
     # macOS Configuration: Native Metal Backend
     target_compile_definitions(${PROJECT_NAME} PRIVATE SOKOL_METAL)
