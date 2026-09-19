@@ -9,49 +9,61 @@
 
 #define WnHeight 600
 #define WnWidth 1200
-TTF_Font *Font;
-float Width = 0;
-float Height = 0;
+
 int MouseMove[2] = {0};
 float PosX[100] = {0};
 float PosY[100] = {0};
+TTF_Font *Font;
 
 typedef struct
 {
+    char *String;
+    int Size;
+    int X;
+    int Y;
+    int W;
+    int H;
     SDL_Texture *Texture;
-    float X;
-    float Y;
-    float Width;
-    float Height;
-    const char *String;
-    Color RGB;
-}Text;
-Text *Labels[100];
-int UsedLabels=0;
-
-void SetText(Text *Txt, float X, float Y, Color Color)
+    Color ARGB;
+}TextData;//Make Text then render;
+TextData ContextText[100];
+int TextContextUsed = 0;
+bool RenderTextContext = false;
+SDL_AppResult RenderFont()
 {
-    Txt->RGB = Color;
-    SDL_Color TxtColor = {.a=Txt->RGB.A,.r=Txt->RGB.R,.g=Txt->RGB.G,.b=Txt->RGB.B};//Probably use my own RGBA thing for consistency
-    SDL_Surface *TxtSurface = TTF_RenderText_Blended(Font,Txt->String, 0, TxtColor);
-    if(!TxtSurface)
+    if(RenderTextContext)
     {
-        SDL_Log("Error Loading Font");
-        return;
+        for(int i=0; i<TextContextUsed;i++)
+        {
+            printf("i: %d | X: %d | Y: %d | W: %d | H: %d \n",i,ContextText[i].X,ContextText[i].Y,ContextText[i].W,ContextText[i].H);
+            SDL_RenderTexture(Render, ContextText[i].Texture, NULL, &(SDL_FRect){
+                .x=ContextText[i].X,
+                .y=ContextText[i].Y,
+                .w=ContextText[i].W,
+                .h=ContextText[i].H
+            });
+        }
+        return SDL_APP_CONTINUE;
     }
+    for(int i=0; i<TextContextUsed;i++)
+    {
+        SDL_Color TxtColor = {.a=ContextText[i].ARGB.A,.r=ContextText[i].ARGB.R,.g=ContextText[i].ARGB.G,.b=ContextText[i].ARGB.B};
+        SDL_Surface *TxtSuface = TTF_RenderText_Blended(Font,ContextText[i].String,0,TxtColor);
 
-    Txt->Width = TxtSurface->w;
-    Txt->Height = TxtSurface->h;
-    Txt->X = X;
-    Txt->Y = Y;
-
-    Txt->Texture = SDL_CreateTextureFromSurface(Render, TxtSurface);
-    SDL_DestroySurface(TxtSurface);
-
-    Labels[UsedLabels] = Txt;
-    UsedLabels++;
+        ContextText[i].H = TxtSuface->h;
+        ContextText[i].W = TxtSuface->w;
+        ContextText[i].Texture = SDL_CreateTextureFromSurface(Render,TxtSuface);
+        SDL_DestroySurface(TxtSuface);
+        SDL_RenderTexture(Render, ContextText[TextContextUsed].Texture, NULL, &(SDL_FRect){
+            .x=ContextText[i].X,
+            .y=ContextText[i].Y,
+            .w=ContextText[i].W,
+            .h=ContextText[i].H
+        });
+    }
+    RenderTextContext = true;
+    return SDL_APP_CONTINUE;
 }
-
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     if (!SDL_Init(SDL_INIT_VIDEO))
@@ -60,45 +72,46 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Luciano Teste Texto", WnWidth, WnHeight, SDL_WINDOW_RESIZABLE, &window, &Render))
+    if (!SDL_CreateWindowAndRenderer("Luciano Test 1", WnWidth, WnHeight, SDL_WINDOW_RESIZABLE, &window, &Render))
     {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
-    SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
     if(!TTF_Init())
     {
         SDL_Log("Error in the Font Loader");
         return SDL_APP_FAILURE;
     }
-    TTF_Font *MainFont = TTF_OpenFont("Resources/Roboto-Regular.ttf", 48);
+    TTF_Font *MainFont = TTF_OpenFont("Fonts/Roboto-Regular.ttf", 24);
     if(!MainFont)
     {
         SDL_Log("Error Loading Font");
         return SDL_APP_FAILURE;
     }
     Font = MainFont;
+    SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
 
     return SDL_APP_CONTINUE;
 }
-Text TXT_TextoTitulo;//Need to be outside the iterate loop
-bool TextTriggers[8] = {false,false,false,false,false,false,false,false};
-int Iterate_TriggerCounter = 0;
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
     SDL_SetRenderDrawColor(Render, 0, 0, 0, 255);
-
-    if(!TextTriggers[Iterate_TriggerCounter])
+    SDL_RenderClear(Render);
+    SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
+    if(!TextContextUsed)
     {
-        TXT_TextoTitulo.String = "Teste";
-        SetText(&TXT_TextoTitulo, 30, 40,(Color){.A=255,.R=255,.G=255,.B=255});
+        ContextText[TextContextUsed] = (TextData){
+           .ARGB = {.A=255,.R=255,.G=255,.B=255},
+           .String = "Teste",
+           .X = 60,
+           .Y = 100,
+           .Size = 24
+        };
+        TextContextUsed++;
     }
-    TextTriggers[Iterate_TriggerCounter] = true;
-    Iterate_TriggerCounter++;
-    SDL_RenderTexture(Render, TXT_TextoTitulo.Texture, NULL, &(SDL_FRect){.x=TXT_TextoTitulo.X,.y=TXT_TextoTitulo.Y,.h=TXT_TextoTitulo.Height,.w=TXT_TextoTitulo.Width});
+    RenderFont();
     SDL_RenderPresent(Render);
-    Iterate_TriggerCounter = 0;
-    return SDL_APP_CONTINUE;
+    return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
 
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
@@ -111,12 +124,11 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
-    for(int i=0;i<=UsedLabels;i++)
-    {
-        SDL_DestroyTexture(Labels[i]->Texture);
-    }
-    TTF_CloseFont(Font);
-    TTF_Quit();
-    SDL_DestroyRenderer(Render);
-    SDL_DestroyWindow(window);
+    //Implement actual resorce cleanup for textures
+    //
+    // SDL_DestroyTexture();
+    // TTF_CloseFont();
+    // TTF_Quit();
+    // SDL_DestroyRenderer();
+    // SDL_DestroyWindow();
 }
