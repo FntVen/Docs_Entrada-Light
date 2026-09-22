@@ -1,7 +1,6 @@
 #include "Lib/HEHelper&Maker.h"
 #include <SDL3/SDL_events.h>
 //Start Main Elements
-TTF_Font *MainFont;
 static SDL_Texture *CogTexture = NULL;
 int THeight;
 int TWidth;
@@ -70,7 +69,6 @@ typedef struct
     int Index;
 }MHover;
 MHover MouseHover = {.HoverState = false};
-
 
 void CleanFonts()//Erases all used fonts in the main hub and clears the "one use bool"
 {
@@ -353,19 +351,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
-    if(!TTF_Init())
+    SDL_AppResult FontResult = SetFont();
+    if(FontResult != SDL_APP_CONTINUE)
     {
-        SDL_Log("Error in the Font Loader");
-        return SDL_APP_FAILURE;
+        return FontResult;
     }
-    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 24);
-    if(!Font)
-    {
-        SDL_Log("Error Loading Font");
-        return SDL_APP_FAILURE;
-    }
-    MainFont = Font;
-
     //Texture Handling
     //->Cog Png
     SDL_Surface *Plane = NULL;
@@ -587,7 +577,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             }
         }
     }
-    if(event->type == SDL_EVENT_WINDOW_RESIZED ||event->type == SDL_EVENT_WINDOW_MAXIMIZED)
+    if(event->type == SDL_EVENT_WINDOW_RESIZED)
     {
         CleanFonts();
     }
