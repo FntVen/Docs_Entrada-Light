@@ -118,6 +118,9 @@ typedef struct
     Color RGB;
     int FontSize;
 }Text;
+Text ActiveLabels[100];
+int LabelCount=0;
+bool HubLoaded = false;
 SDL_AppResult RenderFont()
 {
     if(HubLoaded)
