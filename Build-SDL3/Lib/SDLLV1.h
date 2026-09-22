@@ -107,3 +107,51 @@ SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
     Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size*0.5, 200, IN_RD.FrontColor);
     return SDL_APP_CONTINUE;
 }
+typedef struct
+{
+    SDL_Texture *Texture;
+    float X;
+    float Y;
+    float Width;
+    float Height;
+    const char *String;
+    Color RGB;
+    int FontSize;
+}Text;
+SDL_AppResult RenderFont()
+{
+    if(HubLoaded)
+    {
+        for(int i=0; i<LabelCount;i++)
+        {
+            SDL_SetRenderScale(Render, ActiveLabels[i].FontSize/(float)24, ActiveLabels[i].FontSize/(float)24);
+            SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
+                .x=ActiveLabels[i].X*((float)24/ActiveLabels[i].FontSize),
+                .y=ActiveLabels[i].Y*((float)24/ActiveLabels[i].FontSize),
+                .w=ActiveLabels[i].Width,
+                .h=ActiveLabels[i].Height
+            });
+        }
+        SDL_SetRenderScale(Render, 1, 1);
+        return SDL_APP_CONTINUE;
+    }
+    for(int i=0; i<LabelCount;i++)
+    {
+        SDL_Color TxtColor = {.a=ActiveLabels[i].RGB.A,.r=ActiveLabels[i].RGB.R,.g=ActiveLabels[i].RGB.G,.b=ActiveLabels[i].RGB.B};
+        SDL_Surface *TxtSuface = TTF_RenderText_Blended(MainFont,ActiveLabels[i].String,0,TxtColor);
+        ActiveLabels[i].Height = TxtSuface->h;
+        ActiveLabels[i].Width = TxtSuface->w;
+        ActiveLabels[i].Texture = SDL_CreateTextureFromSurface(Render,TxtSuface);
+        SDL_DestroySurface(TxtSuface);
+        SDL_SetRenderScale(Render, ActiveLabels[i].FontSize/(float)24, ActiveLabels[i].FontSize/(float)24);
+        SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
+            .x=ActiveLabels[i].X*((float)24/ActiveLabels[i].FontSize),
+            .y=ActiveLabels[i].Y*((float)24/ActiveLabels[i].FontSize),
+            .w=ActiveLabels[i].Width,
+            .h=ActiveLabels[i].Height
+        });
+    }
+    HubLoaded = true;
+    SDL_SetRenderScale(Render, 1, 1);
+    return SDL_APP_CONTINUE;
+}
