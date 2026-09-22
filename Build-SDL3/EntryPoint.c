@@ -1,7 +1,6 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_render.h>
+#include <SDL3/SDL_events.h>
 //Start Main Elements
-TTF_Font *MainFont;
 static SDL_Texture *CogTexture = NULL;
 int THeight;
 int TWidth;
@@ -44,7 +43,7 @@ int ScrollIndex = 0;
 int InteractiveCount = 0;
 typedef struct
 {
-    void *BoxObj[100];
+    void *BoxObj[100];//Make this a SDL_Frect again and make X,Y,Width and Height Redundant
     float X[100];
     float Y[100];
     float Width[100];
@@ -70,21 +69,7 @@ typedef struct
     int Index;
 }MHover;
 MHover MouseHover = {.HoverState = false};
-typedef struct
-{
-    SDL_Texture *Texture;
-    float X;
-    float Y;
-    float Width;
-    float Height;
-    const char *String;
-    Color RGB;
-    int FontSize;
-}Text;
-Text ActiveLabels[100];
-int LabelCount=0;
 
-bool HubLoaded = false;
 void CleanFonts()//Erases all used fonts in the main hub and clears the "one use bool"
 {
     if(LabelCount == 0)
@@ -94,48 +79,18 @@ void CleanFonts()//Erases all used fonts in the main hub and clears the "one use
     for(int i=0;i<LabelCount;i++)
     {
         SDL_DestroyTexture(ActiveLabels[i].Texture);
+        ActiveLabels[i].FontSize = 0;
+        ActiveLabels[i].Height = 0;
+        ActiveLabels[i].Width = 0;
+        ActiveLabels[i].X = 0;
+        ActiveLabels[i].Y = 0;
+        ActiveLabels[i].RGB = (Color){.A=0,.R=0,.G=0,.B=0};
+        ActiveLabels[i].String = "";
     }
+    LabelCount = 0;
     HubLoaded = false;
 }
-SDL_AppResult RenderFont()
-{
-    if(HubLoaded)
-    {
-        for(int i=0; i<LabelCount;i++)
-        {
-            printf("i: %d | X: %f | Y: %f | W: %f | H: %f \n",i,ActiveLabels[i].X,ActiveLabels[i].Y,ActiveLabels[i].Width,ActiveLabels[i].Height);
-            SDL_SetRenderScale(Render, (float)24/ActiveLabels[i].FontSize, (float)24/ActiveLabels[i].FontSize);
-            SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
-                .x=ActiveLabels[i].X,
-                .y=ActiveLabels[i].Y,
-                .w=ActiveLabels[i].Width,
-                .h=ActiveLabels[i].Height
-            });
-        }
-        SDL_SetRenderScale(Render, 1, 1);
-        return SDL_APP_CONTINUE;
-    }
-    for(int i=0; i<LabelCount;i++)
-    {
-        SDL_Color TxtColor = {.a=ActiveLabels[i].RGB.A,.r=ActiveLabels[i].RGB.R,.g=ActiveLabels[i].RGB.G,.b=ActiveLabels[i].RGB.B};
-        SDL_Surface *TxtSuface = TTF_RenderText_Blended(MainFont,ActiveLabels[i].String,0,TxtColor);
 
-        ActiveLabels[i].Height = TxtSuface->h;
-        ActiveLabels[i].Width = TxtSuface->w;
-        ActiveLabels[i].Texture = SDL_CreateTextureFromSurface(Render,TxtSuface);
-        SDL_DestroySurface(TxtSuface);
-        SDL_SetRenderScale(Render, (float)24/ActiveLabels[i].FontSize, (float)24/ActiveLabels[i].FontSize);
-        SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
-            .x=ActiveLabels[i].X,
-            .y=ActiveLabels[i].Y,
-            .w=ActiveLabels[i].Width,
-            .h=ActiveLabels[i].Height
-        });
-    }
-    HubLoaded = true;
-    SDL_SetRenderScale(Render, 1, 1);
-    return SDL_APP_CONTINUE;
-}
 //End Structs, Reusable Elements and Functions
 //Start Button Functions
 SDL_AppResult SwitchTabs(EventParams1 Param1, EventParams2 Param2)
@@ -314,25 +269,13 @@ static SDL_AppResult MainMenu()
         .y = (MainRec.y + MainRec.h) - 70,
         .h = 50,
         .x = MainRec.x,
-        .w = CalcPercent(MainRec.w, 40)
+        .w = CalcPercent(MainRec.w, 80)
     };
     SDL_RenderFillRect(Render, &BannerBar);
     SDL_RenderFillRect(Render, &BannerSide);
     SDL_SetRenderDrawColor(Render, 255, 255, 255, 255);
 
-    if(!HubLoaded)
-    {
-        printf("HubIN\n");
-        ActiveLabels[LabelCount] = (Text){
-        .X =  BannerBar.x + CalcPercent(BannerBar.w, 25),
-        .Y =  BannerBar.y + (BannerBar.h/2.9),
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "Selecione a Documentação que Deseja Criar",
-        .FontSize = 24
-    };
-        LabelCount++;
-    }
-    SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
+    //SDL_RenderDebugText(Render, BannerSide.x + CalcPercent(BannerSide.w, 10), BannerSide.y + (BannerSide.h/2), "Use as Abas ao Lado para Preencher");
     RBtns[0].XY[0] = MainRec.x + 30;
     RBtns[0].XY[1] = MainRec.h/3;
     RBtns[0].State = _Homologação;
@@ -343,24 +286,58 @@ static SDL_AppResult MainMenu()
     RBtns[2].XY[1] = MainRec.h/1.5;
     RBtns[2].State = _PBaixa;
 
-    if(_Main_RBtns){goto Drawing_RadioBTNS;}
-    for(int i = 0;i<4;i++)
+    printf("%d",_Main_RBtns);
+    if(_Main_RBtns)
     {
-        GeneralInteract.BoxObj[InteractiveCount] = &RBtns[i];
-        GeneralInteract.Function[InteractiveCount] = ENABLETABS;
-        GeneralInteract.X[InteractiveCount] = RBtns[i].XY[0] - RBtns[i].Size;
-        GeneralInteract.Width[InteractiveCount] = RBtns[i].Size*2;
-        GeneralInteract.Y[InteractiveCount] = RBtns[i].XY[1] - RBtns[i].Size;
-        GeneralInteract.Height[InteractiveCount] = RBtns[i].Size*2;
-        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
-        Main_RadioIndex[i] = InteractiveCount;
-        InteractiveCount++;
+        for(int i = 0;i<4;i++)
+        {
+            GeneralInteract.X[InteractiveCount] = RBtns[i].ColisionBox->x;
+            GeneralInteract.Width[InteractiveCount] = RBtns[i].ColisionBox->w;
+            GeneralInteract.Y[InteractiveCount] = RBtns[i].ColisionBox->y;
+            GeneralInteract.Height[InteractiveCount] = RBtns[i].ColisionBox->h;
+        }
     }
-    _Main_RBtns = true;
-    Drawing_RadioBTNS:
+    else
+    {
+        for(int i = 0;i<4;i++)
+        {
+            RBtns[i].ColisionBox = &(SDL_FRect){.x=RBtns[i].XY[0] - RBtns[i].Size,.y=RBtns[i].XY[1] - RBtns[i].Size,.w=RBtns[i].Size*2,.h=RBtns[i].Size*2};
+            GeneralInteract.BoxObj[InteractiveCount] = RBtns[i].ColisionBox;
+            GeneralInteract.Function[InteractiveCount] = ENABLETABS;
+            GeneralInteract.X[InteractiveCount] = RBtns[i].ColisionBox->x;
+            GeneralInteract.Width[InteractiveCount] = RBtns[i].ColisionBox->w;
+            GeneralInteract.Y[InteractiveCount] = RBtns[i].ColisionBox->y;
+            GeneralInteract.Height[InteractiveCount] = RBtns[i].ColisionBox->h;
+            GeneralInteract.Param1[InteractiveCount].NUMBER = i;
+            Main_RadioIndex[i] = InteractiveCount;
+            InteractiveCount++;
+        }
+        _Main_RBtns = true;
+    }
+
     SDL_RenderRadioBtn(RBtns[0]);
     SDL_RenderRadioBtn(RBtns[1]);
     SDL_RenderRadioBtn(RBtns[2]);
+    if(!HubLoaded)
+    {
+        ActiveLabels[LabelCount] = (Text){
+            .X =  MainRec.x + CalcPercent(BannerBar.w, 25),
+            .Y =  (MainRec.y + 40) + (BannerBar.h/2.9),
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "Selecione a Documentação que Deseja Criar",
+            .FontSize = 24
+        };
+        LabelCount++;
+
+        ActiveLabels[LabelCount] = (Text){
+            .X = MainRec.x + CalcPercent(MainRec.w, 1.7),
+            .Y = (MainRec.y + MainRec.h) - 58,
+            .String = "Use as Abas ao Lado para Preencher os dados referentes a documentação",
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .FontSize = 20
+        };
+        LabelCount++;
+    }
     SDL_AppResult Result =  RenderFont();
     if(Result != SDL_APP_CONTINUE)
     {
@@ -388,19 +365,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(Render, WnWidth, WnHeight, SDL_LOGICAL_PRESENTATION_DISABLED);
-    if(!TTF_Init())
+    SDL_AppResult FontResult = SetFont();
+    if(FontResult != SDL_APP_CONTINUE)
     {
-        SDL_Log("Error in the Font Loader");
-        return SDL_APP_FAILURE;
+        return FontResult;
     }
-    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 24);
-    if(!Font)
-    {
-        SDL_Log("Error Loading Font");
-        return SDL_APP_FAILURE;
-    }
-    MainFont = Font;
-
     //Texture Handling
     //->Cog Png
     SDL_Surface *Plane = NULL;
@@ -621,6 +590,10 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 }
             }
         }
+    }
+    if(event->type == SDL_EVENT_WINDOW_RESIZED || event->type == SDL_EVENT_WINDOW_MAXIMIZED)
+    {
+        CleanFonts();
     }
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
