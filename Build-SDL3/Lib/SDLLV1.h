@@ -92,6 +92,23 @@ typedef struct
     Color BackColor;
     Color FrontColor;
 }RadioButton;
+TTF_Font *MainFont;
+SDL_AppResult SetFont()
+{
+     if(!TTF_Init())
+    {
+        SDL_Log("Error in the Font Loader");
+        return SDL_APP_FAILURE;
+    }
+    TTF_Font *Font = TTF_OpenFont("Resources/Roboto-Regular.ttf", 24);
+    if(!Font)
+    {
+        SDL_Log("Error Loading Font");
+        return SDL_APP_FAILURE;
+    }
+    MainFont = Font;
+    return  SDL_APP_CONTINUE;
+}
 
 SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
 {
