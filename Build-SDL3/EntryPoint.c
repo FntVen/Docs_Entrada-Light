@@ -43,7 +43,7 @@ int ScrollIndex = 0;
 int InteractiveCount = 0;
 typedef struct
 {
-    void *BoxObj[100];
+    void *BoxObj[100];//Make this a SDL_Frect again and make X,Y,Width and Height Redundant
     float X[100];
     float Y[100];
     float Width[100];
@@ -286,21 +286,35 @@ static SDL_AppResult MainMenu()
     RBtns[2].XY[1] = MainRec.h/1.5;
     RBtns[2].State = _PBaixa;
 
-    if(_Main_RBtns){goto Drawing_RadioBTNS;}
-    for(int i = 0;i<4;i++)
+    printf("%d",_Main_RBtns);
+    if(_Main_RBtns)
     {
-        GeneralInteract.BoxObj[InteractiveCount] = &RBtns[i];
-        GeneralInteract.Function[InteractiveCount] = ENABLETABS;
-        GeneralInteract.X[InteractiveCount] = RBtns[i].XY[0] - RBtns[i].Size;
-        GeneralInteract.Width[InteractiveCount] = RBtns[i].Size*2;
-        GeneralInteract.Y[InteractiveCount] = RBtns[i].XY[1] - RBtns[i].Size;
-        GeneralInteract.Height[InteractiveCount] = RBtns[i].Size*2;
-        GeneralInteract.Param1[InteractiveCount].NUMBER = i;
-        Main_RadioIndex[i] = InteractiveCount;
-        InteractiveCount++;
+        for(int i = 0;i<4;i++)
+        {
+            GeneralInteract.X[InteractiveCount] = RBtns[i].ColisionBox->x;
+            GeneralInteract.Width[InteractiveCount] = RBtns[i].ColisionBox->w;
+            GeneralInteract.Y[InteractiveCount] = RBtns[i].ColisionBox->y;
+            GeneralInteract.Height[InteractiveCount] = RBtns[i].ColisionBox->h;
+        }
     }
-    _Main_RBtns = true;
-    Drawing_RadioBTNS:
+    else
+    {
+        for(int i = 0;i<4;i++)
+        {
+            RBtns[i].ColisionBox = &(SDL_FRect){.x=RBtns[i].XY[0] - RBtns[i].Size,.y=RBtns[i].XY[1] - RBtns[i].Size,.w=RBtns[i].Size*2,.h=RBtns[i].Size*2};
+            GeneralInteract.BoxObj[InteractiveCount] = RBtns[i].ColisionBox;
+            GeneralInteract.Function[InteractiveCount] = ENABLETABS;
+            GeneralInteract.X[InteractiveCount] = RBtns[i].ColisionBox->x;
+            GeneralInteract.Width[InteractiveCount] = RBtns[i].ColisionBox->w;
+            GeneralInteract.Y[InteractiveCount] = RBtns[i].ColisionBox->y;
+            GeneralInteract.Height[InteractiveCount] = RBtns[i].ColisionBox->h;
+            GeneralInteract.Param1[InteractiveCount].NUMBER = i;
+            Main_RadioIndex[i] = InteractiveCount;
+            InteractiveCount++;
+        }
+        _Main_RBtns = true;
+    }
+
     SDL_RenderRadioBtn(RBtns[0]);
     SDL_RenderRadioBtn(RBtns[1]);
     SDL_RenderRadioBtn(RBtns[2]);
@@ -577,7 +591,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             }
         }
     }
-    if(event->type == SDL_EVENT_WINDOW_RESIZED)
+    if(event->type == SDL_EVENT_WINDOW_RESIZED || event->type == SDL_EVENT_WINDOW_MAXIMIZED)
     {
         CleanFonts();
     }
