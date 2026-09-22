@@ -71,10 +71,7 @@ typedef struct
 }MHover;
 MHover MouseHover = {.HoverState = false};
 
-Text ActiveLabels[100];
-int LabelCount=0;
 
-bool HubLoaded = false;
 void CleanFonts()//Erases all used fonts in the main hub and clears the "one use bool"
 {
     if(LabelCount == 0)
