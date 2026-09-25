@@ -1,8 +1,8 @@
 OS Level Dependencies
 ----------------------------------------------------------------------------------------------------
-Zip must be installed for non windows devices (Its packed in on macos but not always on linux) (Provide a easy install command later)
+Zip must be installed for non windows devices (Its packed in on macos but not always on linux) (Provide a easy install command later or provide lua fallback in worst case scenario)
 
-Mac does not have a sfx respective, so it will only recieve a folder
+Mac does not have a sfx respective, so it will only receive a folder (Main.exe | LuaScripts | CompiledJS for HTTPS calls)
 
 Implementation Details
 -----------------------------------------------------------------------------------------------------
