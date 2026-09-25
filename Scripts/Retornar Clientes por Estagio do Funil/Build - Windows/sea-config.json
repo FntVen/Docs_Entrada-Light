@@ -1,0 +1,4 @@
+{
+"main"; "GetClientByID.js",
+"output": "GetClient.exe"
+}
