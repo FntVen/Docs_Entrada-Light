@@ -1,3 +1,0 @@
-/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/Bin/CMakeFiles/MakeFont.dir
-/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/Bin/CMakeFiles/edit_cache.dir
-/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Render Fonts/Bin/CMakeFiles/rebuild_cache.dir
