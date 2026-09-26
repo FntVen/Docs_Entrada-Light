@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Build-SLD3 ReWrite/Bin",
+  "command": "/usr/bin/cc -DSDL_GLCORE33 -I\"/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Build-SLD3 ReWrite/Lib/SDL3_INCLUDE/SDL3\"  -o CMakeFiles/HE-LightBulb.dir/Main.c.o -c \"/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Build-SLD3 ReWrite/Main.c\"",
+  "file": "/home/luciano/Projetos/Programming/C/Docs_Entrada-Light-main/Build-SLD3 ReWrite/Main.c",
+  "output": "CMakeFiles/HE-LightBulb.dir/Main.c.o"
+}
+]
