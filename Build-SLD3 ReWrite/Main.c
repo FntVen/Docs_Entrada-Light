@@ -1,6 +1,4 @@
 #include "Lib/HEHelper&Maker.h"
-#include <stdio.h>
-
 int WnHeight = 600;
 int WnWidth = 1200;
 enum Screens{
@@ -41,10 +39,6 @@ SDL_AppResult InitStructs()
         Tabs[i].Disabled = (Color){.A=255,.R=43,.G=41,.B=51};
         Tabs[i].Click = (Color){.A=255,.R=73,.G=71,.B=81};
     }
-    for(int i=0;i<99;i++)
-    {
-        //ActiveLabels[i] = NULL;
-    }
     return SDL_APP_CONTINUE;
 }
 //Faculdade Semana 1 (Lei de Gauss) - Semana 3 (Magneticos) - Semana 5 (Força Magnética) - Semana 7
@@ -56,8 +50,6 @@ static float CalcPercent(float NUM, float PERCENT)
 }
 #define TextCount_StaticEle 6
 int ReferenceText_StaticEle[TextCount_StaticEle] = {0};
-float a= 0;
-float b=0;
 SDL_AppResult StaticElements()
 {
     SDL_SetRenderDrawColor(Render,53, 51, 61, SDL_ALPHA_OPAQUE);
@@ -110,9 +102,7 @@ SDL_AppResult StaticElements()
         .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
     };
     if(!HubLoaded)
-    {//For some reason TXT_Client doesnt get updated
-        a = TXT_Cliente.X;
-        b = TXT_Cliente.Y;
+    {//For some reason Tabs[0] getting its coordinates zeroed out and then reapplied
         ReferenceText_StaticEle[0] = LabelCount;
         ActiveLabels[LabelCount++] = TXT_Cliente;
         ReferenceText_StaticEle[1] = LabelCount;
@@ -129,18 +119,20 @@ SDL_AppResult StaticElements()
         for(int i=0;i<TextCount_StaticEle;i++)
         {
 
+            if(ReferenceText_StaticEle[i] == 0)//Literal hot glue fix
+            {
+                ActiveLabels[ReferenceText_StaticEle[i]].X = 35 + CalcPercent(Tabs[1].Box.w, 35);
+                ActiveLabels[ReferenceText_StaticEle[i]].Y = (Tabs[1].Box.y-40) + CalcPercent(Tabs[1].Box.h, 20);
+                printf("Text %s | X: %f | Y: %f\n",ActiveLabels[ReferenceText_StaticEle[i]].String,Tabs[1].Box.x,Tabs[1].Box.y);
+                continue;
+            }
             ActiveLabels[ReferenceText_StaticEle[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 35);
             if(i==4)
             {
                 ActiveLabels[ReferenceText_StaticEle[i]].Y =Tabs[i].Box.y + CalcPercent(Tabs[i].Box.y, 2.7);
                 continue;
             }
-            if(ReferenceText_StaticEle[i] == 0)
-            {
-                printf("a\n");
-                ActiveLabels[ReferenceText_StaticEle[i]].X = a;
-                ActiveLabels[ReferenceText_StaticEle[i]].Y = b;
-            }
+
             ActiveLabels[ReferenceText_StaticEle[i]].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
         }
     }
@@ -216,8 +208,8 @@ SDL_AppResult InitialPage()
     {
         for(int i=0; i<4;i++)
         {
-            //ActiveLabels[ReferenceText_INIPAGE[i]].X = XAnchorOptions;
-            //ActiveLabels[ReferenceText_INIPAGE[i]].Y = (20 + CalcPercent(H, 20*(i+1)));
+            ActiveLabels[ReferenceText_INIPAGE[i]].X = XAnchorOptions;
+            ActiveLabels[ReferenceText_INIPAGE[i]].Y = (20 + CalcPercent(H, 20*(i+1)));
         }
     }
     return SDL_APP_CONTINUE;
@@ -256,6 +248,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
     SDL_RenderClear(Render);
     StaticElements();
+    SDL_SetRenderDrawColor(Render, 255, 0, 0,SDL_ALPHA_OPAQUE);
+    SDL_RenderPoint(Render, 119, 6);
+    SDL_RenderPoint(Render, 35, 66);
     SDL_AppResult Result = SDL_APP_CONTINUE;
     switch(CurrentScreen)
     {
