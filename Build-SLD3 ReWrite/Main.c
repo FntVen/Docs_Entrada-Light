@@ -1,4 +1,8 @@
 #include "Lib/HEHelper&Maker.h"
+#include <SDL3/SDL_init.h>
+#include <SDL3/SDL_mutex.h>
+#include <SDL3/SDL_rect.h>
+//Faculdade Semana 1 (Lei de Gauss) - Semana 3 (Magneticos) - Semana 5 (Força Magnética) - Semana 7
 int WnHeight = 600;
 int WnWidth = 1200;
 enum Screens{
@@ -12,10 +16,12 @@ enum Screens{
 };
 int CurrentScreen = InitScreen;
 typedef struct{
-    SDL_FRect BoundingBox;
+    SDL_FRect *BoundingBox;
     int Function;
     EventParams Parameter;
 }HitBox;//Anything that can be clicked should have a FRect "Hitbox"
+HitBox HitBoxes[100] = {0};
+int HitboxCount = 0;
 enum Btn_Functions{
   SWITCHTABS,
   ENABLETABS
@@ -30,6 +36,107 @@ typedef struct{
     EventParams Param;
 }Tab;
 Tab Tabs[5];
+enum BtnFunctions{
+    TABSELECT,
+    RADIO_MENUENABLE
+};
+typedef struct{
+    bool HoverTrigger;
+    MousePos XY;
+    HitBox Box;
+}MHover;
+MHover HoverHandler;
+MousePos MouseState;
+bool StaticLoaded = false;
+int StaticLabelCount = 0;
+Text StaticLabel[100];
+SDL_AppResult CleanStaticFont()
+{
+    if(LabelCount == 0)
+    {
+        return SDL_APP_CONTINUE;
+    }
+    for(int i=0;i<StaticLabelCount;i++)
+    {
+        SDL_DestroyTexture(StaticLabel[i].Texture);
+        StaticLabel[i].FontSize = 0;
+        StaticLabel[i].Height = 0;
+        StaticLabel[i].Width = 0;
+        StaticLabel[i].X = 0;
+        StaticLabel[i].Y = 0;
+        StaticLabel[i].RGB = (Color){.A=0,.R=0,.G=0,.B=0};
+        StaticLabel[i].String = "";
+    }
+    StaticLabelCount = 0;
+    StaticLoaded = false;
+    return SDL_APP_CONTINUE;
+}
+SDL_AppResult RenderStaticFont()
+{
+    if(StaticLabelCount == 0)
+    {
+        return SDL_APP_CONTINUE;
+    }
+    if(StaticLoaded)
+    {
+        for(int i=0; i<StaticLabelCount;i++)
+        {
+            SDL_SetRenderScale(Render, StaticLabel[i].FontSize/(float)24, StaticLabel[i].FontSize/(float)24);
+            SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
+                .x=StaticLabel[i].X*((float)24/StaticLabel[i].FontSize),
+                .y=StaticLabel[i].Y*((float)24/StaticLabel[i].FontSize),
+                .w=StaticLabel[i].Width,
+                .h=StaticLabel[i].Height
+            });
+        }
+        SDL_SetRenderScale(Render, 1, 1);
+        return SDL_APP_CONTINUE;
+    }
+    for(int i=0; i<StaticLabelCount;i++)
+    {
+        SDL_Color TxtColor = {.a=StaticLabel[i].RGB.A,.r=StaticLabel[i].RGB.R,.g=StaticLabel[i].RGB.G,.b=StaticLabel[i].RGB.B};
+        SDL_Surface *TxtSuface = TTF_RenderText_Blended(MainFont,StaticLabel[i].String,0,TxtColor);
+        StaticLabel[i].Height = TxtSuface->h;
+        StaticLabel[i].Width = TxtSuface->w;
+        StaticLabel[i].Texture = SDL_CreateTextureFromSurface(Render,TxtSuface);
+        SDL_DestroySurface(TxtSuface);
+        SDL_SetRenderScale(Render, StaticLabel[i].FontSize/(float)24, StaticLabel[i].FontSize/(float)24);
+        SDL_RenderTexture(Render, StaticLabel[i].Texture, NULL, &(SDL_FRect){
+            .x=StaticLabel[i].X*((float)24/StaticLabel[i].FontSize),
+            .y=StaticLabel[i].Y*((float)24/StaticLabel[i].FontSize),
+            .w=StaticLabel[i].Width,
+            .h=StaticLabel[i].Height
+        });
+    }
+    StaticLoaded = true;
+    SDL_SetRenderScale(Render, 1, 1);
+    return SDL_APP_CONTINUE;
+}
+void CleanPage()
+{
+    CleanFonts();
+    for(int i=0;i<=HitboxCount; i++)
+    {
+        HitBoxes[HitboxCount].Function = 0;
+        HitBoxes[HitboxCount].Parameter.NUMBER = 0;
+        HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+    }
+    HubLoaded = false;
+    StaticLoaded = false;
+}
+static float CalcPercent(float NUM, float PERCENT)
+{
+    float Result = (NUM * PERCENT)/100;
+    return Result;
+}
+
+SDL_AppResult TabSwitch(EventParams Param)
+{
+    printf("AAAAA %d\n",Param.NUMBER+2);
+    //CurrentScreen = Param.NUMBER+2;
+    return SDL_APP_CONTINUE;
+}
+
 SDL_AppResult InitStructs()
 {
     for(int i=0;i<=4;i++)
@@ -39,14 +146,12 @@ SDL_AppResult InitStructs()
         Tabs[i].Disabled = (Color){.A=255,.R=43,.G=41,.B=51};
         Tabs[i].Click = (Color){.A=255,.R=73,.G=71,.B=81};
     }
+    HoverHandler.HoverTrigger = false;
+    HoverHandler.XY.X = 0;
+    HoverHandler.XY.Y = 0;
+    MouseState.X = 0;
+    MouseState.Y = 0;
     return SDL_APP_CONTINUE;
-}
-//Faculdade Semana 1 (Lei de Gauss) - Semana 3 (Magneticos) - Semana 5 (Força Magnética) - Semana 7
-bool FirstPass = false;
-static float CalcPercent(float NUM, float PERCENT)
-{
-    float Result = (NUM * PERCENT)/100;
-    return Result;
 }
 #define TextCount_StaticEle 6
 int ReferenceText_StaticEle[TextCount_StaticEle] = {0};
@@ -64,6 +169,13 @@ SDL_AppResult StaticElements()
         Tabs[i].Box.h = 30;
         SDL_SetRenderDrawColor(Render, Tabs[i].Normal.R, Tabs[i].Normal.G, Tabs[i].Normal.B, Tabs[i].Normal.A);
         SDL_RenderFillRect(Render,&Tabs[i].Box);
+        if(!StaticLoaded)
+        {
+            HitBoxes[HitboxCount].BoundingBox = &Tabs[i].Box;
+            HitBoxes[HitboxCount].Function = TABSELECT;
+            HitBoxes[HitboxCount].Parameter.NUMBER = i;
+            HitboxCount++;
+        }
     }
     SDL_AppResult ResultFontRender = SDL_APP_CONTINUE;
     Text TXT_Cliente = {
@@ -101,45 +213,36 @@ SDL_AppResult StaticElements()
         .X = 35 + CalcPercent(Tabs[4].Box.w, 32),
         .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
     };
-    if(!HubLoaded)
+    if(!StaticLoaded)
     {//For some reason Tabs[0] getting its coordinates zeroed out and then reapplied
-        ReferenceText_StaticEle[0] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_Cliente;
-        ReferenceText_StaticEle[1] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_Solar;
-        ReferenceText_StaticEle[2] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_Local;
-        ReferenceText_StaticEle[3] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_Contrato;
-        ReferenceText_StaticEle[4] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_PBaixa;
+        ReferenceText_StaticEle[0] = StaticLabelCount;
+        StaticLabel[StaticLabelCount] = TXT_Cliente;
+        StaticLabelCount++;
+        ReferenceText_StaticEle[1] = StaticLabelCount;
+        StaticLabel[StaticLabelCount] = TXT_Solar;
+        StaticLabelCount++;
+        ReferenceText_StaticEle[2] = StaticLabelCount;
+        StaticLabel[StaticLabelCount] = TXT_Local;
+        StaticLabelCount++;
+        ReferenceText_StaticEle[3] = StaticLabelCount;
+        StaticLabel[StaticLabelCount] = TXT_Contrato;
+        StaticLabelCount++;
+        ReferenceText_StaticEle[4] = StaticLabelCount;
+        StaticLabel[StaticLabelCount] = TXT_PBaixa;
+        StaticLabelCount++;
     }
     else
     {
-        for(int i=0;i<TextCount_StaticEle;i++)
+        for(int i=0;i<StaticLabelCount;i++)
         {
-
-            if(ReferenceText_StaticEle[i] == 0)//Literal hot glue fix
-            {
-                ActiveLabels[ReferenceText_StaticEle[i]].X = 35 + CalcPercent(Tabs[1].Box.w, 35);
-                ActiveLabels[ReferenceText_StaticEle[i]].Y = (Tabs[1].Box.y-40) + CalcPercent(Tabs[1].Box.h, 20);
-                printf("Text %s | X: %f | Y: %f\n",ActiveLabels[ReferenceText_StaticEle[i]].String,Tabs[1].Box.x,Tabs[1].Box.y);
-                continue;
-            }
-            ActiveLabels[ReferenceText_StaticEle[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 35);
-            if(i==4)
-            {
-                ActiveLabels[ReferenceText_StaticEle[i]].Y =Tabs[i].Box.y + CalcPercent(Tabs[i].Box.y, 2.7);
-                continue;
-            }
-
-            ActiveLabels[ReferenceText_StaticEle[i]].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
+            StaticLabel[i].X = 35 + CalcPercent(Tabs[i].Box.w, 35);
+            StaticLabel[i].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
         }
     }
-
     return SDL_APP_CONTINUE;
 }
-int ReferenceText_INIPAGE[4] = {0};
+#define TextCount_IniPage 4
+int ReferenceText_INIPAGE[TextCount_IniPage] = {0};
 SDL_AppResult InitialPage()
 {
     SDL_SetRenderDrawColor(Render, 63,61,71,255);
@@ -152,11 +255,11 @@ SDL_AppResult InitialPage()
 
     Text TXT_SelecioneOsArquivos ={
       .FontSize = 24,
+      .X = X + CalcPercent( W, 30),
       .Y = 50,
       .RGB = {.A=255,.R=255,.G=255,.B=255},
       .String = "Selecione os Arquivos que Deseja Criar"
     };
-    TXT_SelecioneOsArquivos.X = X + CalcPercent( W, 30);
 
     Text TXT_DocumentosdeHomologação ={
       .FontSize = 18,
@@ -181,7 +284,7 @@ SDL_AppResult InitialPage()
     };
     TXT_ParametrosPlantaBaixa.X = XAnchorOptions;
     TXT_ParametrosPlantaBaixa.Y = (20 + CalcPercent(H, 60));
-    for(int i=1;i<4;i++)
+    for(int i=1;i<TextCount_IniPage;i++)
     {
         if(i==2)
         {
@@ -195,22 +298,52 @@ SDL_AppResult InitialPage()
 
     if(!HubLoaded)
     {
-        ActiveLabels[LabelCount++] = TXT_SelecioneOsArquivos;
+        ActiveLabels[LabelCount] = TXT_SelecioneOsArquivos;
         ReferenceText_INIPAGE[0] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_DocumentosdeHomologação;
+        LabelCount++;
+        ActiveLabels[LabelCount] = TXT_DocumentosdeHomologação;
         ReferenceText_INIPAGE[1] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_Contrato;
+        LabelCount++;
+        ActiveLabels[LabelCount] = TXT_Contrato;
         ReferenceText_INIPAGE[2] = LabelCount;
-        ActiveLabels[LabelCount++] = TXT_ParametrosPlantaBaixa;
+        LabelCount++;
+        ActiveLabels[LabelCount] = TXT_ParametrosPlantaBaixa;
         ReferenceText_INIPAGE[3] = LabelCount;
+        LabelCount++;
     }
     else
     {
-        for(int i=0; i<4;i++)
+        for(int i=0;i<TextCount_IniPage;i++)
         {
+            if(ActiveLabels[ReferenceText_INIPAGE[i]].FontSize == 24)
+            {
+                ActiveLabels[ReferenceText_INIPAGE[i]].X = X + CalcPercent( W, 30);
+                ActiveLabels[ReferenceText_INIPAGE[i]].Y = 50;
+                continue;
+            }
             ActiveLabels[ReferenceText_INIPAGE[i]].X = XAnchorOptions;
-            ActiveLabels[ReferenceText_INIPAGE[i]].Y = (20 + CalcPercent(H, 20*(i+1)));
+            ActiveLabels[ReferenceText_INIPAGE[i]].Y = (20 + CalcPercent(H, 20*i));
         }
+    }
+    return SDL_APP_CONTINUE;
+}
+SDL_AppResult ClientPage()
+{
+    Text TXT_TestText ={
+        .FontSize = 17,
+        .X = (float)WnHeight/2,
+        .Y = (float)WnWidth/2,
+        .String = "CLIENT PAGE",
+        .RGB = {.A=255,.R=255,.G=255,.B=255}
+    };
+    if(!HubLoaded)
+    {
+        ActiveLabels[LabelCount] = TXT_TestText;
+        LabelCount++;
+    }
+    else
+    {
+
     }
     return SDL_APP_CONTINUE;
 }
@@ -248,16 +381,16 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
     SDL_RenderClear(Render);
     StaticElements();
-    SDL_SetRenderDrawColor(Render, 255, 0, 0,SDL_ALPHA_OPAQUE);
-    SDL_RenderPoint(Render, 119, 6);
-    SDL_RenderPoint(Render, 35, 66);
     SDL_AppResult Result = SDL_APP_CONTINUE;
     switch(CurrentScreen)
     {
         case InitScreen:
+            CleanPage();
             Result = InitialPage();
             break;
         case Cliente:
+            CleanPage();
+            Result = ClientPage();
             break;
         case Solar:
             break;
@@ -270,6 +403,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         case FinalScreen:
             break;
     }
+    RenderStaticFont();
     RenderFont();
     SDL_RenderPresent(Render);
     return Result;
@@ -284,10 +418,53 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         SDL_GetWindowSizeInPixels(window, &WnWidth, &WnHeight);
     }
+    if(event->type == SDL_EVENT_MOUSE_MOTION)
+    {
+        MouseState.X = event->motion.x;
+        MouseState.Y = event->motion.y;
+        if(HoverHandler.HoverTrigger)
+        {
+            if(MouseState.X<HoverHandler.Box.BoundingBox->x || MouseState.X>HoverHandler.Box.BoundingBox->x+HoverHandler.Box.BoundingBox->w)
+            {
+                if(MouseState.Y<HoverHandler.Box.BoundingBox->y || MouseState.Y>HoverHandler.Box.BoundingBox->y+HoverHandler.Box.BoundingBox->h)
+                {
+                    HoverHandler.HoverTrigger = false;
+                    HoverHandler.Box.BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+                    HoverHandler.Box.Function = 0;
+                    HoverHandler.Box.Parameter.NUMBER = 0;
+                    printf("Mouse %d\n",HoverHandler.HoverTrigger);
+                }
+            }
+        }
+        if(!HoverHandler.HoverTrigger)
+        {
+            for(int i=0;i<HitboxCount;i++)
+            {
+                if(MouseState.X>HitBoxes[i].BoundingBox->x && MouseState.X<HitBoxes[i].BoundingBox->x+HitBoxes[i].BoundingBox->w)
+                {
+                    if(MouseState.Y>HitBoxes[i].BoundingBox->y && MouseState.Y<HitBoxes[i].BoundingBox->y+HitBoxes[i].BoundingBox->h)
+                    {
+                        HoverHandler.HoverTrigger = true;
+                        HoverHandler.Box.BoundingBox = HitBoxes[i].BoundingBox;
+                        printf("Mouse %d\n",HoverHandler.HoverTrigger);
+                    }
+                }
+            }
+        }
+
+    }
+    if(event->type == SDL_EVENT_MOUSE_BUTTON_DOWN)
+    {
+        if(HoverHandler.HoverTrigger)
+        {
+
+        }
+    }
     return SDL_APP_CONTINUE;
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
+    CleanStaticFont();
     CleanFonts();
 }
 //              Todo
