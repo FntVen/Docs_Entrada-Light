@@ -1,7 +1,4 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_init.h>
-#include <SDL3/SDL_mutex.h>
-#include <SDL3/SDL_rect.h>
 //Faculdade Semana 1 (Lei de Gauss) - Semana 3 (Magneticos) - Semana 5 (Força Magnética) - Semana 7
 int WnHeight = 600;
 int WnWidth = 1200;
@@ -15,6 +12,11 @@ enum Screens{
     PBaixa
 };
 int CurrentScreen = InitScreen;
+bool _Cliente = true;
+bool _Solar = true;
+bool _Local = true;
+bool _Contrato = true;
+bool _PBaixa = true;
 typedef struct{
     SDL_FRect *BoundingBox;
     int Function;
@@ -22,15 +24,12 @@ typedef struct{
 }HitBox;//Anything that can be clicked should have a FRect "Hitbox"
 HitBox HitBoxes[100] = {0};
 int HitboxCount = 0;
-enum Btn_Functions{
-  SWITCHTABS,
-  ENABLETABS
-};
 typedef struct{
     Color Normal;
     Color HighLight;
     Color Click;
     Color Disabled;
+    Color Used;
     SDL_FRect Box;
     int Function;
     EventParams Param;
@@ -112,6 +111,79 @@ SDL_AppResult RenderStaticFont()
     SDL_SetRenderScale(Render, 1, 1);
     return SDL_APP_CONTINUE;
 }
+void TabHighLight(EventParams Param, int Function)
+{
+    int ScreenID = Param.NUMBER + 2;
+    printf("Param| %d ScreenID| %d\n",Param.NUMBER,ScreenID);
+    switch(ScreenID)
+    {
+        case Cliente:
+            if(_Cliente)
+            {
+                if(HoverHandler.HoverTrigger)
+                {
+                    Tabs[0].Used = Tabs[0].HighLight;
+                }
+                else
+                {
+                    Tabs[0].Used = Tabs[0].Normal;
+                }
+            }
+        break;
+        case Solar:
+            if(_Solar)
+            {
+                if(HoverHandler.HoverTrigger)
+                {
+                    Tabs[1].Used = Tabs[1].HighLight;
+                }
+                else
+                {
+                    Tabs[1].Used = Tabs[1].Normal;
+                }
+            }
+        break;
+        case Local:
+            if(_Local)
+            {
+                if(HoverHandler.HoverTrigger)
+                {
+                    Tabs[2].Used = Tabs[2].HighLight;
+                }
+                else
+                {
+                    Tabs[2].Used = Tabs[2].Normal;
+                }
+            }
+        break;
+        case Contrato:
+            if(_Contrato)
+            {
+                if(HoverHandler.HoverTrigger)
+                {
+                    Tabs[3].Used = Tabs[3].HighLight;
+                }
+                else
+                {
+                    Tabs[3].Used = Tabs[3].Normal;
+                }
+            }
+        break;
+        case PBaixa:
+            if(_PBaixa)
+            {
+                if(HoverHandler.HoverTrigger)
+                {
+                    Tabs[4].Used = Tabs[4].HighLight;
+                }
+                else
+                {
+                    Tabs[4].Used = Tabs[4].Normal;
+                }
+            }
+        break;
+    }
+}
 void CleanPage()
 {
     CleanFonts();
@@ -145,6 +217,7 @@ SDL_AppResult InitStructs()
         Tabs[i].HighLight = (Color){.A=255,.R=63,.G=82,.B=52};
         Tabs[i].Disabled = (Color){.A=255,.R=43,.G=41,.B=51};
         Tabs[i].Click = (Color){.A=255,.R=73,.G=71,.B=81};
+        Tabs[i].Used = Tabs[i].Normal;//Change for disabled as default
     }
     HoverHandler.HoverTrigger = false;
     HoverHandler.XY.X = 0;
@@ -167,7 +240,7 @@ SDL_AppResult StaticElements()
         Tabs[i].Box.y = (20+40)+40*i;
         Tabs[i].Box.w = CalcPercent((float)WnWidth, 20);
         Tabs[i].Box.h = 30;
-        SDL_SetRenderDrawColor(Render, Tabs[i].Normal.R, Tabs[i].Normal.G, Tabs[i].Normal.B, Tabs[i].Normal.A);
+        SDL_SetRenderDrawColor(Render, Tabs[i].Used.R, Tabs[i].Used.G, Tabs[i].Used.B, Tabs[i].Used.A);
         SDL_RenderFillRect(Render,&Tabs[i].Box);
         if(!StaticLoaded)
         {
@@ -214,7 +287,7 @@ SDL_AppResult StaticElements()
         .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
     };
     if(!StaticLoaded)
-    {//For some reason Tabs[0] getting its coordinates zeroed out and then reapplied
+    {
         ReferenceText_StaticEle[0] = StaticLabelCount;
         StaticLabel[StaticLabelCount] = TXT_Cliente;
         StaticLabelCount++;
@@ -289,11 +362,9 @@ SDL_AppResult InitialPage()
         if(i==2)
         {
             SDL_RenderFillRect(Render, &(SDL_FRect){.x=X + CalcPercent(W, 15)-35,.y=20+CalcPercent(H,20*i)-7,.w=117,.h=35});
-            //SDL_RenderLine(Render, (X + CalcPercent(W, 15)-9),(20 + CalcPercent(H, 20*i))+20,X+210,(20 + CalcPercent(H, 20*i))+20);
             continue;
         }
         SDL_RenderFillRect(Render, &(SDL_FRect){.x=X + CalcPercent(W, 15)-35,.y=20+CalcPercent(H,20*i)-7,.w=290,.h=35});
-        //SDL_RenderLine(Render,( X + CalcPercent(W, 15)-9),(20 + CalcPercent(H, 20*i))+20,X+380,(20 + CalcPercent(H, 20*i))+20);
     }
 
     if(!HubLoaded)
@@ -385,7 +456,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     switch(CurrentScreen)
     {
         case InitScreen:
-            CleanPage();
+             CleanPage();
             Result = InitialPage();
             break;
         case Cliente:
@@ -424,16 +495,16 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         MouseState.Y = event->motion.y;
         if(HoverHandler.HoverTrigger)
         {
-            if(MouseState.X<HoverHandler.Box.BoundingBox->x || MouseState.X>HoverHandler.Box.BoundingBox->x+HoverHandler.Box.BoundingBox->w)
+            if(MouseState.X<=HoverHandler.Box.BoundingBox->x || MouseState.X>=HoverHandler.Box.BoundingBox->x+HoverHandler.Box.BoundingBox->w || MouseState.Y<=HoverHandler.Box.BoundingBox->y || MouseState.Y>=HoverHandler.Box.BoundingBox->y+HoverHandler.Box.BoundingBox->h)
             {
-                if(MouseState.Y<HoverHandler.Box.BoundingBox->y || MouseState.Y>HoverHandler.Box.BoundingBox->y+HoverHandler.Box.BoundingBox->h)
+                HoverHandler.HoverTrigger = false;
+                if(HoverHandler.Box.Function == TABSELECT)
                 {
-                    HoverHandler.HoverTrigger = false;
-                    HoverHandler.Box.BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
-                    HoverHandler.Box.Function = 0;
-                    HoverHandler.Box.Parameter.NUMBER = 0;
-                    printf("Mouse %d\n",HoverHandler.HoverTrigger);
+                    TabHighLight(HoverHandler.Box.Parameter, HoverHandler.Box.Function);
                 }
+                HoverHandler.Box.BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+                HoverHandler.Box.Function = 0;
+                HoverHandler.Box.Parameter.NUMBER = 0;
             }
         }
         if(!HoverHandler.HoverTrigger)
@@ -446,7 +517,12 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                     {
                         HoverHandler.HoverTrigger = true;
                         HoverHandler.Box.BoundingBox = HitBoxes[i].BoundingBox;
-                        printf("Mouse %d\n",HoverHandler.HoverTrigger);
+                        HoverHandler.Box.Function = HitBoxes[i].Function;
+                        if(HitBoxes[i].Function == TABSELECT)
+                        {
+                            printf("%d",HitBoxes[i].Parameter.NUMBER);
+                            TabHighLight(HitBoxes[i].Parameter, HitBoxes[i].Function);
+                        }
                     }
                 }
             }
