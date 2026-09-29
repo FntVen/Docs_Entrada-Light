@@ -189,8 +189,8 @@ void CleanPage()
     CleanFonts();
     for(int i=0;i<=HitboxCount; i++)
     {
-        //HitBoxes[HitboxCount].Function = 0;
-        //HitBoxes[HitboxCount].Parameter.NUMBER = 0;Debug
+        HitBoxes[HitboxCount].Function = 0;
+        HitBoxes[HitboxCount].Parameter.NUMBER = 0;Debug
         HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
     }
     HubLoaded = false;
