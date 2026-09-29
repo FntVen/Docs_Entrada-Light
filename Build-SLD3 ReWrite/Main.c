@@ -1,5 +1,5 @@
 #include "Lib/HEHelper&Maker.h"
-//Faculdade Semana 1 (Lei de Gauss) - Semana 3 (Magneticos) - Semana 5 (Força Magnética) - Semana 7
+
 int WnHeight = 600;
 int WnWidth = 1200;
 enum Screens{
@@ -189,8 +189,8 @@ void CleanPage()
     CleanFonts();
     for(int i=0;i<=HitboxCount; i++)
     {
-        HitBoxes[HitboxCount].Function = 0;
-        HitBoxes[HitboxCount].Parameter.NUMBER = 0;
+        //HitBoxes[HitboxCount].Function = 0;
+        //HitBoxes[HitboxCount].Parameter.NUMBER = 0;Debug
         HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
     }
     HubLoaded = false;
@@ -453,6 +453,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_RenderClear(Render);
     StaticElements();
     SDL_AppResult Result = SDL_APP_CONTINUE;
+    if(HoverHandler.HoverTrigger)
+    {
+    }
     switch(CurrentScreen)
     {
         case InitScreen:
@@ -518,16 +521,15 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                         HoverHandler.HoverTrigger = true;
                         HoverHandler.Box.BoundingBox = HitBoxes[i].BoundingBox;
                         HoverHandler.Box.Function = HitBoxes[i].Function;
+                        HoverHandler.Box.Parameter = HitBoxes[i].Parameter;
                         if(HitBoxes[i].Function == TABSELECT)
                         {
-                            printf("%d",HitBoxes[i].Parameter.NUMBER);
                             TabHighLight(HitBoxes[i].Parameter, HitBoxes[i].Function);
                         }
                     }
                 }
             }
         }
-
     }
     if(event->type == SDL_EVENT_MOUSE_BUTTON_DOWN)
     {
