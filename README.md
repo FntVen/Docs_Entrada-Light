@@ -12,9 +12,13 @@ For Autocad Support make a helper Autocad plugging that will read the informatio
 
 To-Do
 -----------------------------------------------------------------------------------------------------
-Make the function to clean static text not give a segmentation fault
+
 Set clean only for screen resizing and screen changes
+
 Set TextBoxes
+
 Finish Menu Navigation
+
 Set Dark/Light Mode
+
 Find a good api for maps, if i can't, allow user to dump a png/jpg/jpeg and use that
