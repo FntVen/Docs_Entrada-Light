@@ -9,3 +9,12 @@ Implementation Details
 Maps  be done by spinning a headless browser already set to G.maps with js, and then execute code that takes a Screenshot
 
 For Autocad Support make a helper Autocad plugging that will read the information outputted by this program (.HEHelper) and modify the .cad template  
+
+To-Do
+-----------------------------------------------------------------------------------------------------
+Make the function to clean static text not give a segmentation fault
+Set clean only for screen resizing and screen changes
+Set TextBoxes
+Finish Menu Navigation
+Set Dark/Light Mode
+Find a good api for maps, if i can't, allow user to dump a png/jpg/jpeg and use that
