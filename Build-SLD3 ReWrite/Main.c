@@ -49,26 +49,17 @@ MousePos MouseState;
 bool StaticLoaded = false;
 int StaticLabelCount = 0;
 Text StaticLabel[100];
-SDL_AppResult CleanStaticFont()
+void CleanStaticFont()
 {
-    if(LabelCount == 0)
+    if(StaticLabelCount == 0)
     {
-        return SDL_APP_CONTINUE;
-    }
+        goto EndClean;
+    }  
     for(int i=0;i<StaticLabelCount;i++)
     {
         SDL_DestroyTexture(StaticLabel[i].Texture);
-        StaticLabel[i].FontSize = 0;
-        StaticLabel[i].Height = 0;
-        StaticLabel[i].Width = 0;
-        StaticLabel[i].X = 0;
-        StaticLabel[i].Y = 0;
-        StaticLabel[i].RGB = (Color){.A=0,.R=0,.G=0,.B=0};
-        StaticLabel[i].String = "";
-    }
-    StaticLabelCount = 0;
-    StaticLoaded = false;
-    return SDL_APP_CONTINUE;
+    }    
+    EndClean:
 }
 SDL_AppResult RenderStaticFont()
 {
@@ -184,8 +175,9 @@ void TabHighLight(EventParams Param, int Function)
     }
 }
 void CleanPage()
-{
-    
+{    
+    CleanStaticFont();
+    CleanFonts();
     for(int i=0;i<=HitboxCount; i++)
     {
         HitBoxes[HitboxCount].Function = 0;
@@ -484,9 +476,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_RenderClear(Render);
     StaticElements();
     SDL_AppResult Result = SDL_APP_CONTINUE;
-    if(HoverHandler.HoverTrigger)
-    {
-    }
     switch(CurrentScreen)
     {
         case InitScreen:
@@ -582,5 +571,3 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
     
 }
-//              Todo
-// - Find a formula to center sentences
