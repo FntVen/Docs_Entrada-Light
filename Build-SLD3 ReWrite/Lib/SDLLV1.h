@@ -2,7 +2,12 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_rect.h>
 //SDL3 & C23
-
+typedef union
+{
+    int NUMBER;
+    char WORDS[256];
+    bool CHOICE;
+}EventParams;
 typedef struct
 {
     int A;
@@ -10,6 +15,16 @@ typedef struct
     int G;
     int B;
 }Color;
+typedef struct{
+    float X;
+    float Y;
+}MousePos;
+typedef struct{
+    SDL_FRect *BoundingBox;
+    int Function;
+    EventParams Parameter;
+}HitBox;//Anything that can be clicked should have a FRect "Hitbox"
+int HitboxCount = 0;
 SDL_AppResult Render_Polygon(float IN_PosX, float IN_PosY,int IN_Radius, int IN_Vertice_Count, Color IN_ShapeColor)
 {
 
@@ -87,8 +102,9 @@ SDL_AppResult Render_Polygon(float IN_PosX, float IN_PosY,int IN_Radius, int IN_
 typedef struct
 {
     bool State;
-    SDL_FRect *ColisionBox;
-    float XY[2];
+    HitBox Box;
+    float X;
+    float Y;
     int Size;
     Color BackColor;
     Color FrontColor;
@@ -112,7 +128,7 @@ SDL_AppResult SetFont()
 }
 SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
 {
-    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size, 200, IN_RD.BackColor);
+    Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size, 200, IN_RD.BackColor);
     if(!IN_RD.State)
     {
         IN_RD.FrontColor = IN_RD.BackColor;
@@ -121,7 +137,7 @@ SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
     {
         IN_RD.FrontColor = (Color){.A=255,.R=0,.G=0,.B=0};
     }
-    Render_Polygon(IN_RD.XY[0], IN_RD.XY[1], IN_RD.Size*0.5, 200, IN_RD.FrontColor);
+    Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size*0.5, 200, IN_RD.FrontColor);
     return SDL_APP_CONTINUE;
 }
 typedef struct
@@ -199,9 +215,3 @@ SDL_AppResult RenderTexture()
 {
     return SDL_APP_CONTINUE;
 }
-typedef union
-{
-    int NUMBER;
-    char WORDS[256];
-    bool CHOICE;
-}EventParams;
