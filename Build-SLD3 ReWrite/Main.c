@@ -17,13 +17,10 @@ bool _Solar = false;
 bool _Local = false;
 bool _Contrato = false;
 bool _PBaixa = false;
-typedef struct{
-    SDL_FRect *BoundingBox;
-    int Function;
-    EventParams Parameter;
-}HitBox;//Anything that can be clicked should have a FRect "Hitbox"
+bool _R_Homologação = false;
+bool _R_Contrato = false;
+bool _R_PBaixa = false;
 HitBox HitBoxes[100] = {0};
-int HitboxCount = 0;
 typedef struct{
     Color Normal;
     Color HighLight;
@@ -49,16 +46,17 @@ MousePos MouseState;
 bool StaticLoaded = false;
 int StaticLabelCount = 0;
 Text StaticLabel[100];
-void CleanStaticFont()
+//---------------------------------------------------------------------------------//
+void CleanStaticFonts()
 {
     if(StaticLabelCount == 0)
     {
         goto EndClean;
-    }  
+    }
     for(int i=0;i<StaticLabelCount;i++)
     {
         SDL_DestroyTexture(StaticLabel[i].Texture);
-    }    
+    }
     EndClean:
 }
 SDL_AppResult RenderStaticFont()
@@ -69,6 +67,7 @@ SDL_AppResult RenderStaticFont()
     }
     if(StaticLoaded)
     {
+
         for(int i=0; i<StaticLabelCount;i++)
         {
             SDL_SetRenderScale(Render, StaticLabel[i].FontSize/(float)24, StaticLabel[i].FontSize/(float)24);
@@ -79,6 +78,7 @@ SDL_AppResult RenderStaticFont()
                 .h=StaticLabel[i].Height
             });
         }
+        StaticLabelCount = 0;
         SDL_SetRenderScale(Render, 1, 1);
         return SDL_APP_CONTINUE;
     }
@@ -174,25 +174,6 @@ void TabHighLight(EventParams Param, int Function)
         break;
     }
 }
-void CleanPage()
-{    
-    CleanStaticFont();
-    CleanFonts();
-    for(int i=0;i<=HitboxCount; i++)
-    {
-        HitBoxes[HitboxCount].Function = 0;
-        HitBoxes[HitboxCount].Parameter.NUMBER = 0;
-        HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
-    }
-    HubLoaded = false;
-    StaticLoaded = false;
-}
-static float CalcPercent(float NUM, float PERCENT)
-{
-    float Result = (NUM * PERCENT)/100;
-    return Result;
-}
-
 SDL_AppResult TabSwitch(EventParams Param)
 {
     int ScreenID = Param.NUMBER+2;
@@ -228,10 +209,28 @@ SDL_AppResult TabSwitch(EventParams Param)
                 CurrentScreen = ScreenID;
             }
         break;
-    }    
+    }
     return SDL_APP_CONTINUE;
 }
-
+void CleanPage()
+{
+    CleanStaticFonts();
+    CleanFonts();
+    for(int i=0;i<=HitboxCount; i++)
+    {
+        HitBoxes[HitboxCount].Function = 0;
+        HitBoxes[HitboxCount].Parameter.NUMBER = 0;
+        HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+    }
+    HubLoaded = false;
+    StaticLoaded = false;
+}
+static float CalcPercent(float NUM, float PERCENT)
+{
+    float Result = (NUM * PERCENT)/100;
+    return Result;
+}
+//---------------------------------------------------------------------------------//
 SDL_AppResult InitStructs()
 {
     for(int i=0;i<=4;i++)
@@ -273,44 +272,45 @@ SDL_AppResult StaticElements()
             HitboxCount++;
         }
     }
-    SDL_AppResult ResultFontRender = SDL_APP_CONTINUE;
-    Text TXT_Cliente = {
-        .Y = Tabs[0].Box.y + CalcPercent(Tabs[0].Box.h, 20),
-        .X = 35 + CalcPercent(Tabs[0].Box.w, 33),
-        .FontSize=17,
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "Cliente"
-    };
-    Text TXT_Solar = {
-        .FontSize=17,
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "Solar",
-        .X = 35 + CalcPercent(Tabs[1].Box.w, 35),
-        .Y = Tabs[1].Box.y + CalcPercent(Tabs[1].Box.h, 20),
-    };
-    Text TXT_Local = {
-        .FontSize=17,
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "Local",
-        .X = 35 + CalcPercent(Tabs[2].Box.w, 35),
-        .Y = Tabs[2].Box.y + CalcPercent(Tabs[2].Box.h, 20),
-    };
-    Text TXT_Contrato = {
-        .FontSize=17,
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "Contrato",
-        .X = 35 + CalcPercent(Tabs[3].Box.w, 30),
-        .Y = Tabs[3].Box.y + CalcPercent(Tabs[3].Box.h, 20),
-    };
-    Text TXT_PBaixa = {
-        .FontSize=17,
-        .RGB = {.A=255,.R=255,.G=255,.B=255},
-        .String = "P.Baixa",
-        .X = 35 + CalcPercent(Tabs[4].Box.w, 32),
-        .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
-    };
+
     if(!StaticLoaded)
     {
+        SDL_AppResult ResultFontRender = SDL_APP_CONTINUE;
+        Text TXT_Cliente = {
+            .Y = Tabs[0].Box.y + CalcPercent(Tabs[0].Box.h, 20),
+            .X = 35 + CalcPercent(Tabs[0].Box.w, 33),
+            .FontSize=17,
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "Cliente"
+        };
+        Text TXT_Solar = {
+            .FontSize=17,
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "Solar",
+            .X = 35 + CalcPercent(Tabs[1].Box.w, 35),
+            .Y = Tabs[1].Box.y + CalcPercent(Tabs[1].Box.h, 20),
+        };
+        Text TXT_Local = {
+            .FontSize=17,
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "Local",
+            .X = 35 + CalcPercent(Tabs[2].Box.w, 35),
+            .Y = Tabs[2].Box.y + CalcPercent(Tabs[2].Box.h, 20),
+        };
+        Text TXT_Contrato = {
+            .FontSize=17,
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "Contrato",
+            .X = 35 + CalcPercent(Tabs[3].Box.w, 30),
+            .Y = Tabs[3].Box.y + CalcPercent(Tabs[3].Box.h, 20),
+        };
+        Text TXT_PBaixa = {
+            .FontSize=17,
+            .RGB = {.A=255,.R=255,.G=255,.B=255},
+            .String = "P.Baixa",
+            .X = 35 + CalcPercent(Tabs[4].Box.w, 32),
+            .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
+        };
         ReferenceText_StaticEle[0] = StaticLabelCount;
         StaticLabel[StaticLabelCount] = TXT_Cliente;
         StaticLabelCount++;
@@ -339,6 +339,8 @@ SDL_AppResult StaticElements()
 }
 #define TextCount_IniPage 4
 int ReferenceText_INIPAGE[TextCount_IniPage] = {0};
+RadioButton Radio_BTN[3];
+int Radio_BTN_Count = 0;
 SDL_AppResult InitialPage()
 {
     SDL_SetRenderDrawColor(Render, 63,61,71,255);
@@ -349,37 +351,6 @@ SDL_AppResult InitialPage()
     SDL_RenderLine(Render,X+10,80,(X+W)-10,80);
     float XAnchorOptions = X + CalcPercent(W, 15);
 
-    Text TXT_SelecioneOsArquivos ={
-      .FontSize = 24,
-      .X = X + CalcPercent( W, 30),
-      .Y = 50,
-      .RGB = {.A=255,.R=255,.G=255,.B=255},
-      .String = "Selecione os Arquivos que Deseja Criar"
-    };
-
-    Text TXT_DocumentosdeHomologação ={
-      .FontSize = 18,
-      .RGB = {.A=255,.R=255,.G=255,.B=255},
-      .String = "Documentos de Homologação"
-    };
-    TXT_DocumentosdeHomologação.X = XAnchorOptions;
-    TXT_DocumentosdeHomologação.Y = 20 + CalcPercent(H, 20);
-
-    Text TXT_Contrato ={
-      .FontSize = 18,
-      .RGB = {.A=255,.R=255,.G=255,.B=255},
-      .String = "Contrato",
-    };
-    TXT_Contrato.X = XAnchorOptions;
-    TXT_Contrato.Y =  20 + CalcPercent(H, 40);;
-
-    Text TXT_ParametrosPlantaBaixa ={
-      .FontSize = 18,
-      .RGB = {.A=255,.R=255,.G=255,.B=255},
-      .String = "Parametros para Planta Baixa",
-    };
-    TXT_ParametrosPlantaBaixa.X = XAnchorOptions;
-    TXT_ParametrosPlantaBaixa.Y = (20 + CalcPercent(H, 60));
     for(int i=1;i<TextCount_IniPage;i++)
     {
         if(i==2)
@@ -389,9 +360,57 @@ SDL_AppResult InitialPage()
         }
         SDL_RenderFillRect(Render, &(SDL_FRect){.x=X + CalcPercent(W, 15)-35,.y=20+CalcPercent(H,20*i)-7,.w=290,.h=35});
     }
+    if(!HubLoaded)//For testing Radio Buttons, eventually just use the if else below
+    {
+        RadioButton RadioBtn_Homologação = {
+            .BackColor = {.A=255,.R=255,.B=255,.G=255},
+            .FrontColor = {.A=255,.R=0,.B=0,.G=0},
+            .Size = 12,
+            .State = _R_Homologação,
+            .X = X + CalcPercent(W, 6),
+            .Y = 20 + CalcPercent(H, 20)
+        };
+        Radio_BTN[0] = RadioBtn_Homologação;
+        Radio_BTN_Count++;
+        SDL_RenderRadioBtn(RadioBtn_Homologação);
+    }
+    else
+    {
 
+    }
     if(!HubLoaded)
     {
+        Text TXT_SelecioneOsArquivos ={
+          .FontSize = 24,
+          .X = X + CalcPercent( W, 30),
+          .Y = 50,
+          .RGB = {.A=255,.R=255,.G=255,.B=255},
+          .String = "Selecione os Arquivos que Deseja Criar"
+        };
+
+        Text TXT_DocumentosdeHomologação ={
+          .FontSize = 18,
+          .RGB = {.A=255,.R=255,.G=255,.B=255},
+          .String = "Documentos de Homologação"
+        };
+        TXT_DocumentosdeHomologação.X = XAnchorOptions;
+        TXT_DocumentosdeHomologação.Y = 20 + CalcPercent(H, 20);
+
+        Text TXT_Contrato ={
+          .FontSize = 18,
+          .RGB = {.A=255,.R=255,.G=255,.B=255},
+          .String = "Contrato",
+        };
+        TXT_Contrato.X = XAnchorOptions;
+        TXT_Contrato.Y =  20 + CalcPercent(H, 40);;
+
+        Text TXT_ParametrosPlantaBaixa ={
+          .FontSize = 18,
+          .RGB = {.A=255,.R=255,.G=255,.B=255},
+          .String = "Parametros para Planta Baixa",
+        };
+        TXT_ParametrosPlantaBaixa.X = XAnchorOptions;
+        TXT_ParametrosPlantaBaixa.Y = (20 + CalcPercent(H, 60));
         ActiveLabels[LabelCount] = TXT_SelecioneOsArquivos;
         ReferenceText_INIPAGE[0] = LabelCount;
         LabelCount++;
@@ -441,7 +460,7 @@ SDL_AppResult ClientPage()
     }
     return SDL_APP_CONTINUE;
 }
-
+//---------------------------------------------------------------------------------//
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     if (!SDL_Init(SDL_INIT_VIDEO))
@@ -469,7 +488,6 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
     return SDL_APP_CONTINUE;
 }
-
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
     SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
@@ -569,5 +587,6 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
-    
+    CleanFonts();
+    CleanStaticFonts();
 }
