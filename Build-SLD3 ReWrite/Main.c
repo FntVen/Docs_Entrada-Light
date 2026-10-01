@@ -46,6 +46,7 @@ MousePos MouseState;
 bool StaticLoaded = false;
 int StaticLabelCount = 0;
 Text StaticLabel[100];
+bool _NewLoad = true;
 //---------------------------------------------------------------------------------//
 void CleanStaticFonts()
 {
@@ -222,8 +223,6 @@ void CleanPage()
         HitBoxes[HitboxCount].Parameter.NUMBER = 0;
         HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
     }
-    HubLoaded = false;
-    StaticLoaded = false;
 }
 static float CalcPercent(float NUM, float PERCENT)
 {
@@ -353,22 +352,17 @@ SDL_AppResult InitialPage()
 
     for(int i=1;i<TextCount_IniPage;i++)
     {
-        if(i==2)
-        {
-            SDL_RenderFillRect(Render, &(SDL_FRect){.x=X + CalcPercent(W, 15)-35,.y=20+CalcPercent(H,20*i)-7,.w=117,.h=35});
-            continue;
-        }
-        SDL_RenderFillRect(Render, &(SDL_FRect){.x=X + CalcPercent(W, 15)-35,.y=20+CalcPercent(H,20*i)-7,.w=290,.h=35});
+        SDL_RenderFillRect(Render, &(SDL_FRect){.x=X,.y=20+CalcPercent(H,20*i)-7,.w=W,.h=35});
     }
     if(!HubLoaded)//For testing Radio Buttons, eventually just use the if else below
     {
         RadioButton RadioBtn_Homologação = {
-            .BackColor = {.A=255,.R=255,.B=255,.G=255},
-            .FrontColor = {.A=255,.R=0,.B=0,.G=0},
+            .BackColor = {.A=255,.R=225,.B=225,.G=225},
+            .FrontColor = {.A=255,.R=0,.B=0,.G=100},
             .Size = 12,
             .State = _R_Homologação,
             .X = X + CalcPercent(W, 6),
-            .Y = 20 + CalcPercent(H, 20)
+            .Y = 20 + CalcPercent(H, 21.9)
         };
         Radio_BTN[0] = RadioBtn_Homologação;
         Radio_BTN_Count++;
@@ -378,7 +372,7 @@ SDL_AppResult InitialPage()
     {
 
     }
-    if(!HubLoaded)
+    if(!HubLoaded)//Set the elements
     {
         Text TXT_SelecioneOsArquivos ={
           .FontSize = 24,
@@ -424,7 +418,7 @@ SDL_AppResult InitialPage()
         ReferenceText_INIPAGE[3] = LabelCount;
         LabelCount++;
     }
-    else
+    else//Upkeep the elements
     {
         for(int i=0;i<TextCount_IniPage;i++)
         {
@@ -488,20 +482,33 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
     return SDL_APP_CONTINUE;
 }
+
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
+    if(_NewLoad)
+    {
+        StaticLoaded = false;
+        HubLoaded = false;
+    }
+    else
+    {
+        StaticLoaded = true;
+        HubLoaded = true;
+    }
     SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
     SDL_RenderClear(Render);
     StaticElements();
     SDL_AppResult Result = SDL_APP_CONTINUE;
+    if(_NewLoad)
+    {
+        CleanPage();
+    }
     switch(CurrentScreen)
     {
         case InitScreen:
-            CleanPage();
             Result = InitialPage();
             break;
         case Cliente:
-            CleanPage();
             Result = ClientPage();
             break;
         case Solar:
@@ -517,7 +524,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     }
     RenderStaticFont();
     RenderFont();
+
     SDL_RenderPresent(Render);
+    _NewLoad = false;
     return Result;
 }
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
