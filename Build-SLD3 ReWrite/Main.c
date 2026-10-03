@@ -1,4 +1,6 @@
 #include "Lib/HEHelper&Maker.h"
+#include <SDL3/SDL_render.h>
+#include <stdio.h>
 
 int WnWidth = 1200;
 int WnHeight = 600;
@@ -48,61 +50,6 @@ int StaticLabelCount = 0;
 Text StaticLabel[100];
 bool _NewLoad = true;
 //---------------------------------------------------------------------------------//
-void CleanStaticFonts()
-{
-    if(StaticLabelCount == 0)
-    {
-        goto EndClean;
-    }
-    for(int i=0;i<StaticLabelCount;i++)
-    {
-        SDL_DestroyTexture(StaticLabel[i].Texture);
-    }
-    EndClean:
-}
-SDL_AppResult RenderStaticFont()
-{
-    if(StaticLabelCount == 0)
-    {
-        return SDL_APP_CONTINUE;
-    }
-    if(StaticLoaded)
-    {
-
-        for(int i=0; i<StaticLabelCount;i++)
-        {
-            SDL_SetRenderScale(Render, StaticLabel[i].FontSize/(float)24, StaticLabel[i].FontSize/(float)24);
-            SDL_RenderTexture(Render, ActiveLabels[i].Texture, NULL, &(SDL_FRect){
-                .x=StaticLabel[i].X*((float)24/StaticLabel[i].FontSize),
-                .y=StaticLabel[i].Y*((float)24/StaticLabel[i].FontSize),
-                .w=StaticLabel[i].Width,
-                .h=StaticLabel[i].Height
-            });
-        }
-        StaticLabelCount = 0;
-        SDL_SetRenderScale(Render, 1, 1);
-        return SDL_APP_CONTINUE;
-    }
-    for(int i=0; i<StaticLabelCount;i++)
-    {
-        SDL_Color TxtColor = {.a=StaticLabel[i].RGB.A,.r=StaticLabel[i].RGB.R,.g=StaticLabel[i].RGB.G,.b=StaticLabel[i].RGB.B};
-        SDL_Surface *TxtSuface = TTF_RenderText_Blended(MainFont,StaticLabel[i].String,0,TxtColor);
-        StaticLabel[i].Height = TxtSuface->h;
-        StaticLabel[i].Width = TxtSuface->w;
-        StaticLabel[i].Texture = SDL_CreateTextureFromSurface(Render,TxtSuface);
-        SDL_DestroySurface(TxtSuface);
-        SDL_SetRenderScale(Render, StaticLabel[i].FontSize/(float)24, StaticLabel[i].FontSize/(float)24);
-        SDL_RenderTexture(Render, StaticLabel[i].Texture, NULL, &(SDL_FRect){
-            .x=StaticLabel[i].X*((float)24/StaticLabel[i].FontSize),
-            .y=StaticLabel[i].Y*((float)24/StaticLabel[i].FontSize),
-            .w=StaticLabel[i].Width,
-            .h=StaticLabel[i].Height
-        });
-    }
-    StaticLoaded = true;
-    SDL_SetRenderScale(Render, 1, 1);
-    return SDL_APP_CONTINUE;
-}
 void TabHighLight(EventParams Param, int Function)
 {
     int ScreenID = Param.NUMBER + 2;
@@ -215,7 +162,6 @@ SDL_AppResult TabSwitch(EventParams Param)
 }
 void CleanPage()
 {
-    CleanStaticFonts();
     CleanFonts();
     for(int i=0;i<=HitboxCount; i++)
     {
@@ -247,8 +193,8 @@ SDL_AppResult InitStructs()
     MouseState.Y = 0;
     return SDL_APP_CONTINUE;
 }
-#define TextCount_StaticEle 6
-int ReferenceText_StaticEle[TextCount_StaticEle] = {0};
+#define TextCount_StaticEle 5
+int ReferenceText_STATIC[TextCount_StaticEle] = {0};
 SDL_AppResult StaticElements()
 {
     SDL_SetRenderDrawColor(Render,53, 51, 61, SDL_ALPHA_OPAQUE);
@@ -271,7 +217,6 @@ SDL_AppResult StaticElements()
             HitboxCount++;
         }
     }
-
     if(!StaticLoaded)
     {
         SDL_AppResult ResultFontRender = SDL_APP_CONTINUE;
@@ -308,30 +253,52 @@ SDL_AppResult StaticElements()
             .RGB = {.A=255,.R=255,.G=255,.B=255},
             .String = "P.Baixa",
             .X = 35 + CalcPercent(Tabs[4].Box.w, 32),
-            .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.y, 2.7),
+            .Y = Tabs[4].Box.y + CalcPercent(Tabs[4].Box.h, 20),
         };
-        ReferenceText_StaticEle[0] = StaticLabelCount;
-        StaticLabel[StaticLabelCount] = TXT_Cliente;
-        StaticLabelCount++;
-        ReferenceText_StaticEle[1] = StaticLabelCount;
-        StaticLabel[StaticLabelCount] = TXT_Solar;
-        StaticLabelCount++;
-        ReferenceText_StaticEle[2] = StaticLabelCount;
-        StaticLabel[StaticLabelCount] = TXT_Local;
-        StaticLabelCount++;
-        ReferenceText_StaticEle[3] = StaticLabelCount;
-        StaticLabel[StaticLabelCount] = TXT_Contrato;
-        StaticLabelCount++;
-        ReferenceText_StaticEle[4] = StaticLabelCount;
-        StaticLabel[StaticLabelCount] = TXT_PBaixa;
-        StaticLabelCount++;
+        ReferenceText_STATIC[0] = LabelCount;
+        ActiveLabels[LabelCount] = TXT_Cliente;
+        LabelCount++;
+        ReferenceText_STATIC[1] = LabelCount;
+        ActiveLabels[LabelCount] = TXT_Solar;
+        LabelCount++;
+        ReferenceText_STATIC[2] = LabelCount;
+        ActiveLabels[LabelCount] = TXT_Local;
+        LabelCount++;
+        ReferenceText_STATIC[3] = LabelCount;
+        ActiveLabels[LabelCount] = TXT_Contrato;
+        LabelCount++;
+        ReferenceText_STATIC[4] = LabelCount;
+        ActiveLabels[LabelCount] = TXT_PBaixa;
+        LabelCount++;
     }
     else
     {
-        for(int i=0;i<StaticLabelCount;i++)
+        SDL_SetRenderDrawColor(Render, 255, 0, 0, 255);
+        for(int i=0;i<TextCount_StaticEle;i++)
         {
-            StaticLabel[i].X = 35 + CalcPercent(Tabs[i].Box.w, 35);
-            StaticLabel[i].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
+            printf("Count| %d \nText| %s \nLocation| X %f Y %f \nWidth| %f \nHeight | %f\nFontSize| %d\n\n",i,StaticLabel[i].String,StaticLabel[i].X,StaticLabel[i].Y,
+            StaticLabel[i].Width,StaticLabel[i].Height,StaticLabel[i].FontSize);
+            if(i==0)
+            {
+                ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
+                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
+                continue;
+            }
+            if(i==3)
+            {
+                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
+                ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
+                continue;
+            }
+            if(i==4)
+            {
+                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
+                ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
+                continue;
+            }
+            SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
+            ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
+            ActiveLabels[ReferenceText_STATIC[i]].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
         }
     }
     return SDL_APP_CONTINUE;
@@ -356,6 +323,7 @@ SDL_AppResult InitialPage()
     }
     if(!HubLoaded)//For testing Radio Buttons, eventually just use the if else below
     {
+        /*
         RadioButton RadioBtn_Homologação = {
             .BackColor = {.A=255,.R=225,.B=225,.G=225},
             .FrontColor = {.A=255,.R=0,.B=0,.G=100},
@@ -367,6 +335,7 @@ SDL_AppResult InitialPage()
         Radio_BTN[0] = RadioBtn_Homologação;
         Radio_BTN_Count++;
         SDL_RenderRadioBtn(RadioBtn_Homologação);
+        */
     }
     else
     {
@@ -385,26 +354,27 @@ SDL_AppResult InitialPage()
         Text TXT_DocumentosdeHomologação ={
           .FontSize = 18,
           .RGB = {.A=255,.R=255,.G=255,.B=255},
-          .String = "Documentos de Homologação"
+          .String = "Documentos de Homologação",
+          .X = XAnchorOptions,
+          .Y = 20 + CalcPercent(H, 20)
         };
-        TXT_DocumentosdeHomologação.X = XAnchorOptions;
-        TXT_DocumentosdeHomologação.Y = 20 + CalcPercent(H, 20);
+
 
         Text TXT_Contrato ={
           .FontSize = 18,
           .RGB = {.A=255,.R=255,.G=255,.B=255},
           .String = "Contrato",
+          .X = XAnchorOptions,
+          .Y =  20 + CalcPercent(H, 40)
         };
-        TXT_Contrato.X = XAnchorOptions;
-        TXT_Contrato.Y =  20 + CalcPercent(H, 40);;
 
         Text TXT_ParametrosPlantaBaixa ={
           .FontSize = 18,
           .RGB = {.A=255,.R=255,.G=255,.B=255},
           .String = "Parametros para Planta Baixa",
+          .X = XAnchorOptions,
+          .Y = (20 + CalcPercent(H, 60))
         };
-        TXT_ParametrosPlantaBaixa.X = XAnchorOptions;
-        TXT_ParametrosPlantaBaixa.Y = (20 + CalcPercent(H, 60));
         ActiveLabels[LabelCount] = TXT_SelecioneOsArquivos;
         ReferenceText_INIPAGE[0] = LabelCount;
         LabelCount++;
@@ -482,7 +452,6 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
     return SDL_APP_CONTINUE;
 }
-
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
     if(_NewLoad)
@@ -497,12 +466,13 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     }
     SDL_SetRenderDrawColor(Render, 43, 41, 51,SDL_ALPHA_OPAQUE);
     SDL_RenderClear(Render);
-    StaticElements();
     SDL_AppResult Result = SDL_APP_CONTINUE;
     if(_NewLoad)
     {
         CleanPage();
     }
+    StaticElements();
+    //printf("Static text = %s\n",StaticLabel[0].String);
     switch(CurrentScreen)
     {
         case InitScreen:
@@ -522,7 +492,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         case FinalScreen:
             break;
     }
-    RenderStaticFont();
     RenderFont();
 
     SDL_RenderPresent(Render);
@@ -596,6 +565,5 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
-    CleanFonts();
-    CleanStaticFonts();
+    CleanPage();
 }
