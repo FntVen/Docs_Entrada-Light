@@ -1,6 +1,4 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_render.h>
-#include <stdio.h>
 
 int WnWidth = 1200;
 int WnHeight = 600;
@@ -160,6 +158,42 @@ SDL_AppResult TabSwitch(EventParams Param)
     }
     return SDL_APP_CONTINUE;
 }
+SDL_AppResult RADIO_TabEnable(EventParams Param)
+{
+    switch(Param.NUMBER)
+    {
+        case 0://Homologação
+            if(!_R_Homologação)
+            {
+                _Cliente = true;
+                _Solar = true;
+                _Local = true;
+                _R_Homologação = true;
+
+                Tabs[0].Used = Tabs[0].Normal;
+                Tabs[1].Used = Tabs[1].Normal;
+                Tabs[2].Used = Tabs[2].Normal;
+            }
+            else
+            {
+                _Cliente = false;
+                _Solar = false;
+                _Local = false;
+                _R_Homologação = false;
+
+                Tabs[0].Used = Tabs[0].Disabled;
+                Tabs[1].Used = Tabs[1].Disabled;
+                Tabs[2].Used = Tabs[2].Disabled;
+            }
+        break;
+        case 1://Contrato
+        break;
+        case 2://P.Baixa
+        break;
+    }
+
+    return SDL_APP_CONTINUE;
+}
 void CleanPage()
 {
     CleanFonts();
@@ -167,7 +201,7 @@ void CleanPage()
     {
         HitBoxes[HitboxCount].Function = 0;
         HitBoxes[HitboxCount].Parameter.NUMBER = 0;
-        HitBoxes[HitboxCount].BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+        HitBoxes[HitboxCount].BoundingBox = (SDL_FRect){.x=0,.y=0,.w=0,.h=0};
     }
 }
 static float CalcPercent(float NUM, float PERCENT)
@@ -211,7 +245,7 @@ SDL_AppResult StaticElements()
         SDL_RenderFillRect(Render,&Tabs[i].Box);
         if(!StaticLoaded)
         {
-            HitBoxes[HitboxCount].BoundingBox = &Tabs[i].Box;
+            HitBoxes[HitboxCount].BoundingBox = Tabs[i].Box;
             HitBoxes[HitboxCount].Function = TABSELECT;
             HitBoxes[HitboxCount].Parameter.NUMBER = i;
             HitboxCount++;
@@ -273,30 +307,23 @@ SDL_AppResult StaticElements()
     }
     else
     {
-        SDL_SetRenderDrawColor(Render, 255, 0, 0, 255);
         for(int i=0;i<TextCount_StaticEle;i++)
         {
-            printf("Count| %d \nText| %s \nLocation| X %f Y %f \nWidth| %f \nHeight | %f\nFontSize| %d\n\n",i,StaticLabel[i].String,StaticLabel[i].X,StaticLabel[i].Y,
-            StaticLabel[i].Width,StaticLabel[i].Height,StaticLabel[i].FontSize);
             if(i==0)
             {
                 ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
-                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
                 continue;
             }
             if(i==3)
             {
-                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
                 ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
                 continue;
             }
             if(i==4)
             {
-                SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
                 ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
                 continue;
             }
-            SDL_RenderPoint(Render, StaticLabel[i].X,StaticLabel[i].Y);
             ActiveLabels[ReferenceText_STATIC[i]].X = 35 + CalcPercent(Tabs[i].Box.w, 33);
             ActiveLabels[ReferenceText_STATIC[i]].Y = Tabs[i].Box.y + CalcPercent(Tabs[0].Box.h, 20);
         }
@@ -307,6 +334,7 @@ SDL_AppResult StaticElements()
 int ReferenceText_INIPAGE[TextCount_IniPage] = {0};
 RadioButton Radio_BTN[3];
 int Radio_BTN_Count = 0;
+int Radio_BTN_HitboxIndex[3] = {0};
 SDL_AppResult InitialPage()
 {
     SDL_SetRenderDrawColor(Render, 63,61,71,255);
@@ -321,28 +349,28 @@ SDL_AppResult InitialPage()
     {
         SDL_RenderFillRect(Render, &(SDL_FRect){.x=X,.y=20+CalcPercent(H,20*i)-7,.w=W,.h=35});
     }
-    if(!HubLoaded)//For testing Radio Buttons, eventually just use the if else below
-    {
-        /*
-        RadioButton RadioBtn_Homologação = {
-            .BackColor = {.A=255,.R=225,.B=225,.G=225},
-            .FrontColor = {.A=255,.R=0,.B=0,.G=100},
-            .Size = 12,
-            .State = _R_Homologação,
-            .X = X + CalcPercent(W, 6),
-            .Y = 20 + CalcPercent(H, 21.9)
-        };
-        Radio_BTN[0] = RadioBtn_Homologação;
-        Radio_BTN_Count++;
-        SDL_RenderRadioBtn(RadioBtn_Homologação);
-        */
-    }
-    else
-    {
-
-    }
+    RadioButton RadioBtn_Homologação = {
+        .BackColor = {.A=255,.R=225,.B=225,.G=225},
+        .FrontColor = {.A=255,.R=0,.B=0,.G=100},
+        .Size = 12,
+        .State = _R_Homologação,
+        .X = X + CalcPercent(W, 6),
+        .Y = 20 + CalcPercent(H, 21.9),
+        .Box = {.Function = RADIO_MENUENABLE,.Parameter.NUMBER=0,.BoundingBox = (SDL_FRect){
+            .x = Radio_BTN[0].X - (Radio_BTN[0].Size),
+            .y = Radio_BTN[0].Y - (Radio_BTN[0].Size),
+            .w = Radio_BTN[0].Size*2,
+            .h = Radio_BTN[0].Size*2
+        }}
+    };
+    Radio_BTN[0] = RadioBtn_Homologação;
     if(!HubLoaded)//Set the elements
     {
+        HitBoxes[HitboxCount] = Radio_BTN[0].Box;
+        Radio_BTN_HitboxIndex[0] = HitboxCount;
+        HitboxCount++;
+        Radio_BTN_Count++;
+
         Text TXT_SelecioneOsArquivos ={
           .FontSize = 24,
           .X = X + CalcPercent( W, 30),
@@ -358,7 +386,6 @@ SDL_AppResult InitialPage()
           .X = XAnchorOptions,
           .Y = 20 + CalcPercent(H, 20)
         };
-
 
         Text TXT_Contrato ={
           .FontSize = 18,
@@ -390,6 +417,14 @@ SDL_AppResult InitialPage()
     }
     else//Upkeep the elements
     {
+        HitBoxes[Radio_BTN_HitboxIndex[0]] = Radio_BTN[0].Box;
+        SDL_RenderRadioBtn(Radio_BTN[0]);
+
+        for(int i=0;i<Radio_BTN_Count;i++)
+        {
+            Radio_BTN[i].X = X + CalcPercent(W, 6);
+            Radio_BTN[i].Y = 20 + CalcPercent(H, 21.9);
+        }
         for(int i=0;i<TextCount_IniPage;i++)
         {
             if(ActiveLabels[ReferenceText_INIPAGE[i]].FontSize == 24)
@@ -472,7 +507,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         CleanPage();
     }
     StaticElements();
-    //printf("Static text = %s\n",StaticLabel[0].String);
     switch(CurrentScreen)
     {
         case InitScreen:
@@ -508,20 +542,21 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         SDL_GetWindowSizeInPixels(window, &WnWidth, &WnHeight);
     }
+
     if(event->type == SDL_EVENT_MOUSE_MOTION)
     {
         MouseState.X = event->motion.x;
         MouseState.Y = event->motion.y;
         if(HoverHandler.HoverTrigger)
         {
-            if(MouseState.X<=HoverHandler.Box.BoundingBox->x || MouseState.X>=HoverHandler.Box.BoundingBox->x+HoverHandler.Box.BoundingBox->w || MouseState.Y<=HoverHandler.Box.BoundingBox->y || MouseState.Y>=HoverHandler.Box.BoundingBox->y+HoverHandler.Box.BoundingBox->h)
+            if(MouseState.X<=HoverHandler.Box.BoundingBox.x || MouseState.X>=HoverHandler.Box.BoundingBox.x+HoverHandler.Box.BoundingBox.w || MouseState.Y<=HoverHandler.Box.BoundingBox.y || MouseState.Y>=HoverHandler.Box.BoundingBox.y+HoverHandler.Box.BoundingBox.h)
             {
                 HoverHandler.HoverTrigger = false;
                 if(HoverHandler.Box.Function == TABSELECT)
                 {
                     TabHighLight(HoverHandler.Box.Parameter, HoverHandler.Box.Function);
                 }
-                HoverHandler.Box.BoundingBox = &(SDL_FRect){.x=0,.y=0,.w=0,.h=0};
+                HoverHandler.Box.BoundingBox = (SDL_FRect){.x=0,.y=0,.w=0,.h=0};
                 HoverHandler.Box.Function = 0;
                 HoverHandler.Box.Parameter.NUMBER = 0;
             }
@@ -530,9 +565,9 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         {
             for(int i=0;i<HitboxCount;i++)
             {
-                if(MouseState.X>HitBoxes[i].BoundingBox->x && MouseState.X<HitBoxes[i].BoundingBox->x+HitBoxes[i].BoundingBox->w)
+                if(MouseState.X>HitBoxes[i].BoundingBox.x && MouseState.X<HitBoxes[i].BoundingBox.x+HitBoxes[i].BoundingBox.w)
                 {
-                    if(MouseState.Y>HitBoxes[i].BoundingBox->y && MouseState.Y<HitBoxes[i].BoundingBox->y+HitBoxes[i].BoundingBox->h)
+                    if(MouseState.Y>HitBoxes[i].BoundingBox.y && MouseState.Y<HitBoxes[i].BoundingBox.y+HitBoxes[i].BoundingBox.h)
                     {
                         HoverHandler.HoverTrigger = true;
                         HoverHandler.Box.BoundingBox = HitBoxes[i].BoundingBox;
@@ -551,13 +586,19 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         if(HoverHandler.HoverTrigger)
         {
+            SDL_AppResult Result = SDL_APP_CONTINUE;
             switch(HoverHandler.Box.Function)
             {
                 case TABSELECT:
-                TabSwitch(HoverHandler.Box.Parameter);
+                    Result = TabSwitch(HoverHandler.Box.Parameter);
                 break;
                 case RADIO_MENUENABLE:
+                    Result = RADIO_TabEnable(HoverHandler.Box.Parameter);
                 break;
+            }
+            if(Result != SDL_APP_CONTINUE)
+            {
+                return Result;
             }
         }
     }
