@@ -10,17 +10,17 @@ typedef union
 }EventParams;
 typedef struct
 {
-    int A;
-    int R;
-    int G;
-    int B;
+    float A;
+    float R;
+    float G;
+    float B;
 }Color;
 typedef struct{
     float X;
     float Y;
 }MousePos;
 typedef struct{
-    SDL_FRect *BoundingBox;
+    SDL_FRect BoundingBox;
     int Function;
     EventParams Parameter;
 }HitBox;//Anything that can be clicked should have a FRect "Hitbox"
@@ -38,7 +38,6 @@ SDL_AppResult Render_Polygon(float IN_PosX, float IN_PosY,int IN_Radius, int IN_
     IN_ShapeColor.R = IN_ShapeColor.R/255;
     IN_ShapeColor.G = IN_ShapeColor.G/255;
     IN_ShapeColor.B = IN_ShapeColor.B/255;
-
     float Angle_Vertices = (float)(180+(180*(IN_Vertice_Count - 3)))/IN_Vertice_Count;
     float AngleStep = 0.0174444444445;
     float Spinning_Angle = AngleStep * (180 - Angle_Vertices);
@@ -129,15 +128,11 @@ SDL_AppResult SetFont()
 SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
 {
     Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size, 200, IN_RD.BackColor);
-    if(!IN_RD.State)
+    if(IN_RD.State)
     {
-        IN_RD.FrontColor = IN_RD.BackColor;
+        Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size*0.5, 200, IN_RD.FrontColor);
     }
-    else
-    {
-        IN_RD.FrontColor = (Color){.A=255,.R=0,.G=0,.B=0};
-    }
-    Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size*0.5, 200, IN_RD.FrontColor);
+
     return SDL_APP_CONTINUE;
 }
 typedef struct
@@ -209,7 +204,6 @@ void CleanFonts()//Erases all used fonts in the main hub and clears the "one use
         ActiveLabels[i].String = "";
     }
     LabelCount = 0;
-    HubLoaded = false;
 }
 SDL_AppResult RenderTexture()
 {
