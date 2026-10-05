@@ -1,4 +1,7 @@
 #include "Lib/HEHelper&Maker.h"
+#include <SDL3/SDL_init.h>
+#include <SDL3/SDL_rect.h>
+#include <SDL3/SDL_render.h>
 
 int WnWidth = 1200;
 int WnHeight = 600;
@@ -347,7 +350,7 @@ SDL_AppResult InitialPage()
 
     for(int i=1;i<TextCount_IniPage;i++)
     {
-        SDL_RenderFillRect(Render, &(SDL_FRect){.x=X,.y=20+CalcPercent(H,20*i)-7,.w=W,.h=35});
+        SDL_RenderFillRect(Render, &(SDL_FRect){.x=X,.y=13+CalcPercent(H,20*i),.w=W,.h=35});
     }
     RadioButton RadioBtn_Homologação = {
         .BackColor = {.A=255,.R=225,.B=225,.G=225},
@@ -355,7 +358,7 @@ SDL_AppResult InitialPage()
         .Size = 12,
         .State = _R_Homologação,
         .X = X + CalcPercent(W, 6),
-        .Y = 20 + CalcPercent(H, 21.9),
+        .Y = 31+CalcPercent(H,20),
         .Box = {.Function = RADIO_MENUENABLE,.Parameter.NUMBER=0,.BoundingBox = (SDL_FRect){
             .x = Radio_BTN[0].X - (Radio_BTN[0].Size),
             .y = Radio_BTN[0].Y - (Radio_BTN[0].Size),
