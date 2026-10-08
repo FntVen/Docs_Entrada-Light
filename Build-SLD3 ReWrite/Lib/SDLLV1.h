@@ -1,6 +1,7 @@
 #include "BaseSDLDependency.h"
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_rect.h>
+#include <SDL3/SDL_render.h>
 //SDL3 & C23
 typedef union
 {
@@ -25,6 +26,7 @@ typedef struct{
     EventParams Parameter;
 }HitBox;//Anything that can be clicked should have a FRect "Hitbox"
 int HitboxCount = 0;
+
 SDL_AppResult Render_Polygon(float IN_PosX, float IN_PosY,int IN_Radius, int IN_Vertice_Count, Color IN_ShapeColor)
 {
 
@@ -108,6 +110,7 @@ typedef struct
     Color BackColor;
     Color FrontColor;
 }RadioButton;
+
 TTF_Font *MainFont;
 SDL_AppResult SetFont()
 {
@@ -125,6 +128,7 @@ SDL_AppResult SetFont()
     MainFont = Font;
     return  SDL_APP_CONTINUE;
 }
+
 SDL_AppResult SDL_RenderRadioBtn(RadioButton IN_RD)
 {
     Render_Polygon(IN_RD.X, IN_RD.Y, IN_RD.Size, 200, IN_RD.BackColor);
@@ -149,7 +153,7 @@ typedef struct
 Text ActiveLabels[100];
 int LabelCount=0;
 bool HubLoaded = false;
-SDL_AppResult RenderFont()
+SDL_AppResult SDL_RenderFont()
 {
     if(HubLoaded)
     {
@@ -208,4 +212,55 @@ void CleanFonts()//Erases all used fonts in the main hub and clears the "one use
 SDL_AppResult RenderTexture()
 {
     return SDL_APP_CONTINUE;
+}
+
+typedef struct{
+    HitBox BoundingBox;//Should work as the text bg and be passed as the hitbox
+    Color BackGround_Color;
+    bool Border;//If a border should be rendered
+    Color Border_Color;
+    int Border_Thicc;
+    int Text_Index;//The version of the Text saved on the array will need to be overwritten as the text is updated
+    Text String;//Everything but the string should be set as the item is initialized. The state should hold even after the CleanFont
+}TextBox;
+TextBox TextBoxes[100];
+int TextBoxCount=0;
+SDL_AppResult RenderTextBox()
+{
+    if(TextBoxCount == 0)
+    {
+        return SDL_APP_CONTINUE;
+    }
+    for(int i = 1;i<TextBoxCount;i++)
+    {
+        //RenderBox & Border
+
+        if(TextBoxes[i].Border)
+        {
+            SDL_SetRenderDrawColor(Render, TextBoxes[i].Border_Color.R, TextBoxes[i].Border_Color.G, TextBoxes[i].Border_Color.B, TextBoxes[i].Border_Color.A);
+            float X = TextBoxes[i].BoundingBox.BoundingBox.x - TextBoxes[i].Border_Thicc;
+            float Y = TextBoxes[i].BoundingBox.BoundingBox.y - TextBoxes[i].Border_Thicc;
+            float Width = TextBoxes[i].BoundingBox.BoundingBox.w + (TextBoxes[i].Border_Thicc*2);
+            float Height = TextBoxes[i].BoundingBox.BoundingBox.h + (TextBoxes[i].Border_Thicc*2);
+
+            SDL_RenderFillRect(Render, &(SDL_FRect){
+                .x = X,
+                .y = Y,
+                .w = Width,
+                .h = Height
+            });
+        }
+        SDL_SetRenderDrawColor(Render, TextBoxes[i].BackGround_Color.R, TextBoxes[i].BackGround_Color.G, TextBoxes[i].BackGround_Color.B, TextBoxes[i].BackGround_Color.A);
+        SDL_RenderFillRect(Render, &TextBoxes[i].BoundingBox.BoundingBox);
+        //Render text.. Can i leverage the current font renderer? If i can save the data despite CleanFonts, it should be viable
+        if(!HubLoaded)
+        {
+            ActiveLabels[LabelCount] = TextBoxes[i].String;
+            LabelCount++;
+        }
+        else
+        {
+            //If i want to recalculate the position of the textbox i think i will need to write a parser and save the calculations as strings
+        }
+    }
 }
