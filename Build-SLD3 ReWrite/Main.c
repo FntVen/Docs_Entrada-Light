@@ -48,7 +48,7 @@ int StaticLabelCount = 0;
 Text StaticLabel[100];
 bool _NewLoad = true;
 //---------------------------------------------------------------------------------//
-void TabHighLight(EventParams Param, int Function)
+void TabHighLight(EventParams Param)
 {
     int ScreenID = Param.NUMBER + 2;
     switch(ScreenID)
@@ -156,6 +156,7 @@ SDL_AppResult TabSwitch(EventParams Param)
             }
         break;
     }
+    _NewLoad = true;
     return SDL_APP_CONTINUE;
 }
 SDL_AppResult RADIO_TabEnable(EventParams Param)
@@ -187,8 +188,56 @@ SDL_AppResult RADIO_TabEnable(EventParams Param)
             }
         break;
         case 1://Contrato
+            if(!_R_Contrato)
+            {
+                _Cliente = true;
+                _Local = true;
+                _Contrato = true;
+                _R_Contrato = true;
+
+                Tabs[0].Used = Tabs[0].Normal;
+                Tabs[2].Used = Tabs[2].Normal;
+                Tabs[3].Used = Tabs[3].Normal;
+            }
+            else
+            {
+                _Cliente = false;
+                _Local = false;
+                _Contrato = false;
+                _R_Contrato = false;
+
+                Tabs[0].Used = Tabs[0].Disabled;
+                Tabs[2].Used = Tabs[2].Disabled;
+                Tabs[3].Used = Tabs[3].Disabled;
+            }
         break;
         case 2://P.Baixa
+            if(!_R_PBaixa)
+            {
+                _Cliente = true;
+                _Solar = true;
+                _Local = true;
+                _PBaixa = true;
+                _R_PBaixa = true;
+
+                Tabs[0].Used = Tabs[0].Normal;
+                Tabs[1].Used = Tabs[1].Normal;
+                Tabs[2].Used = Tabs[2].Normal;
+                Tabs[4].Used = Tabs[4].Normal;
+            }
+            else
+            {
+                _Cliente = false;
+                _Solar = false;
+                _Local = false;
+                _PBaixa = false;
+                _R_PBaixa = false;
+
+                Tabs[0].Used = Tabs[0].Disabled;
+                Tabs[1].Used = Tabs[1].Disabled;
+                Tabs[2].Used = Tabs[2].Disabled;
+                Tabs[4].Used = Tabs[4].Disabled;
+            }
         break;
     }
 
@@ -506,6 +555,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     {
         CleanPage();
     }
+
     StaticElements();
     switch(CurrentScreen)
     {
@@ -526,8 +576,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         case FinalScreen:
             break;
     }
-    RenderFont();
-
+    SDL_RenderFont();
     SDL_RenderPresent(Render);
     _NewLoad = false;
     return Result;
@@ -554,7 +603,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 HoverHandler.HoverTrigger = false;
                 if(HoverHandler.Box.Function == TABSELECT)
                 {
-                    TabHighLight(HoverHandler.Box.Parameter, HoverHandler.Box.Function);
+                    TabHighLight(HoverHandler.Box.Parameter);
                 }
                 HoverHandler.Box.BoundingBox = (SDL_FRect){.x=0,.y=0,.w=0,.h=0};
                 HoverHandler.Box.Function = 0;
@@ -575,7 +624,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                         HoverHandler.Box.Parameter = HitBoxes[i].Parameter;
                         if(HitBoxes[i].Function == TABSELECT)
                         {
-                            TabHighLight(HitBoxes[i].Parameter, HitBoxes[i].Function);
+                            TabHighLight(HitBoxes[i].Parameter);
                         }
                     }
                 }
