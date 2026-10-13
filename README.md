@@ -13,11 +13,11 @@ For Autocad Support make a helper Autocad plugging that will read the informatio
 To-Do
 -----------------------------------------------------------------------------------------------------
 
-Set clean only for screen resizing and screen changes
+(DONE) Set clean only for screen resizing and screen changes
 
 Set TextBoxes
 
-Finish Menu Navigation
+(DONE) Finish Menu Navigation
 
 Set Dark/Light Mode
 
