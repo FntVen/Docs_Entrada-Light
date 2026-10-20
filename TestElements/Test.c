@@ -303,7 +303,8 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         switch(MouseHandler.FunctionFocus)//event->key.key
         {
-
+            case TEXTBOX:
+            break;
         }
     }
     return SDL_APP_CONTINUE;
