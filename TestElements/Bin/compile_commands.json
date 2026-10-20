@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/luciano-fonte/Programming/Projects/C/Docs_Entrada-Light-main/TestElements/Bin",
+  "command": "/usr/bin/cc -DSDL_GLCORE33 -I/home/luciano-fonte/Programming/Projects/C/Docs_Entrada-Light-main/TestElements/Lib/SDL3_INCLUDE/SDL3  -o CMakeFiles/TesteElemento.dir/Test.c.o -c /home/luciano-fonte/Programming/Projects/C/Docs_Entrada-Light-main/TestElements/Test.c",
+  "file": "/home/luciano-fonte/Programming/Projects/C/Docs_Entrada-Light-main/TestElements/Test.c",
+  "output": "CMakeFiles/TesteElemento.dir/Test.c.o"
+}
+]
