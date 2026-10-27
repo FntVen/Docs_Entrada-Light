@@ -1,4 +1,6 @@
 #include "Lib/HEHelper&Maker.h"
+#include <SDL3/SDL_keycode.h>
+#include <stdbool.h>
 #include <time.h>
 
 bool _NewLoad = true;;
@@ -40,6 +42,128 @@ typedef union{
 }SimpleConvert;
 int AnimationTick = 0;
 bool _AnimationPlayed = false;
+typedef struct{
+    bool Result;
+    bool String;
+    bool Char;
+}CharReturn;
+CharReturn FetchChar(int ScanCode, int Mod, char *Return_Char, char Return_String[3])
+{
+    bool Return = true;
+    switch(ScanCode)
+    {
+        case 4:
+            *Return_Char = 'a';
+            Return = true;
+        break;
+        case 5:
+           *Return_Char = 'b';
+           Return = true;
+        break;
+        case 6:
+           *Return_Char = 'c';
+           Return = true;
+        break;
+        case 7:
+           *Return_Char = 'd';
+           Return = true;
+        break;
+        case 8:
+           *Return_Char = 'e';
+           Return = true;
+        break;
+        case 9:
+           *Return_Char = 'f';
+           Return = true;
+        break;
+        case 10:
+           *Return_Char = 'g';
+           Return = true;
+        break;
+        case 11:
+           *Return_Char = 'h';
+           Return = true;
+        break;
+        case 12:
+           *Return_Char = 'i';
+           Return = true;
+        break;
+        case 13:
+           *Return_Char = 'j';
+           Return = true;
+        break;
+        case 14:
+           *Return_Char = 'k';
+           Return = true;
+        break;
+        case 15:
+           *Return_Char = 'l';
+           Return = true;
+        break;
+        case 16:
+           *Return_Char = 'm';
+           Return = true;
+        break;
+        case 17:
+           *Return_Char = 'n';
+           Return = true;
+        break;
+        case 18:
+           *Return_Char = 'o';
+           Return = true;
+        break;
+        case 19:
+           *Return_Char = 'p';
+           Return = true;
+        break;
+        case 20:
+           *Return_Char = 'q';
+           Return = true;
+        break;
+        case 21:
+           *Return_Char = 'r';
+           Return = true;
+        break;
+        case 22:
+           *Return_Char = 's';
+           Return = true;
+        break;
+        case 23:
+           *Return_Char = 't';
+           Return = true;
+        break;
+        case 24:
+           *Return_Char = 'u';
+           Return = true;
+        break;
+        case 25:
+           *Return_Char = 'v';
+           Return = true;
+        break;
+        case 26:
+           *Return_Char = 'w';
+           Return = true;
+        break;
+        case 27:
+           *Return_Char = 'x';
+           Return = true;
+        break;
+        case 28:
+           *Return_Char = 'y';
+           Return = true;
+        break;
+        case 29:
+           *Return_Char = 'z';
+           Return = true;
+        break;
+        case 51:
+            Return_String = "ç";
+            Return = true;
+        default:
+        return false;
+    }
+    return Return;
+}
 SDL_AppResult AnimationTickProgress()
 {
     SDL_AppResult Result = SDL_APP_CONTINUE;
@@ -331,17 +455,29 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 SDL_StopTextInput(window);
                 SDL_SetTextInputArea(window, NULL, 0);
             }
-            else
+            else//Scancodes are consistent betweeen computers and OS
             {
-                //As odd as these look they seem standardized, as they are the same between my computer and notebook
-                //~ = 1273741876
-                //' = 1073741871                
-                
-                if(event->key.key>=33 && event->key.key<=126 || event->key.key == 231)// 33 - 126 handles the average american keyboard | 231 is ç | Characters like á é õ will just be a and o with modifiers that will need to be passed to the writing function | Caps will just be a modifier trigger by capslock or holding shift 
+                int M = 0;
+                char K;
+                char S[3];
+                if(event->key.mod != 0 && event->key.key == SDLK_LSHIFT ||
+                   event->key.key == SDLK_LCTRL || event->key.key == SDLK_CAPSLOCK ||
+                   event->key.key == SDLK_LALT || event->key.key == SDLK_RALT || event->key.key == SDLK_RCTRL)
                 {
-                    SimpleConvert Conv;
-                    Conv.NUMBER = event->key.key;
-                    printf("%d %c\n",Conv.NUMBER,Conv.DIGIT);
+                    M = event->key.mod;
+                }
+                if(event->key.scancode >= 4 && event->key.scancode <= 56)
+                {
+                    CharReturn Answer = FetchChar(event->key.scancode, M, &K,S);
+                    printf("Scancode %d\n",event->key.scancode);
+                    if(Answer.Result)
+                    {
+                        //Modify string
+                        if(Answer.Char){}
+                        if(Answer.String){}
+
+                        printf("%c\n",K);
+                    }
                 }
                 //Result = UpdateText(event->key.key,MouseHandler.MouseFocus);
             }
@@ -352,7 +488,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         //Handle letting go of special keys like ´ or ~
     }
-    
+
     return SDL_APP_CONTINUE;
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
