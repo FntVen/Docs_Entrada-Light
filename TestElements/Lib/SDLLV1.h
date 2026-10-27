@@ -1,7 +1,4 @@
 #include "BaseSDLDependency.h"
-#include <SDL3/SDL_init.h>
-#include <SDL3/SDL_rect.h>
-#include <SDL3/SDL_render.h>
 //SDL3 & C23
 typedef union
 {
@@ -148,7 +145,7 @@ typedef struct
     float Y;//Y Location
     float Width;//The Render Function Handles This
     float Height;//The Render Function Handles This
-    const char *Sentence;//The String do Display
+    char *Sentence;//The String do Display
     Color RGB;//Its More so RGBA
     int FontSize;//Arbitrary Font Size With 24 Being the Standard
     bool _ForceRecalc;//For Modifiable Text | Forces the String and Bounding to Recalculate
