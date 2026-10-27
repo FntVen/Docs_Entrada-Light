@@ -1,6 +1,5 @@
 #include "Lib/HEHelper&Maker.h"
-#include <SDL3/SDL_events.h>
-#include <SDL3/SDL_render.h>
+#include <time.h>
 
 bool _NewLoad = true;;
 int WnWidth = 1200;
@@ -15,8 +14,8 @@ enum BtnFunctions{
 typedef struct{
     MousePos XY;//Mouse Position
     HitBox Box;//The bounding box & Function Identifier & Function Parameters of the hovered HitBox
-    int MouseFocus;//Mouse focus is a 1 based index so subtract 1 to get an index
-    int FunctionFocus; //The function of the last focused application | The Function parameter on Hitbox cant be used because it changes on mouse postion
+    int MouseFocus;//Mouse focus is a 1 based index based on Parameter_1 of Hitbox so subtract 1 to get te correct index
+    int FunctionFocus; //The function of the last focused application | The Function parameter on Hitbox is used here but cant be cant be used because it changes on mouse postion
     bool HoverTrigger;//True if the mouse is hovering a hitbox
     SDL_Cursor *Pointer_Normal;//Normal Mouse State
     SDL_Cursor *Pointer_Text;//Mouse hovering a TextBox and the like
@@ -34,7 +33,11 @@ typedef struct{
     Text String;//Everything but the string should be set as the item is initialized. The state should hold even after the CleanFont
 }TextBox;
 TextBox TextBoxes[100];
-int TextBoxCount=0;
+int TextBoxCount = 0;
+typedef union{
+    int NUMBER;
+    char DIGIT;
+}SimpleConvert;
 int AnimationTick = 0;
 bool _AnimationPlayed = false;
 SDL_AppResult AnimationTickProgress()
@@ -79,6 +82,11 @@ SDL_AppResult AnimationTickProgress()
         _AnimationPlayed = false;
     }
     return Result;
+}
+SDL_AppResult UpdateText(int KEY, int TXTB_ID)
+{
+
+    return SDL_APP_CONTINUE;
 }
 SDL_AppResult RenderTextBox()
 {
@@ -181,7 +189,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         TextBoxes[TextBoxCount] = TextBoxTest;
         TextBoxCount++;
         HitBoxes[HitboxCount] = (HitBox){
-            .Function= 2,
+            .Function= TEXTBOX,
             .Parameter_1=TextBoxTest.BorderBox.Parameter_1,
             .BoundingBox.x = TextBoxTest.BorderBox.BoundingBox.x,
             .BoundingBox.y = TextBoxTest.BorderBox.BoundingBox.y,
@@ -200,7 +208,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     {
         AnimationTick++;
     }
-    //printf("%d\n",AnimationTick);
     Result = AnimationTickProgress();
     SDL_RenderPresent(Render);
     _NewLoad = false;
@@ -287,6 +294,16 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                 case RADIO_MENUENABLE:
                     //Result = RADIO_TabEnable(HoverHandler.Box.Parameter);
                 break;
+                case TEXTBOX:
+                  SDL_Rect Rect = {
+                      .x = MouseHandler.Box.BoundingBox.x,
+                      .y = MouseHandler.Box.BoundingBox.y,
+                      .w = MouseHandler.Box.BoundingBox.w,
+                      .h = MouseHandler.Box.BoundingBox.h
+                    };
+                  SDL_SetTextInputArea(window, &Rect, 0);
+                  SDL_StartTextInput(window);
+                break;
             }
             if(Result != SDL_APP_CONTINUE)
             {
@@ -297,16 +314,45 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         {
             MouseHandler.FunctionFocus = PADDING;
             MouseHandler.MouseFocus = 0;
+            SDL_StopTextInput(window);
+            SDL_SetTextInputArea(window, NULL, 0);
         }
     }
     if(event->type == SDL_EVENT_KEY_DOWN)
     {
+        SDL_AppResult Result = SDL_APP_CONTINUE;
         switch(MouseHandler.FunctionFocus)//event->key.key
         {
-            case TEXTBOX:
-            break;
+        case TEXTBOX:
+            if(event->key.key == SDLK_ESCAPE || event->key.key == SDLK_RETURN)
+            {
+                MouseHandler.FunctionFocus = PADDING;
+                MouseHandler.MouseFocus = 0;
+                SDL_StopTextInput(window);
+                SDL_SetTextInputArea(window, NULL, 0);
+            }
+            else
+            {
+                //As odd as these look they seem standardized, as they are the same between my computer and notebook
+                //~ = 1273741876
+                //' = 1073741871                
+                
+                if(event->key.key>=33 && event->key.key<=126 || event->key.key == 231)// 33 - 126 handles the average american keyboard | 231 is ç | Characters like á é õ will just be a and o with modifiers that will need to be passed to the writing function | Caps will just be a modifier trigger by capslock or holding shift 
+                {
+                    SimpleConvert Conv;
+                    Conv.NUMBER = event->key.key;
+                    printf("%d %c\n",Conv.NUMBER,Conv.DIGIT);
+                }
+                //Result = UpdateText(event->key.key,MouseHandler.MouseFocus);
+            }
+        break;
         }
     }
+    if(event->type == SDL_EVENT_KEY_UP)
+    {
+        //Handle letting go of special keys like ´ or ~
+    }
+    
     return SDL_APP_CONTINUE;
 }
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
