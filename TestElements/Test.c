@@ -45,7 +45,6 @@ bool TXT_UpdateChar(int ScanCode, int Mod, TextBox_PARAM Param)/*Position = 0 is
     char Hold_String[4];
     char Cedilha[3] = "ç";
     char Hold_Char;
-    int LabelIndex = Param.Label_Index-1;
     bool _STR = false;
     bool _Return = false;
     switch(ScanCode)
@@ -170,14 +169,13 @@ bool TXT_UpdateChar(int ScanCode, int Mod, TextBox_PARAM Param)/*Position = 0 is
         return _Return;
     }
     //Modify string
-    char TempArray[TextBoxes[Param.TBOx_Index].String->CharCount+3];//+3 to account for ç and ã
+    char TempArray[TextBoxes[Param.TBOx_Index].String->StringSize+3];//+3 to account for ç and ã
     int TempIndex=0;
-    printf("%d\n",TextBoxes[Param.TBOx_Index].String->CharCount);
-    for(int i=0;i<14;i++)
+    for(int i=0;i<TextBoxes[Param.TBOx_Index].String->StringSize;i++)
     {
         if(Param.WrittingPos!=0)
         {
-            if(i==Param.WrittingPos+14)
+            if(i==Param.WrittingPos+TextBoxes[Param.TBOx_Index].String->StringSize)
             {
                 if(_STR)
                 {
@@ -196,13 +194,13 @@ bool TXT_UpdateChar(int ScanCode, int Mod, TextBox_PARAM Param)/*Position = 0 is
             }
             else
             {
-                TempArray[TempIndex] = ActiveLabels[LabelIndex].Sentence[i];
+                TempArray[TempIndex] = ActiveLabels[Param.Label_Index].Sentence[i];
             }
         }
         else
         {
-            TempArray[TempIndex] = ActiveLabels[LabelIndex].Sentence[i];
-            if(i==14-1)//Last character of the unmodified string
+            TempArray[TempIndex] = ActiveLabels[Param.Label_Index].Sentence[i];
+            if(i==TextBoxes[Param.TBOx_Index].String->StringSize-1)//Last character of the unmodified string
             {
                 if(_STR)
                 {
@@ -222,8 +220,7 @@ bool TXT_UpdateChar(int ScanCode, int Mod, TextBox_PARAM Param)/*Position = 0 is
         }
         TempIndex++;
     }
-    //printf("%s\n",TempArray);
-
+    printf("%s\n",TempArray);
 
     return _Return;
 }
@@ -350,7 +347,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 }
 TextBox TextBoxTest = {
     .BorderBox={.BoundingBox={.x=100,.y=100,.w=300,.h=40},.Function=TEXTBOX},
-    .String = &(Text){.Sentence="This is a Test",.FontSize=24,.RGB={.R=0,.G=0,.B=0,.A=255},._ForceRecalc=true,.CharCount = 14},
+    .String = &(Text){.Sentence="This is a Test",.FontSize=24,.RGB={.R=0,.G=0,.B=0,.A=255},._ForceRecalc=true,.StringSize = 14},
     ._Border = true,
     .Border_Thickness = 1,
     .BackGround_Color = {.R=255,.G=255,.B=255,.A=255},
@@ -387,17 +384,10 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     }
     else
     {
-
+        //printf("Test %d | Box %d\n",TextBoxTest.StringSize,TextBoxes[0].StringSize);
     }
     Result = RenderTextBox();
     Result = SDL_RenderFont();
-    /*
-    if(MouseHandler.MouseFocus.NUMBER != 0)
-    {
-        AnimationTick++;
-    }
-    */
-    //Result = AnimationTickProgress();
     SDL_RenderPresent(Render);
     _NewLoad = false;
     return Result;
@@ -485,8 +475,8 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
                     //Result = RADIO_TabEnable(HoverHandler.Box.Parameter);
                 break;
                 case TEXTBOX:
-                    MouseHandler.MouseFocus.TXT_PARAM.Label_Index = MouseHandler.Box.Parameter.TXT_PARAM.Label_Index+1;
-                    MouseHandler.MouseFocus.TXT_PARAM.TBOx_Index = MouseHandler.Box.Parameter.TXT_PARAM.TBOx_Index+1;
+                    MouseHandler.MouseFocus.TXT_PARAM.Label_Index = MouseHandler.Box.Parameter.TXT_PARAM.Label_Index;
+                    MouseHandler.MouseFocus.TXT_PARAM.TBOx_Index = MouseHandler.Box.Parameter.TXT_PARAM.TBOx_Index;
                     MouseHandler.MouseFocus.TXT_PARAM.WrittingPos = 0; //Calc the writting position on click
                   SDL_Rect Rect = {
                       .x = MouseHandler.Box.BoundingBox.x,
