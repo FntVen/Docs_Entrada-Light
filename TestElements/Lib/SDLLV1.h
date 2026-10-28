@@ -1,10 +1,16 @@
 #include "BaseSDLDependency.h"
 //SDL3 & C23
+typedef struct{
+    int TBOx_Index;
+    int Label_Index;
+    int WrittingPos;
+}TextBox_PARAM;
 typedef union
 {
     int NUMBER;
     char WORDS[256];
     bool CHOICE;
+    TextBox_PARAM TXT_PARAM;
 }EventParams;
 typedef struct
 {
@@ -20,9 +26,7 @@ typedef struct{
 typedef struct{
     SDL_FRect BoundingBox;
     int Function;
-    EventParams Parameter_1;//usually the index of the object
-    EventParams Parameter_2;//info
-    EventParams Parameter_3;//info
+    EventParams Parameter;//Parameters Necessary for the inner workings of functions related to the item | Instead of adding more EventParams add more struct to the union
 }HitBox;//Anything that can be clicked should have a FRect "Hitbox"
 int HitboxCount = 0;
 
@@ -146,6 +150,7 @@ typedef struct
     float Width;//The Render Function Handles This
     float Height;//The Render Function Handles This
     char *Sentence;//The String do Display
+    int CharCount;//Number of Characters in Display
     Color RGB;//Its More so RGBA
     int FontSize;//Arbitrary Font Size With 24 Being the Standard
     bool _ForceRecalc;//For Modifiable Text | Forces the String and Bounding to Recalculate
