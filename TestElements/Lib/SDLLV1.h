@@ -150,7 +150,7 @@ typedef struct
     float Width;//The Render Function Handles This
     float Height;//The Render Function Handles This
     char *Sentence;//The String do Display
-    int CharCount;//Number of Characters in Display
+    int StringSize;//Number of Characters in Display
     Color RGB;//Its More so RGBA
     int FontSize;//Arbitrary Font Size With 24 Being the Standard
     bool _ForceRecalc;//For Modifiable Text | Forces the String and Bounding to Recalculate
