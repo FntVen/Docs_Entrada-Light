@@ -113,7 +113,7 @@ void template(char *Word, int Length, float Size)
 {
     float Scale = stbtt_ScaleForPixelHeight(&INFO, Size);
     int W,H,XO,YO;
-    unsigned char *GrayScale = stbtt_GetCodepointBitmap(&INFO, Scale, Scale, Word[0], &W, &H, &XO, &YO);
+    unsigned char *GrayScale = stbtt_GetCodepointBitmap(&INFO, Scale, Scale, 'A', &W, &H, &XO, &YO);
     unsigned char *RGBBitmap = malloc((size_t)W*H*4);
     for(int i =0; i<W*H*4;i++)
     {
@@ -134,13 +134,13 @@ void TTF_dynamicTexture(){}
 SDL_AppResult TTF_staticTexture(WordDATA *DT)
 {
     //First Lets try each letter being one texture before any merging bs
-    for(int Letter=0;Letter<DT->Length;Letter++)
+    for(int Letter=0;Letter< DT->Length;Letter++)
     {
         float Scale = stbtt_ScaleForPixelHeight(&INFO, DT->Size);
         int W,H,XO,YO;
         unsigned char *GrayScale = stbtt_GetCodepointBitmap(&INFO, Scale, Scale, DT->Word[Letter], &W, &H, &XO, &YO);
-        unsigned char *RGB32 = malloc((size_t)W*H*4);
-        for(int i =0; i<W*H*4; i++)
+        unsigned char *RGB32 = malloc((size_t)sizeof(int)*W*H);
+        for(int i =0; i<W*H; i++)
         {
             RGB32[i*4+0] = 0;
             RGB32[i*4+1] = 0;
@@ -173,6 +173,7 @@ SDL_AppResult TTF_staticTexture(WordDATA *DT)
             {
                 Advance = stbtt__GetGlyphGPOSInfoAdvance(&INFO, DT->Word[Letter-1], DT->Word[Letter]);
             }
+            printf("Advance %d\n",Advance);
             DT->Advances[Letter] = Advance;
         }
     }
